@@ -1,0 +1,3 @@
+src/**/*.doc.js
+src/**/*.test.js
+test

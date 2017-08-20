@@ -1,0 +1,28 @@
+{
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc", "closure"]
+  },
+  "opts": {
+    "access": "public",
+    "encoding": "utf8",
+    "destination": "docs/",
+    "recurse": true
+  },
+  "plugins": [
+    "plugins/markdown"
+  ],
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false,
+    "default": {
+      "outputSourceFiles": true
+    },
+    "systemName": "@fav/type",
+    "path": "ink-docstrap",
+    "theme": "spacelab",
+    "navType": "vertical",
+    "linenums": true,
+    "dateFormat": "YYYY/MM/DD HH:mm:ss"
+  }
+}
