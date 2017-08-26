@@ -13,7 +13,7 @@
     "jsdoc": "jsdoc -c .jsdoc.json -t node_modules/ink-docstrap/template -R README.md -r src",
     "coverage": "nyc --reporter=lcov --reporter=text-summary npm test",
     "coveralls": "nyc --reporter=text-lcov npm test | coveralls",
-    "web:install": "npm i phantomjs-prebuilt mocha-phantomjs",
+    "web:install": "npm i --no-save phantomjs-prebuilt mocha-phantomjs",
     "web:build": "npm run web:build-src && npm run web:build-test",
     "web:build-src": "browserify src/index.js --exclude 'src/**/*.@(doc|test).js' --standalone fav.type -o web/fav.type.js && cd web && uglifyjs fav.type.js --compress --mangle -o fav.type.min.js --source-map url=fav.type.min.js.map",
     "web:build-test": "node test/web/make.js",
@@ -35,6 +35,7 @@
   },
   "homepage": "https://github.com/sttk/fav-type#readme",
   "devDependencies": {
+    "@xslet/platform": "^0.1.5",
     "browserify": "^14.4.0",
     "coveralls": "^2.13.1",
     "eslint": "^4.3.0",
@@ -43,6 +44,7 @@
     "jsdoc": "^3.5.4",
     "mocha": "^3.4.2",
     "nyc": "^11.1.0",
+    "semver": "^5.4.1",
     "uglify-js": "^3.0.26"
   }
 }

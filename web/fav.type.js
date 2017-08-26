@@ -2,12 +2,23 @@
 'use strict';
 
 var isString = require('./lib/is-string');
+var isFunction = require('./lib/is-function');
 
 module.exports = {
   isString: isString,
+  isFunction: isFunction,
 };
 
-},{"./lib/is-string":2}],2:[function(require,module,exports){
+},{"./lib/is-function":2,"./lib/is-string":3}],2:[function(require,module,exports){
+'use strict';
+
+function isFunction(value) {
+  return (typeof value === 'function');
+}
+
+module.exports = isFunction;
+
+},{}],3:[function(require,module,exports){
 'use strict';
 
 function isString(value) {
