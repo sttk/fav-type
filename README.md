@@ -4,31 +4,25 @@ Function set related to data types for all versions of nodejs and major browsers
 
 > "fav" is an abbreviation of "favorite" and also the acronym of "for all versions".
 > This package is intended to support all Node.js versions and many browsers as possible.
-> At least, this package supports NodeJS >= v0.10 and major Web browser: Chrome, Firefox, IE11, Edge, Vivaldi and Safari.
+> At least, this package supports NodeJS >= v0.10 and major Web browsers: Chrome, Firefox, IE11, Edge, Vivaldi and Safari.
 
 ## Install
 
-For Node.js:
+To install from npm:
 
 ```sh
 $ npm install --save @fav/type
 ```
 
-Or (when npm < 2.7.0 which is not support scoped package)
+Or from github (when npm < 2.7.0 which is not support scoped package):
 
 ```sh
 $ npm install --save sttk/fav-type
 ```
 
-For Web browsers:
-
-```html
-<script src="fav.type.min.js"></script>
-```
-
 ## Usage
 
-For Node.js:
+For Node.js, when installing `@fav/type` from npm:
 
 ```js
 const type = require('@fav/type');
@@ -37,18 +31,27 @@ const isString = type.isString
 isString('abc') // => true
 ```
 
+Or when installing `fav-type` from github:
+
+```
+var type = require('fav-type');
+var isString = type. isString;
+isString('abc') // => true
+```
+
 For Web browsers:
 
-```js
-const isString = fav.type.isString
-isString('abc') // => true
+```html
+<script src="fav.type.min.js"></script>
+<script>
+var isString = fav.type.isString
+isString('abc'); // => true
+</script>
 ```
 
 ## API
 
-This package provides API documents created with [JsDoc](https://github.com/jsdoc3/jsdoc).
-
-See [API on Github.io][api-url] or `docs/fav.type.html` in this package.
+This package provides API documents on [Github.io][api-url] or `docs/index.html` in this package.
 
 ## Checked
 
@@ -92,7 +95,7 @@ This program is free software under [MIT][mit-url] License.
 See the file LICENSE in this distribution for more details.
 
 [repo-url]: https://github.com/sttk/fav-type/
-[api-url]: https://sttk.github.io/fav-type/fav.type.html
+[api-url]: https://sttk.github.io/fav-type/index.html
 [io-img]: http://img.shields.io/badge/HP-github.io-ff99cc.svg
 [io-url]: https://sttk.github.io/fav-type/index.html
 [npm-img]: https://img.shields.io/badge/npm-v0.2.0-blue.svg

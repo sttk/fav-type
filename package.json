@@ -3,21 +3,18 @@
   "version": "0.2.0",
   "description": "Function set related to data types for all versions of nodejs and major browsers",
   "main": "src/index.js",
-  "files": [
-    "src",
-    "web"
-  ],
   "scripts": {
     "lint": "eslint src",
-    "test": "mocha src/**/*.test.js test",
-    "jsdoc": "jsdoc -c .jsdoc.json -t node_modules/ink-docstrap/template -R README.md -r src",
+    "test": "mocha",
     "coverage": "nyc --reporter=lcov --reporter=text-summary npm test",
     "coveralls": "nyc --reporter=text-lcov npm test | coveralls",
     "web:install": "npm i --no-save phantomjs-prebuilt mocha-phantomjs",
     "web:build": "npm run web:build-src && npm run web:build-test",
-    "web:build-src": "browserify src/index.js --exclude 'src/**/*.@(doc|test).js' --standalone fav.type -o web/fav.type.js && cd web && uglifyjs fav.type.js --compress --mangle -o fav.type.min.js --source-map url=fav.type.min.js.map",
-    "web:build-test": "node test/web/make.js",
-    "web:test": "mocha-phantomjs -p node_modules/.bin/phantomjs test/web/fav-type.test.html"
+    "web:build-src": "browserify index.js --standalone fav.type -o web/fav.type.js && cd web && uglifyjs fav.type.js --compress --mangle -o fav.type.min.js --source-map url=fav.type.min.js.map",
+    "web:build-test": "node tool/mktest.js",
+    "web:test": "mocha-phantomjs -p node_modules/.bin/phantomjs test/web/fav-type.test.html",
+    "mkdoc": "node tool/mkdoc.js",
+    "build": "npm run lint && npm run coverage && npm run mkdoc"
   },
   "repository": {
     "type": "git",
@@ -40,8 +37,7 @@
     "coveralls": "^2.13.1",
     "eslint": "^4.3.0",
     "expect": "^1.20.2",
-    "ink-docstrap": "^1.3.0",
-    "jsdoc": "^3.5.4",
+    "marked": "^0.3.6",
     "mocha": "^3.4.2",
     "nyc": "^11.1.0",
     "semver": "^5.4.1",

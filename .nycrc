@@ -1,9 +1,9 @@
 {
   "include": [
-    "src"
+    "index.js",
+    "lib"
   ],
   "exclude": [
-    "src/**/*.test.js",
-    "src/**/*.doc.js"
+    "test"
   ]
 }
