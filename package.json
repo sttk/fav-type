@@ -3,6 +3,11 @@
   "version": "0.3.0",
   "description": "Function set related to data types for all versions of nodejs and major browsers",
   "main": "index.js",
+  "files": [
+    "index.js",
+    "lib/",
+    "web/"
+  ],
   "scripts": {
     "lint": "eslint src",
     "test": "mocha",
