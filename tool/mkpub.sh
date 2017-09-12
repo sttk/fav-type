@@ -19,3 +19,19 @@ for SUBMDL in $(ls ${PRJDIR}/lib); do
   tar zcvf ${SUBPRJ}.tar.gz ${SUBPRJ}
   popd
 done
+
+
+pushd ${PRJDIR} > /dev/null 2>&1
+
+filetitle=$(basename $(pwd))
+mv ${PUBDIR}/${filetitle}.tar.gz ${PUBDIR}/${filetitle}.tar.gz.org
+
+sed 's|"name": "fav-type"|"name": "@fav/type"|' package.json > package.new
+diff package.json package.new
+mv package.new package.json
+
+cd ${PUBDIR}
+tar zcf ${filetitle}.tar.gz ${filetitle}
+
+popd > /dev/null 2>&1
+
