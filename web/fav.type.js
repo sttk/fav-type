@@ -4,14 +4,16 @@
 var isArray = require('./lib/is-array');
 var isString = require('./lib/is-string');
 var isFunction = require('./lib/is-function');
+var isPlainObject = require('./lib/is-plain-object');
 
 module.exports = {
   isArray: isArray,
   isString: isString,
   isFunction: isFunction,
+  isPlainObject: isPlainObject,
 };
 
-},{"./lib/is-array":2,"./lib/is-function":3,"./lib/is-string":4}],2:[function(require,module,exports){
+},{"./lib/is-array":2,"./lib/is-function":3,"./lib/is-plain-object":4,"./lib/is-string":5}],2:[function(require,module,exports){
 'use strict';
 
 function isArray(value) {
@@ -30,6 +32,23 @@ function isFunction(value) {
 module.exports = isFunction;
 
 },{}],4:[function(require,module,exports){
+'use strict';
+
+function isPlainObject(value) {
+  if (typeof value !== 'object') {
+    return false;
+  }
+
+  if (Object.prototype.toString.call(value) !== '[object Object]') {
+    return false;
+  }
+
+  return value.constructor === Object;
+}
+
+module.exports = isPlainObject;
+
+},{}],5:[function(require,module,exports){
 'use strict';
 
 function isString(value) {

@@ -1,15 +1,16 @@
 {
-  "name": "@fav/type.is-string",
+  "name": "@fav/type.is-plain-object",
   "version": "0.3.0",
-  "description": "Checks whether a value is a string or not.",
+  "description": "Checks whether a value is a plain object or not.",
   "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sttk/fav-type.git"
   },
   "keywords": [
-    "string",
-    "is-string",
+    "object",
+    "plain-object",
+    "is-plain-object",
     "type",
     "datatype",
     "fav"

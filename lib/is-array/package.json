@@ -3,8 +3,6 @@
   "version": "0.3.0",
   "description": "Checks whether a value is an array or not.",
   "main": "index.js",
-  "scripts": {
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sttk/fav-type.git"
