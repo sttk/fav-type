@@ -55,7 +55,7 @@ See the file LICENSE in this distribution for more details.
 
 [repo-url]: https://github.com/sttk/fav-type/
 [npm-img]: https://img.shields.io/badge/npm-v0.3.0-blue.svg
-[npm-url]: https://www.npmjs.com/package/@fav/type.is-array
+[npm-url]: https://www.npmjs.com/package/@fav/type.is-function
 [mit-img]: https://img.shields.io/badge/license-MIT-green.svg
 [mit-url]: https://opensource.org/licenses/MIT
 

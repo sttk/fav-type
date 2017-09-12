@@ -1,8 +1,8 @@
 {
   "name": "fav-type",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Function set related to data types for all versions of nodejs and major browsers",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
     "lint": "eslint src",
     "test": "mocha",
