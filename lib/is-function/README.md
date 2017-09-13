@@ -23,7 +23,7 @@ $ npm install --save @fav/type.is-function
 For Node.js, when installing `@fav/type.is-function` from npm:
 
 ```js
-var isFunction = require('@fav/type.is-function`);
+var isFunction = require('@fav/type.is-function');
 isFunction(function f() {}); // => true
 ```
 
