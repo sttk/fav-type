@@ -8,14 +8,18 @@ var isPlainObject = require('./lib/is-plain-object');
 var isInteger = require('./lib/is-integer');
 var isFiniteNumber = require('./lib/is-finite-number');
 
-module.exports = {
-  isArray: isArray,
-  isString: isString,
-  isFunction: isFunction,
-  isPlainObject: isPlainObject,
-  isInteger: isInteger,
-  isFiniteNumber: isFiniteNumber,
-};
+var type = {};
+
+Object.defineProperties(type, {
+  isArray: { enumerable: true, value: isArray },
+  isString: { enumerable: true, value: isString },
+  isFunction: { enumerable: true, value: isFunction },
+  isPlainObject: { enumerable: true, value: isPlainObject },
+  isInteger: { enumerable: true, value: isInteger },
+  isFiniteNumber: { enumerable: true, value: isFiniteNumber },
+});
+
+module.exports = type;
 
 },{"./lib/is-array":2,"./lib/is-finite-number":3,"./lib/is-function":4,"./lib/is-integer":5,"./lib/is-plain-object":6,"./lib/is-string":7}],2:[function(require,module,exports){
 'use strict';
