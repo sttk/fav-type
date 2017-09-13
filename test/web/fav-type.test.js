@@ -45,6 +45,72 @@ describe('fav.type.isArray', function() {
 
 
 
+var isFiniteNumber = fav.type.isFiniteNumber;
+
+describe('fav.type.isFiniteNumber', function() {
+
+  it('Should return true when value is a finite number', function() {
+    expect(isFiniteNumber(0)).toEqual(true);
+    expect(isFiniteNumber(123)).toEqual(true);
+    expect(isFiniteNumber(0.456)).toEqual(true);
+    expect(isFiniteNumber(-987)).toEqual(true);
+    expect(isFiniteNumber(Number.MIN_VALUE)).toEqual(true);
+    expect(isFiniteNumber(Number.MAX_VALUE)).toEqual(true);
+    if (typeof Number.MIN_SAFE_INTEGER === 'number') {
+      expect(isFiniteNumber(Number.MIN_SAFE_INTEGER)).toEqual(true);
+    }
+    if (typeof Number.MAX_SAFE_INTEGER === 'number') {
+      expect(isFiniteNumber(Number.MAX_SAFE_INTEGER)).toEqual(true);
+    }
+    if (typeof Number.EPSILON === 'number') {
+      expect(isFiniteNumber(Number.EPSILON)).toEqual(true);
+    }
+    expect(isFiniteNumber(new Number(123))).toEqual(true);
+    expect(isFiniteNumber(new Number(4.56))).toEqual(true);
+  });
+
+  it('Should return false when value is NaN, +/-Infinity', function() {
+    expect(isFiniteNumber(NaN)).toEqual(false);
+    expect(isFiniteNumber(Infinity)).toEqual(false);
+    expect(isFiniteNumber(-Infinity)).toEqual(false);
+    expect(isFiniteNumber(Number.NaN)).toEqual(false);
+    expect(isFiniteNumber(Number.POSITIVE_INFINITY)).toEqual(false);
+    expect(isFiniteNumber(Number.NEGATIVE_INFINITY)).toEqual(false);
+  });
+
+  it('Should return false when value is not a number', function() {
+    expect(isFiniteNumber(undefined)).toEqual(false);
+    expect(isFiniteNumber(null)).toEqual(false);
+    expect(isFiniteNumber(true)).toEqual(false);
+    expect(isFiniteNumber(false)).toEqual(false);
+    expect(isFiniteNumber('')).toEqual(false);
+    expect(isFiniteNumber('abc')).toEqual(false);
+    expect(isFiniteNumber('0')).toEqual(false);
+    expect(isFiniteNumber('123')).toEqual(false);
+    expect(isFiniteNumber([])).toEqual(false);
+    expect(isFiniteNumber([1, 2])).toEqual(false);
+    expect(isFiniteNumber({})).toEqual(false);
+    expect(isFiniteNumber({ a: 1 })).toEqual(false);
+    expect(isFiniteNumber(/a/g)).toEqual(false);
+    expect(isFiniteNumber(new RegExp('a', 'g'))).toEqual(false);
+    expect(isFiniteNumber(function() {})).toEqual(false);
+    expect(isFiniteNumber(new Date())).toEqual(false);
+    expect(isFiniteNumber(new Error())).toEqual(false);
+
+    if (typeof Symbol === 'function') {
+      expect(isFiniteNumber(Symbol('foo'))).toEqual(false);
+    }
+  });
+
+});
+
+})();
+(function(){
+'use strict';
+
+
+
+
 
 var isFunction = fav.type.isFunction;
 
@@ -175,6 +241,77 @@ function isNode() {
   return false;
 }
 
+
+})();
+(function(){
+'use strict';
+
+
+
+
+var isInteger = fav.type.isInteger;
+
+describe('fav.type.isInteger', function() {
+
+  it('Should return true when value is an integer', function() {
+    expect(isInteger(0)).toEqual(true);
+    expect(isInteger(123)).toEqual(true);
+    expect(isInteger(-987)).toEqual(true);
+    expect(isInteger(2^31)).toEqual(true);
+    expect(isInteger(-2^32)).toEqual(true);
+    expect(isInteger(Number.MAX_VALUE)).toEqual(true);
+    if (typeof Number.MIN_SAFE_INTEGER === 'number') {
+      expect(isInteger(Number.MIN_SAFE_INTEGER)).toEqual(true);
+    }
+    if (typeof Number.MAX_SAFE_INTEGER === 'number') {
+      expect(isInteger(Number.MAX_SAFE_INTEGER)).toEqual(true);
+    }
+    expect(isInteger(new Number(123))).toEqual(true);
+    expect(isInteger(1.0)).toEqual(true);
+  });
+
+  it('Should return false when value is a floating point number', function() {
+    expect(isInteger(0.1)).toEqual(false);
+    expect(isInteger(1.23)).toEqual(false);
+    expect(isInteger(-0.987)).toEqual(false);
+    expect(isInteger(Number.MIN_VALUE)).toEqual(false);
+    expect(isInteger(Number.EPSILON)).toEqual(false);
+  });
+
+  it('Should return false when value is NaN, +/-Infinity', function() {
+    expect(isInteger(NaN)).toEqual(false);
+    expect(isInteger(Infinity)).toEqual(false);
+    expect(isInteger(-Infinity)).toEqual(false);
+    expect(isInteger(Number.NaN)).toEqual(false);
+    expect(isInteger(Number.POSITIVE_INFINITY)).toEqual(false);
+    expect(isInteger(Number.NEGATIVE_INFINITY)).toEqual(false);
+  });
+
+  it('Should return false when value is not a number', function() {
+    expect(isInteger(undefined)).toEqual(false);
+    expect(isInteger(null)).toEqual(false);
+    expect(isInteger(true)).toEqual(false);
+    expect(isInteger(false)).toEqual(false);
+    expect(isInteger('')).toEqual(false);
+    expect(isInteger('abc')).toEqual(false);
+    expect(isInteger('0')).toEqual(false);
+    expect(isInteger('123')).toEqual(false);
+    expect(isInteger([])).toEqual(false);
+    expect(isInteger([1, 2])).toEqual(false);
+    expect(isInteger({})).toEqual(false);
+    expect(isInteger({ a: 1 })).toEqual(false);
+    expect(isInteger(/a/g)).toEqual(false);
+    expect(isInteger(new RegExp('a', 'g'))).toEqual(false);
+    expect(isInteger(function() {})).toEqual(false);
+    expect(isInteger(new Date())).toEqual(false);
+    expect(isInteger(new Error())).toEqual(false);
+
+    if (typeof Symbol === 'function') {
+      expect(isInteger(Symbol('foo'))).toEqual(false);
+    }
+  });
+
+});
 
 })();
 (function(){

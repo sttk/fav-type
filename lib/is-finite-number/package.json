@@ -1,15 +1,18 @@
 {
-  "name": "@fav/type.is-string",
+  "name": "@fav/type.is-finite-number",
   "version": "0.4.0",
-  "description": "Checks whether a value is a string or not.",
+  "description": "Checks whether a value is a finite number or not.",
   "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sttk/fav-type.git"
   },
   "keywords": [
-    "string",
-    "is-string",
+    "number",
+    "finite",
+    "is-finite",
+    "is-number",
+    "is-finite-number",
     "type",
     "datatype",
     "fav"

@@ -5,15 +5,19 @@ var isArray = require('./lib/is-array');
 var isString = require('./lib/is-string');
 var isFunction = require('./lib/is-function');
 var isPlainObject = require('./lib/is-plain-object');
+var isInteger = require('./lib/is-integer');
+var isFiniteNumber = require('./lib/is-finite-number');
 
 module.exports = {
   isArray: isArray,
   isString: isString,
   isFunction: isFunction,
   isPlainObject: isPlainObject,
+  isInteger: isInteger,
+  isFiniteNumber: isFiniteNumber,
 };
 
-},{"./lib/is-array":2,"./lib/is-function":3,"./lib/is-plain-object":4,"./lib/is-string":5}],2:[function(require,module,exports){
+},{"./lib/is-array":2,"./lib/is-finite-number":3,"./lib/is-function":4,"./lib/is-integer":5,"./lib/is-plain-object":6,"./lib/is-string":7}],2:[function(require,module,exports){
 'use strict';
 
 function isArray(value) {
@@ -25,13 +29,54 @@ module.exports = isArray;
 },{}],3:[function(require,module,exports){
 'use strict';
 
+function isFiniteNumber(value) {
+  if (typeof value === 'number') {
+    return isFinite(value);
+  }
+  if (Object.prototype.toString.call(value) === '[object Number]') {
+    return isFinite(value);
+  }
+  return false;
+}
+
+module.exports = isFiniteNumber;
+
+},{}],4:[function(require,module,exports){
+'use strict';
+
 function isFunction(value) {
   return (typeof value === 'function');
 }
 
 module.exports = isFunction;
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
+'use strict';
+
+function isInteger(value) {
+  if (typeof value === 'number') {
+    return checkInteger(value);
+  }
+  if (Object.prototype.toString.call(value) === '[object Number]') {
+    return checkInteger(Number(value));
+  }
+  return false;
+}
+
+function checkInteger(num) {
+  /* istanbul ignore if */
+  if (typeof Number.isInteger !== 'function') {
+    if (!isFinite(num)) {
+      return false;
+    }
+    return (num < 0 ? Math.ceil(num) : Math.floor(num)) === num;
+  }
+  return Number.isInteger(num);
+}
+
+module.exports = isInteger;
+
+},{}],6:[function(require,module,exports){
 'use strict';
 
 function isPlainObject(value) {
@@ -48,21 +93,17 @@ function isPlainObject(value) {
 
 module.exports = isPlainObject;
 
-},{}],5:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 'use strict';
 
 function isString(value) {
-  switch (typeof value) {
-    case 'string': {
-      return true;
-    }
-    case 'object': {
-      return Object.prototype.toString.call(value) === '[object String]';
-    }
-    default: {
-      return false;
-    }
+  if (typeof value === 'string') {
+    return true;
   }
+  if (Object.prototype.toString.call(value) === '[object String]') {
+    return true;
+  }
+  return false;
 }
 
 module.exports = isString;

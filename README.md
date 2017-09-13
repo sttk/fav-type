@@ -33,7 +33,7 @@ isString('abc') // => true
 
 Or when installing `fav-type` from github:
 
-```
+```js
 var type = require('fav-type');
 var isString = type. isString;
 isString('abc') // => true

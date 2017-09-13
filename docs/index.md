@@ -19,6 +19,23 @@ True, if *value* is an array.
 **Type:** boolean
 
 ----
+### <u>isFiniteNumber(value) : boolean</u>
+
+Checks if *value* is a number, which is neither a positive/negative infinity nor NaN. 
+
+#### Parameter:
+
+| Parameter |  Type  | Description              |
+|-----------|:------:|--------------------------|
+| value     | *any*  | The value to be checked. |
+
+#### Return:
+
+True, if *value* is a finite number.
+
+**Type:** boolean
+
+----
 ### <u>isFunction(value) : boolean</u>
 
 Checks if *value* is a function.
@@ -33,6 +50,23 @@ Checks if *value* is a function.
 #### Return:
 
 True, if *value* is a function.
+
+**Type:** boolean
+
+----
+### <u>isInteger(value) : boolean</u>
+
+Checks if *value* is an integer, which has no dicimal place and is neither a positive/negative infinity, nor NaN.
+
+#### Parameter:
+
+| Parameter |  Type  | Description              |
+|-----------|:------:|--------------------------|
+| value     | *any*  | The value to be checked. |
+
+#### Return:
+
+True, if *value* is an integer.
 
 **Type:** boolean
 

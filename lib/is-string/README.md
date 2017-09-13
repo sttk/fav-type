@@ -1,4 +1,4 @@
-# [@fav/type.is-string][repo-url] [![NPM version][npm-img]][npm-url] [![MIT Licensie][mit-img]][mit-url]
+# [@fav/type.is-string][repo-url] [![NPM version][npm-img]][npm-url] [![MIT License][mit-img]][mit-url]
 
 Checks whether a value is a string or not.
 
