@@ -16,7 +16,7 @@ $ npm install --save @fav/type.is-array
 
 *When you use npm < 2.7.0 which is not support scoped package, you should install [fav-type][repo-url] from github.*
 
-*When you want to use this on a Web browser, you can install [@fav/type][npm-url] from npm and use `fav.type.isArray` in it.*
+*When you want to use this on a Web browser, you can install [@fav/type][main-url] from npm and use `fav.type.isArray` in it.*
 
 ## Usage
 
@@ -57,3 +57,4 @@ See the file LICENSE in this distribution for more details.
 [npm-url]: https://www.npmjs.com/package/@fav/type.is-array
 [mit-img]: https://img.shields.io/badge/license-MIT-green.svg
 [mit-url]: https://opensource.org/licenses/MIT
+[main-url]: https://www.npmjs.com/package/@fav/type
