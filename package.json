@@ -19,7 +19,7 @@
     "web:build-test": "node tool/mktest.js",
     "web:test": "mocha-phantomjs -p node_modules/.bin/phantomjs test/web/fav-type.test.html",
     "mkdoc": "node tool/mkdoc.js",
-    "build": "npm run lint && npm run coverage && npm run mkdoc"
+    "build": "npm run lint && npm run coverage && npm run mkdoc && npm run web:build"
   },
   "repository": {
     "type": "git",
