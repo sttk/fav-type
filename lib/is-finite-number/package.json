@@ -1,6 +1,6 @@
 {
   "name": "@fav/type.is-finite-number",
-  "version": "0.4.0",
+  "version": "0.4.2",
   "description": "Checks whether a value is a finite number or not.",
   "main": "index.js",
   "repository": {
