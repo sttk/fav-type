@@ -6,6 +6,8 @@
 
 Checks if *value* is an array.
 
+> This function returns false for typed-arrays, e.g. Int16Array.
+
 #### Parameter:
 
 | Parameter |  Type  | Description               |

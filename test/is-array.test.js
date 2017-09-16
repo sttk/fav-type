@@ -13,7 +13,7 @@ describe('fav.type.isArray', function() {
     expect(isArray(new Array('a', 'b'))).toEqual(true);
   });
 
-  it('Should return true when value is not an array', function() {
+  it('Should return false when value is not an array', function() {
     expect(isArray(undefined)).toEqual(false);
     expect(isArray(null)).toEqual(false);
     expect(isArray(true)).toEqual(false);
@@ -32,6 +32,67 @@ describe('fav.type.isArray', function() {
 
     if (typeof Symbol === 'function') {
       expect(isArray(Symbol('foo'))).toEqual(false);
+    }
+    if (typeof Map === 'function') {
+      expect(isArray(new Map())).toEqual(false);
+    }
+    if (typeof Set === 'function') {
+      expect(isArray(new Set())).toEqual(false);
+    }
+    if (typeof WeakMap === 'function') {
+      expect(isArray(new WeakMap())).toEqual(false);
+    }
+    if (typeof WeakSet === 'function') {
+      expect(isArray(new WeakSet())).toEqual(false);
+    }
+  });
+
+  it('Should return false when value is a typed-array', function() {
+    var tested = false;
+
+    if (typeof Uint8Array === 'function') {
+      tested = true;
+      expect(isArray(new Uint8Array())).toEqual(false);
+    }
+    if (typeof Int8Array === 'function') {
+      tested = true;
+      expect(isArray(new Int8Array())).toEqual(false);
+    }
+    if (typeof Uint8ClampedArray === 'function') {
+      tested = true;
+      expect(isArray(new Uint8ClampedArray())).toEqual(false);
+    }
+    if (typeof Int16Array === 'function') {
+      tested = true;
+      expect(isArray(new Int16Array())).toEqual(false);
+    }
+    if (typeof Uint16Array === 'function') {
+      tested = true;
+      expect(isArray(new Uint16Array())).toEqual(false);
+    }
+    if (typeof Float16Array === 'function') {
+      tested = true;
+      expect(isArray(new Float16Array())).toEqual(false);
+    }
+    if (typeof Int32Array === 'function') {
+      tested = true;
+      expect(isArray(new Int32Array())).toEqual(false);
+    }
+    if (typeof Uint32Array === 'function') {
+      tested = true;
+      expect(isArray(new Int32Array())).toEqual(false);
+    }
+    if (typeof Float32Array === 'function') {
+      tested = true;
+      expect(isArray(new Float32Array())).toEqual(false);
+    }
+    if (typeof Float64Array === 'function') {
+      tested = true;
+      expect(isArray(new Float64Array())).toEqual(false);
+    }
+
+    if (!tested) {
+      this.skip();
     }
   });
 
