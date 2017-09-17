@@ -1,6 +1,7 @@
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}(g.fav || (g.fav = {})).type = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
+var isEmpty = require('./lib/is-empty');
 var isArray = require('./lib/is-array');
 var isString = require('./lib/is-string');
 var isFunction = require('./lib/is-function');
@@ -11,6 +12,7 @@ var isFiniteNumber = require('./lib/is-finite-number');
 var type = {};
 
 Object.defineProperties(type, {
+  isEmpty: { enumerable: true, value: isEmpty },
   isArray: { enumerable: true, value: isArray },
   isString: { enumerable: true, value: isString },
   isFunction: { enumerable: true, value: isFunction },
@@ -21,7 +23,7 @@ Object.defineProperties(type, {
 
 module.exports = type;
 
-},{"./lib/is-array":2,"./lib/is-finite-number":3,"./lib/is-function":4,"./lib/is-integer":5,"./lib/is-plain-object":6,"./lib/is-string":7}],2:[function(require,module,exports){
+},{"./lib/is-array":2,"./lib/is-empty":3,"./lib/is-finite-number":4,"./lib/is-function":5,"./lib/is-integer":6,"./lib/is-plain-object":7,"./lib/is-string":8}],2:[function(require,module,exports){
 'use strict';
 
 function isArray(value) {
@@ -31,6 +33,53 @@ function isArray(value) {
 module.exports = isArray;
 
 },{}],3:[function(require,module,exports){
+'use strict';
+
+var isArray = require('../is-array');
+var isPlainObject = require('../is-plain-object');
+
+function isEmpty(value) {
+  if (value === undefined || value === null) {
+    return true;
+  }
+
+  if (isArray(value) && value.length === 0) {
+    return true;
+  }
+
+  if (isPlainObject(value)) {
+    for (var key in value) {
+      return false;
+    }
+    return true;
+  }
+
+  /* istanbul ignore next */
+  switch (typeof HTMLCollection) {
+    case 'object': // PhantomJS
+    case 'function': {
+      if(value instanceof HTMLCollection) {
+        return value.length === 0;
+      }
+    }
+  }
+
+  /* istanbul ignore next */
+  switch (typeof NodeList) {
+    case 'object': // PhantomJS
+    case 'function': {
+      if (value instanceof NodeList) {
+        return value.length === 0;
+      }
+    }
+  }
+
+  return false;
+}
+
+module.exports = isEmpty;
+
+},{"../is-array":2,"../is-plain-object":7}],4:[function(require,module,exports){
 'use strict';
 
 function isFiniteNumber(value) {
@@ -45,7 +94,7 @@ function isFiniteNumber(value) {
 
 module.exports = isFiniteNumber;
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 'use strict';
 
 function isFunction(value) {
@@ -54,7 +103,7 @@ function isFunction(value) {
 
 module.exports = isFunction;
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 'use strict';
 
 function isInteger(value) {
@@ -80,7 +129,7 @@ function checkInteger(num) {
 
 module.exports = isInteger;
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 'use strict';
 
 function isPlainObject(value) {
@@ -107,7 +156,7 @@ function isPlainObject(value) {
 
 module.exports = isPlainObject;
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 'use strict';
 
 function isString(value) {

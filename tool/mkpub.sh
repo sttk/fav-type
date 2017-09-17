@@ -15,6 +15,15 @@ for SUBMDL in $(ls ${PRJDIR}/lib); do
   SUBPRJ=fav-type.${SUBMDL}
   cp -R ${PRJDIR}/lib/${SUBMDL} ${PUBDIR}/${SUBPRJ}
   cp ${PRJDIR}/LICENSE ${PUBDIR}/${SUBPRJ}
+  pushd ${PUBDIR}/${SUBPRJ}
+  for JSFILE in $(ls *.js); do
+    echo ${JSFILE}
+    sed "s/= *require('\.\.\//= require('/g" ${JSFILE} > ${JSFILE}.mod
+    mv ${JSFILE}.mod ${JSFILE}
+    sed 's/= *require("\.\.\//= require("/g' ${JSFILE} > ${JSFILE}.mod
+    mv ${JSFILE}.mod ${JSFILE}
+  done
+  popd
   pushd ${PUBDIR}
   tar zcvf ${SUBPRJ}.tar.gz ${SUBPRJ}
   popd

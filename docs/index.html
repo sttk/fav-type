@@ -35,6 +35,42 @@
 <p>True, if <em>value</em> is an array.</p>
 <p><strong>Type:</strong> boolean</p>
 <hr>
+<h3 id="-u-isempty-value-boolean-u-"><u>isEmpty(value) : boolean</u></h3>
+<p>Checks if <em>value</em> is empty.</p>
+<p>Definition of &quot;empty&quot; is different by data type.</p>
+<ul>
+<li><strong>undefined:</strong> always empty.</li>
+<li><strong>null:</strong> always empty.</li>
+<li><strong>array:</strong> empty if it has no element.</li>
+<li><strong>plain object:</strong> empty if it has no property. </li>
+<li><strong>NodeList:</strong> empty if it has no element.</li>
+<li><strong>HTMLCollection:</strong> empty if it has no element.</li>
+<li><i><strong>others:</strong></i> always not empty.</li>
+</ul>
+<blockquote>
+<p>This function always return false for other collections like Map, Set, typed-array, HTMLCollection and so on, because I think there are few needs to check them without knowing their data types. If data type of a collection is known, its own API to get size of itself should be used.</p>
+</blockquote>
+<h4 id="parameter-">Parameter:</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th style="text-align:center">Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td style="text-align:center"><em>any</em></td>
+<td>The value to be checked</td>
+</tr>
+</tbody>
+</table>
+<h4 id="return-">Return:</h4>
+<p>True, if <em>value</em> is empty.</p>
+<p><strong>Type:</strong> boolean</p>
+<hr>
 <h3 id="-u-isfinitenumber-value-boolean-u-"><u>isFiniteNumber(value) : boolean</u></h3>
 <p>Checks if <em>value</em> is a number, which is neither a positive/negative infinity nor NaN. </p>
 <h4 id="parameter-">Parameter:</h4>

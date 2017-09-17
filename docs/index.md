@@ -21,6 +21,35 @@ True, if *value* is an array.
 **Type:** boolean
 
 ----
+### <u>isEmpty(value) : boolean</u>
+
+Checks if *value* is empty.
+
+Definition of "empty" is different by data type.
+
+* **undefined:** always empty.
+* **null:** always empty.
+* **array:** empty if it has no element.
+* **plain object:** empty if it has no property. 
+* **NodeList:** empty if it has no element.
+* **HTMLCollection:** empty if it has no element.
+* <i>**others:**</i> always not empty.
+
+> This function always return false for other collections like Map, Set, typed-array, HTMLCollection and so on, because I think there are few needs to check them without knowing their data types. If data type of a collection is known, its own API to get size of itself should be used.
+
+#### Parameter:
+
+| Parameter |  Type  | Description             |
+|-----------|:------:|-------------------------|
+| value     | *any*  | The value to be checked |
+
+#### Return:
+
+True, if *value* is empty.
+
+**Type:** boolean
+
+----
 ### <u>isFiniteNumber(value) : boolean</u>
 
 Checks if *value* is a number, which is neither a positive/negative infinity nor NaN. 

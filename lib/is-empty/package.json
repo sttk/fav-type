@@ -1,0 +1,27 @@
+{
+  "name": "@fav/type.is-empty",
+  "version": "0.5.0",
+  "description": "Checks whether a value is empty or not.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sttk/fav-type.git"
+  },
+  "keywords": [
+    "empty",
+    "is-empty",
+    "type",
+    "datatype",
+    "fav"
+  ],
+  "author": "Takayuki Sato",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sttk/fav-type/issues"
+  },
+  "homepage": "https://github.com/sttk/fav-type#readme",
+  "dependencies": {
+    "@fav/type.is-array": "^0.4.2",
+    "@fav/type.is-plain-object": "^0.4.2"
+  }
+}
