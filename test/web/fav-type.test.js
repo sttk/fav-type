@@ -49,49 +49,51 @@ describe('fav.type.isArray', function() {
   });
 
   it('Should return false when value is a typed-array', function() {
-    if (typeof Uint8Array !== 'function' &&
-        typeof Int8Array !== 'function' &&
-        typeof Uint8ClampedArray !== 'function' &&
-        typeof Int16Array !== 'function' &&
-        typeof Uint16Array !== 'function' &&
-        typeof Float16Array !== 'function' &&
-        typeof Int32Array !== 'function' &&
-        typeof Uint32Array !== 'function' &&
-        typeof Float32Array !== 'function' &&
-        typeof Float64Array !== 'function') {
-      this.skip();
-      return;
-    }
+    var tested = false;
 
     if (typeof Uint8Array === 'function') {
+      tested = true;
       expect(isArray(new Uint8Array())).toEqual(false);
     }
     if (typeof Int8Array === 'function') {
+      tested = true;
       expect(isArray(new Int8Array())).toEqual(false);
     }
     if (typeof Uint8ClampedArray === 'function') {
+      tested = true;
       expect(isArray(new Uint8ClampedArray())).toEqual(false);
     }
     if (typeof Int16Array === 'function') {
+      tested = true;
       expect(isArray(new Int16Array())).toEqual(false);
     }
     if (typeof Uint16Array === 'function') {
+      tested = true;
       expect(isArray(new Uint16Array())).toEqual(false);
     }
     if (typeof Float16Array === 'function') {
+      tested = true;
       expect(isArray(new Float16Array())).toEqual(false);
     }
     if (typeof Int32Array === 'function') {
+      tested = true;
       expect(isArray(new Int32Array())).toEqual(false);
     }
     if (typeof Uint32Array === 'function') {
+      tested = true;
       expect(isArray(new Int32Array())).toEqual(false);
     }
     if (typeof Float32Array === 'function') {
+      tested = true;
       expect(isArray(new Float32Array())).toEqual(false);
     }
     if (typeof Float64Array === 'function') {
+      tested = true;
       expect(isArray(new Float64Array())).toEqual(false);
+    }
+
+    if (!tested) {
+      this.skip();
     }
   });
 
@@ -387,6 +389,9 @@ describe('fav.type.isPlainObject', function() {
   it('Should return true when value is a plain object', function() {
     expect(isPlainObject({})).toEqual(true);
     expect(isPlainObject({ a: 1 })).toEqual(true);
+    expect(isPlainObject(new Object())).toEqual(true);
+    expect(isPlainObject(Object.create(Object.prototype))).toEqual(true);
+    expect(isPlainObject(Object.create(null))).toEqual(true);
   });
 
   it('Should return false when value is not a plain object', function() {
@@ -409,6 +414,8 @@ describe('fav.type.isPlainObject', function() {
     expect(isPlainObject(new Error())).toEqual(false);
     expect(isPlainObject(new Foo())).toEqual(false);
     expect(isPlainObject(new FooEx())).toEqual(false);
+    expect(isPlainObject(new SubclassOfPlainObject())).toEqual(false);
+    expect(isPlainObject(Object.create({}))).toEqual(false);
   });
 
   it('Should return false when value is a class instance', function() {
@@ -466,6 +473,9 @@ console.log(fooex.baz);
 console.log(fooex.bar());
 console.log(fooex.constructor === Object);
 */
+
+function SubclassOfPlainObject() {}
+SubclassOfPlainObject.prototype = {};
 
 function codeForClass() {
   return "\

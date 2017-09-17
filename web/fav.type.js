@@ -92,7 +92,17 @@ function isPlainObject(value) {
     return false;
   }
 
-  return value.constructor === Object;
+  switch (Object.getPrototypeOf(value)) {
+    case Object.prototype: {
+      return true;
+    }
+    case null: {
+      return true;
+    }
+    default: {
+      return false;
+    }
+  }
 }
 
 module.exports = isPlainObject;

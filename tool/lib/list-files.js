@@ -6,7 +6,14 @@ var encoding = 'utf-8';
 
 function listFiles(filepath, extensions) {
   extensions = Array.isArray(extensions) ? extensions : [extensions];
-  return fs.readdirSync(filepath, encoding).filter(isExtension).map(resolve);
+  return fs.readdirSync(filepath, encoding)
+    .filter(ignoreDots)
+    .filter(isExtension)
+    .map(resolve);
+
+  function ignoreDots(filename) {
+    return !filename.startsWith('.');
+  }
 
   function isExtension(filename) {
     for (var i = 0; i < extensions.length; i++) {

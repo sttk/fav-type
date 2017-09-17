@@ -11,6 +11,9 @@ describe('fav.type.isPlainObject', function() {
   it('Should return true when value is a plain object', function() {
     expect(isPlainObject({})).toEqual(true);
     expect(isPlainObject({ a: 1 })).toEqual(true);
+    expect(isPlainObject(new Object())).toEqual(true);
+    expect(isPlainObject(Object.create(Object.prototype))).toEqual(true);
+    expect(isPlainObject(Object.create(null))).toEqual(true);
   });
 
   it('Should return false when value is not a plain object', function() {
@@ -33,6 +36,8 @@ describe('fav.type.isPlainObject', function() {
     expect(isPlainObject(new Error())).toEqual(false);
     expect(isPlainObject(new Foo())).toEqual(false);
     expect(isPlainObject(new FooEx())).toEqual(false);
+    expect(isPlainObject(new SubclassOfPlainObject())).toEqual(false);
+    expect(isPlainObject(Object.create({}))).toEqual(false);
   });
 
   it('Should return false when value is a class instance', function() {
@@ -90,6 +95,9 @@ console.log(fooex.baz);
 console.log(fooex.bar());
 console.log(fooex.constructor === Object);
 */
+
+function SubclassOfPlainObject() {}
+SubclassOfPlainObject.prototype = {};
 
 function codeForClass() {
   return "\
