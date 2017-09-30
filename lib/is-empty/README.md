@@ -48,7 +48,7 @@ Definition of "empty" is different by data type.
 * **HTMLCollection:** empty if it has no element.
 * <i>**others:**</i> always not empty.
 
-> This function always return false for other collections like Map, Set, typed-array, HTMLCollection and so on, because I think there are few needs to check them without knowing their data types. If data type of a collection is known, its own API to get size of itself should be used.
+> This function always return false for other collections like Map, Set, typed-array and so on, because I think there are few needs to check them without knowing their data types. If data type of a collection is known, its own API to get size of itself should be used.
 
 #### Parameter:
 
