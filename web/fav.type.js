@@ -8,6 +8,7 @@ var isFunction = require('./lib/is-function');
 var isPlainObject = require('./lib/is-plain-object');
 var isInteger = require('./lib/is-integer');
 var isFiniteNumber = require('./lib/is-finite-number');
+var isValidDate = require('./lib/is-valid-date');
 var toInteger = require('./lib/to-integer');
 var toFiniteNumber = require('./lib/to-finite-number');
 
@@ -21,13 +22,14 @@ Object.defineProperties(type, {
   isPlainObject: { enumerable: true, value: isPlainObject },
   isInteger: { enumerable: true, value: isInteger },
   isFiniteNumber: { enumerable: true, value: isFiniteNumber },
+  isValidDate: { enumerable: true, value: isValidDate },
   toInteger: { enumerable: true, value: toInteger },
   toFiniteNumber: { enumerable: true, value: toFiniteNumber },
 });
 
 module.exports = type;
 
-},{"./lib/is-array":2,"./lib/is-empty":3,"./lib/is-finite-number":4,"./lib/is-function":5,"./lib/is-integer":6,"./lib/is-plain-object":7,"./lib/is-string":8,"./lib/to-finite-number":9,"./lib/to-integer":10}],2:[function(require,module,exports){
+},{"./lib/is-array":2,"./lib/is-empty":3,"./lib/is-finite-number":4,"./lib/is-function":5,"./lib/is-integer":6,"./lib/is-plain-object":7,"./lib/is-string":8,"./lib/is-valid-date":9,"./lib/to-finite-number":10,"./lib/to-integer":11}],2:[function(require,module,exports){
 'use strict';
 
 function isArray(value) {
@@ -178,6 +180,20 @@ module.exports = isString;
 },{}],9:[function(require,module,exports){
 'use strict';
 
+function isValidDate(value) {
+  if (!(value instanceof Date)) {
+    return false;
+  }
+
+  var time = value.getTime();
+  return time === time;
+}
+
+module.exports = isValidDate;
+
+},{}],10:[function(require,module,exports){
+'use strict';
+
 var isString = require('../is-string');
 var isFiniteNumber = require('../is-finite-number');
 
@@ -194,7 +210,7 @@ function toFiniteNumber(value) {
 module.exports = toFiniteNumber;
 
 
-},{"../is-finite-number":4,"../is-string":8}],10:[function(require,module,exports){
+},{"../is-finite-number":4,"../is-string":8}],11:[function(require,module,exports){
 'use strict';
 
 var isString = require('../is-string');

@@ -136,6 +136,24 @@ True, if *value* is a string.
 **Type:** boolean
 
 ----
+### <u>isValidDate(value) : boolean</u>
+
+Checks if *value* is a valid date object.
+
+#### Parameter:
+
+| Parameter |  Type  | Description              |
+|-----------|:------:|--------------------------|
+| value     | *any*  | The value to be checked. |
+
+#### Return:
+
+True, if *value* is a valid date.
+
+**Type:** boolean
+
+
+----
 ### <u>toFiniteNumber(value): number</u>
 
 Convert a number or a string to a finite number.

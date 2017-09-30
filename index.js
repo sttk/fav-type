@@ -7,6 +7,7 @@ var isFunction = require('./lib/is-function');
 var isPlainObject = require('./lib/is-plain-object');
 var isInteger = require('./lib/is-integer');
 var isFiniteNumber = require('./lib/is-finite-number');
+var isValidDate = require('./lib/is-valid-date');
 var toInteger = require('./lib/to-integer');
 var toFiniteNumber = require('./lib/to-finite-number');
 
@@ -20,6 +21,7 @@ Object.defineProperties(type, {
   isPlainObject: { enumerable: true, value: isPlainObject },
   isInteger: { enumerable: true, value: isInteger },
   isFiniteNumber: { enumerable: true, value: isFiniteNumber },
+  isValidDate: { enumerable: true, value: isValidDate },
   toInteger: { enumerable: true, value: toInteger },
   toFiniteNumber: { enumerable: true, value: toFiniteNumber },
 });
