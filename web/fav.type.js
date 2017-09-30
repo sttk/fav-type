@@ -8,6 +8,8 @@ var isFunction = require('./lib/is-function');
 var isPlainObject = require('./lib/is-plain-object');
 var isInteger = require('./lib/is-integer');
 var isFiniteNumber = require('./lib/is-finite-number');
+var toInteger = require('./lib/to-integer');
+var toFiniteNumber = require('./lib/to-finite-number');
 
 var type = {};
 
@@ -19,11 +21,13 @@ Object.defineProperties(type, {
   isPlainObject: { enumerable: true, value: isPlainObject },
   isInteger: { enumerable: true, value: isInteger },
   isFiniteNumber: { enumerable: true, value: isFiniteNumber },
+  toInteger: { enumerable: true, value: toInteger },
+  toFiniteNumber: { enumerable: true, value: toFiniteNumber },
 });
 
 module.exports = type;
 
-},{"./lib/is-array":2,"./lib/is-empty":3,"./lib/is-finite-number":4,"./lib/is-function":5,"./lib/is-integer":6,"./lib/is-plain-object":7,"./lib/is-string":8}],2:[function(require,module,exports){
+},{"./lib/is-array":2,"./lib/is-empty":3,"./lib/is-finite-number":4,"./lib/is-function":5,"./lib/is-integer":6,"./lib/is-plain-object":7,"./lib/is-string":8,"./lib/to-finite-number":9,"./lib/to-integer":10}],2:[function(require,module,exports){
 'use strict';
 
 function isArray(value) {
@@ -171,5 +175,43 @@ function isString(value) {
 
 module.exports = isString;
 
-},{}]},{},[1])(1)
+},{}],9:[function(require,module,exports){
+'use strict';
+
+var isString = require('../is-string');
+var isFiniteNumber = require('../is-finite-number');
+
+function toFiniteNumber(value) {
+  if (isString(value)) {
+    return parseFloat(value);
+  }
+  if (isFiniteNumber(value)) {
+    return value;
+  }
+  return NaN;
+}
+
+module.exports = toFiniteNumber;
+
+
+},{"../is-finite-number":4,"../is-string":8}],10:[function(require,module,exports){
+'use strict';
+
+var isString = require('../is-string');
+var isFiniteNumber = require('../is-finite-number');
+
+function toInteger(value) {
+  if (isString(value)) {
+    value = parseFloat(value);
+    return value < 0 ? Math.ceil(value) : Math.floor(value);
+  }
+  if (isFiniteNumber(value)) {
+    return value < 0 ? Math.ceil(value) : Math.floor(value);
+  }
+  return NaN;
+}
+
+module.exports = toInteger;
+
+},{"../is-finite-number":4,"../is-string":8}]},{},[1])(1)
 });

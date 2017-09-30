@@ -48,7 +48,7 @@
 <li><i><strong>others:</strong></i> always not empty.</li>
 </ul>
 <blockquote>
-<p>This function always return false for other collections like Map, Set, typed-array, HTMLCollection and so on, because I think there are few needs to check them without knowing their data types. If data type of a collection is known, its own API to get size of itself should be used.</p>
+<p>This function always return false for other collections like Map, Set, typed-array and so on, because I think there are few needs to check them without knowing their data types. If data type of a collection is known, its own API to get size of itself should be used.</p>
 </blockquote>
 <h4 id="parameter-">Parameter:</h4>
 <table>
@@ -185,6 +185,56 @@
 <h4 id="return-">Return:</h4>
 <p>True, if <em>value</em> is a string.</p>
 <p><strong>Type:</strong> boolean</p>
+<hr>
+<h3 id="-u-tofinitenumber-value-number-u-"><u>toFiniteNumber(value): number</u></h3>
+<p>Convert a number or a string to a finite number.
+If <em>value</em> is a floating point number, this function discards decimals.
+If <em>value</em> is neither a finite number, a numeric string nor other type, this function returns NaN.</p>
+<h4 id="parameter-">Parameter:</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th style="text-align:center">Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td style="text-align:center"><em>any</em></td>
+<td>The number or string to be converted.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="returns-">Returns:</h4>
+<p>The converted finite number, or NaN if failing to convert.</p>
+<p><strong>Type:</strong> number</p>
+<hr>
+<h3 id="-u-tointeger-value-number-u-"><u>toInteger(value): number</u></h3>
+<p>Convert a number or a string to an integer.
+If <em>value</em> is a floating point number, this function discard decimals.
+If <em>value</em> is neither a finite number, a numeric string nor other data type, this function returns NaN.</p>
+<h4 id="parameter-">Parameter:</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th style="text-align:center">Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td style="text-align:center"><em>any</em></td>
+<td>The number or string to be converted.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="returns-">Returns:</h4>
+<p>The converted integer value, or NaN if failing to convert.</p>
+<p><strong>Type:</strong> number</p>
 <hr>
 </body>
 </html>
