@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/sttk/fav-type/issues"
   },
-  "homepage": "https://github.com/sttk/fav-type#readme"
+  "homepage": "https://github.com/sttk/fav-type#readme",
+  "dependencies": {
+    "@fav/type.is-finite-number": "^0.4.2",
+    "@fav/type.is-string": "^0.4.2"
+  }
 }
