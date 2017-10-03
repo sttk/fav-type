@@ -1,159 +1,38 @@
-# [@fav/type][repo-url] ver. 6.0 - API document
+# [@fav/type.to-date][repo-url] [![NPM version][npm-img]][npm-url] [![MIT License][mit-img]][mit-url]
 
-----
+Convert a string in various date format to a date object.
 
-### <u>isArray(value) : boolean</u>
+> "fav" is an abbreviation of "favorite" and also the acronym of "for all versions".
+> This package is intended to support all Node.js versions and many browsers as possible.
+> At least, this package supports Node.js >= v0.10 and major Web browsers: Chrome, Firefox, IE11, Edge, Vivaldi and Safari.
 
-Checks if *value* is an array.
+## Install
 
-> This function returns false for typed-arrays, e.g. Int16Array.
+To install from npm:
 
-#### Parameter:
+```sh
+$ npm install --save @fav/type.to-date
+```
 
-| Parameter |  Type  | Description               |
-|-----------|:------:|---------------------------|
-| value     | *any*  | The value to be checked.  |
+*When you use npm < 2.7.0 which is not support scoped package, you should install [fav-type][repo-url] from github.*
 
-#### Return:
+*When you want to use this on a Web browser, you can install [@fav/type][main-url] from npm and use `fav.type.toDate` in it.*
 
-True, if *value* is an array.
+## Usage
 
-**Type:** boolean
+For Node.js, when installing `@fav/type.to-date` from npm:
 
-----
-### <u>isEmpty(value) : boolean</u>
+```js
+var toDate = require('@fav/type.to-date');
+toDate['Y-M-D']('2017-09-30'); // => new Date(2017, 8, 30)
+toDate.YYYYMMDDHHmmss('20170930133000'); // => new Date(2017, 8, 30, 13, 30, 0)
+toDate.RFC2822('Sat, 30 Sep 2017 13:30:00 +0900'); // => new Date(2017, 8, 30, 13, 30, 0) at Japan
+toDate.RFC3339('20170930T133000Z'); // => new Date(2017, 8, 30, 13, 30, 0) in GMT
+toDate.ISO8601('2017W406'); // => new Date(2017, 8, 30)
+```
 
-Checks if *value* is empty.
+## API
 
-Definition of "empty" is different by data type.
-
-* **undefined:** always empty.
-* **null:** always empty.
-* **array:** empty if it has no element.
-* **plain object:** empty if it has no property. 
-* **NodeList:** empty if it has no element.
-* **HTMLCollection:** empty if it has no element.
-* <i>**others:**</i> always not empty.
-
-> This function always return false for other collections like Map, Set, typed-array and so on, because I think there are few needs to check them without knowing their data types. If data type of a collection is known, its own API to get size of itself should be used.
-
-#### Parameter:
-
-| Parameter |  Type  | Description             |
-|-----------|:------:|-------------------------|
-| value     | *any*  | The value to be checked |
-
-#### Return:
-
-True, if *value* is empty.
-
-**Type:** boolean
-
-----
-### <u>isFiniteNumber(value) : boolean</u>
-
-Checks if *value* is a number, which is neither a positive/negative infinity nor NaN. 
-
-#### Parameter:
-
-| Parameter |  Type  | Description              |
-|-----------|:------:|--------------------------|
-| value     | *any*  | The value to be checked. |
-
-#### Return:
-
-True, if *value* is a finite number.
-
-**Type:** boolean
-
-----
-### <u>isFunction(value) : boolean</u>
-
-Checks if *value* is a function.
-
-#### Parameter:
-
-| Parameter |  Type  | Description                 |
-|-----------|:------:|-----------------------------|
-| value     | *any*  | The value to be checked.    |
-
-
-#### Return:
-
-True, if *value* is a function.
-
-**Type:** boolean
-
-----
-### <u>isInteger(value) : boolean</u>
-
-Checks if *value* is an integer, which has no dicimal place and is neither a positive/negative infinity, nor NaN.
-
-#### Parameter:
-
-| Parameter |  Type  | Description              |
-|-----------|:------:|--------------------------|
-| value     | *any*  | The value to be checked. |
-
-#### Return:
-
-True, if *value* is an integer.
-
-**Type:** boolean
-
-----
-### <u>isPlainObject(value) : boolean</u>
-
-Checks if *value* is a plain object.
-
-#### Parameter:
-
-| Parameter |  Type  | Description              |
-|-----------|:------:|--------------------------|
-| value     | *any*  | The value to be checked. |
-
-#### Return:
-
-True, if *value* is a plain object.
-
-**Type:** boolean
-
-----
-### <u>isString(value) : boolean</u>
-
-Checks if *value* is an string.
-
-#### Parameter:
-
-| Parameter |  Type  | Description               |
-|-----------|:------:|---------------------------|
-| value     | *any*  | The value to be checked.  |
-
-#### Return:
-
-True, if *value* is a string.
-
-**Type:** boolean
-
-----
-### <u>isValidDate(value) : boolean</u>
-
-Checks if *value* is a valid date object.
-
-#### Parameter:
-
-| Parameter |  Type  | Description              |
-|-----------|:------:|--------------------------|
-| value     | *any*  | The value to be checked. |
-
-#### Return:
-
-True, if *value* is a valid date.
-
-**Type:** boolean
-
-
-----
 ### <u>toDate : object</u>
 
 Is a set of functions to convert a date format string to a date object.
@@ -390,46 +269,17 @@ A `Date` object, or null if failing to convert.
 **Type:** Date
 
 
-----
-### <u>toFiniteNumber(value): number</u>
+## License
 
-Convert a number or a string to a finite number.
-If *value* is a floating point number, this function discards decimals.
-If *value* is neither a finite number, a numeric string nor other type, this function returns NaN.
+Copyright (C) 2017 Takayuki Sato
 
-#### Parameter:
+This program is free software under [MIT][mit-url] License.
+See the file LICENSE in this distribution for more details.
 
-| Parameter |  Type  | Description                           |
-|-----------|:------:|---------------------------------------|
-| value     | *any*  | The number or string to be converted. |
-
-#### Returns:
-
-The converted finite number, or NaN if failing to convert.
-
-**Type:** number
-
-----
-### <u>toInteger(value): number</u>
-
-Convert a number or a string to an integer.
-If *value* is a floating point number, this function discard decimals.
-If *value* is neither a finite number, a numeric string nor other data type, this function returns NaN.
-
-#### Parameter:
-
-| Parameter |  Type  | Description                           |
-|-----------|:------:|---------------------------------------|
-| value     | *any*  | The number or string to be converted. |
-
-#### Returns:
-
-The converted integer value, or NaN if failing to convert.
-
-**Type:** number
-
-----
 [repo-url]: https://github.com/sttk/fav-type/
+[npm-img]: https://img.shields.io/badge/npm-v0.6.0-blue.svg
+[npm-url]: https://www.npmjs.com/package/@fav/type.is-valid-date
 [mit-img]: https://img.shields.io/badge/license-MIT-green.svg
 [mit-url]: https://opensource.org/licenses/MIT
+[main-url]: https://www.npmjs.com/package/@fav/type
 

@@ -10,6 +10,7 @@ var isFiniteNumber = require('./lib/is-finite-number');
 var isValidDate = require('./lib/is-valid-date');
 var toInteger = require('./lib/to-integer');
 var toFiniteNumber = require('./lib/to-finite-number');
+var toDate = require('./lib/to-date');
 
 var type = {};
 
@@ -24,6 +25,7 @@ Object.defineProperties(type, {
   isValidDate: { enumerable: true, value: isValidDate },
   toInteger: { enumerable: true, value: toInteger },
   toFiniteNumber: { enumerable: true, value: toFiniteNumber },
+  toDate: { enumerable: true, value: toDate },
 });
 
 module.exports = type;

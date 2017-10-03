@@ -4,7 +4,7 @@ window.addEventListener('load', function() {
 });
 
 function getFunctionName(apiSynopsys) {
-  return apiSynopsys.replace(/\(.*$/, '');
+  return apiSynopsys.replace(/[\(\:].*$/, '');
 }
 
 function createNavItem(name) {
