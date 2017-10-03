@@ -360,7 +360,7 @@ Convert a date format string according to RFC3339 to a data object.
 
 | Parameter |  Type  | Description                                                     |
 |-----------|:------:|-----------------------------------------------------------------|
-| value     | string | The date format string like `"20170930T133000+0900"` |
+| value     | string | The date format string like `"2017-09-30T13:30:00+09:00"` |
 
 ##### Return:
  

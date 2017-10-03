@@ -27,7 +27,7 @@ var toDate = require('@fav/type.to-date');
 toDate['Y-M-D']('2017-09-30'); // => new Date(2017, 8, 30)
 toDate.YYYYMMDDHHmmss('20170930133000'); // => new Date(2017, 8, 30, 13, 30, 0)
 toDate.RFC2822('Sat, 30 Sep 2017 13:30:00 +0900'); // => new Date(2017, 8, 30, 13, 30, 0) at Japan
-toDate.RFC3339('20170930T133000Z'); // => new Date(2017, 8, 30, 13, 30, 0) in GMT
+toDate.RFC3339('2017-09-30T13:30:00Z'); // => new Date(2017, 8, 30, 13, 30, 0) in GMT
 toDate.ISO8601('2017W406'); // => new Date(2017, 8, 30)
 ```
 
@@ -239,7 +239,7 @@ Convert a date format string according to RFC3339 to a data object.
 
 | Parameter |  Type  | Description                                                     |
 |-----------|:------:|-----------------------------------------------------------------|
-| value     | string | The date format string like `"20170930T133000+0900"` |
+| value     | string | The date format string like `"2017-09-30T13:30:00+09:00"` |
 
 ##### Return:
  
@@ -277,7 +277,7 @@ This program is free software under [MIT][mit-url] License.
 See the file LICENSE in this distribution for more details.
 
 [repo-url]: https://github.com/sttk/fav-type/
-[npm-img]: https://img.shields.io/badge/npm-v0.6.1-blue.svg
+[npm-img]: https://img.shields.io/badge/npm-v0.6.2-blue.svg
 [npm-url]: https://www.npmjs.com/package/@fav/type.is-valid-date
 [mit-img]: https://img.shields.io/badge/license-MIT-green.svg
 [mit-url]: https://opensource.org/licenses/MIT
