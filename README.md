@@ -4,7 +4,7 @@ Function set related to data types for all versions of nodejs and major browsers
 
 > "fav" is an abbreviation of "favorite" and also the acronym of "for all versions".
 > This package is intended to support all Node.js versions and many browsers as possible.
-> At least, this package supports NodeJS >= v0.10 and major Web browsers: Chrome, Firefox, IE11, Edge, Vivaldi and Safari.
+> At least, this package supports Node.js >= v0.10 and major Web browsers: Chrome, Firefox, IE11, Edge, Vivaldi and Safari.
 
 ## Install
 
@@ -98,7 +98,7 @@ See the file LICENSE in this distribution for more details.
 [api-url]: https://sttk.github.io/fav-type/index.html
 [io-img]: http://img.shields.io/badge/API-github.io-ff99cc.svg
 [io-url]: https://sttk.github.io/fav-type/index.html
-[npm-img]: https://img.shields.io/badge/npm-v0.5.1-blue.svg
+[npm-img]: https://img.shields.io/badge/npm-v0.6.0-blue.svg
 [npm-url]: https://www.npmjs.com/package/@fav/type
 [mit-img]: https://img.shields.io/badge/license-MIT-green.svg
 [mit-url]: https://opensource.org/licenses/MIT
