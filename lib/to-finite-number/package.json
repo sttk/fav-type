@@ -1,6 +1,6 @@
 {
   "name": "@fav/type.to-finite-number",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Convert a number or a string to a finite number.",
   "main": "index.js",
   "repository": {

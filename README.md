@@ -27,8 +27,8 @@ For Node.js, when installing `@fav/type` from npm:
 ```js
 const type = require('@fav/type');
 
-const isString = type.isString
-isString('abc') // => true
+const isString = type.isString;
+isString('abc'); // => true
 ```
 
 Or when installing `fav-type` from github:
@@ -98,7 +98,7 @@ See the file LICENSE in this distribution for more details.
 [api-url]: https://sttk.github.io/fav-type/index.html
 [io-img]: http://img.shields.io/badge/API-github.io-ff99cc.svg
 [io-url]: https://sttk.github.io/fav-type/index.html
-[npm-img]: https://img.shields.io/badge/npm-v0.6.0-blue.svg
+[npm-img]: https://img.shields.io/badge/npm-v0.6.1-blue.svg
 [npm-url]: https://www.npmjs.com/package/@fav/type
 [mit-img]: https://img.shields.io/badge/license-MIT-green.svg
 [mit-url]: https://opensource.org/licenses/MIT
