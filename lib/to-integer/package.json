@@ -1,6 +1,6 @@
 {
   "name": "@fav/type.to-integer",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Convert a number or a string to an integer.",
   "main": "index.js",
   "repository": {
@@ -10,6 +10,7 @@
   "keywords": [
     "integer",
     "to-integer",
+    "default",
     "type",
     "datatype",
     "fav"

@@ -74,5 +74,22 @@ describe('fav.type.toInteger', function() {
       expect(toInteger(Symbol(123))).toEqual(NaN);
     }
   });
+
+  it('Should return 1st arg integer when 2nd arg is specified but 1st arg' +
+  'is\n\tvalid', function() {
+    expect(toInteger(0), 999).toEqual(0);
+    expect(toInteger(123), 999).toEqual(123);
+    expect(toInteger(-123), 999).toEqual(-123);
+  });
+
+  it('Should return 2nd arg when 1st arg is invalid and 2nd arg is specified',
+  function() {
+    expect(toInteger(undefined, 999)).toEqual(999);
+    expect(toInteger(null, 999)).toEqual(999);
+    expect(toInteger('', 999)).toEqual(999);
+    expect(toInteger(NaN, 999)).toEqual(999);
+    expect(toInteger(Infinity, 999)).toEqual(999);
+    expect(toInteger('ABC', 999)).toEqual(999);
+  });
 });
 

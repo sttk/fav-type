@@ -410,21 +410,22 @@ The converted finite number, or NaN if failing to convert.
 **Type:** number
 
 ----
-### <u>toInteger(value): number</u>
+### <u>toInteger(value [, defaultValue]): number</u>
 
 Convert a number or a string to an integer.
 If *value* is a floating point number, this function discard decimals.
-If *value* is neither a finite number, a numeric string nor other data type, this function returns NaN.
+If *value* is neither a finite number, a numeric string nor other data type, this function returns NaN or *defaultValue* if it is specified.
 
 #### Parameter:
 
-| Parameter |  Type  | Description                           |
-|-----------|:------:|---------------------------------------|
-| value     | *any*  | The number or string to be converted. |
+| Parameter    |  Type  | Description                           |
+|--------------|:------:|---------------------------------------|
+| value        | *any*  | The number or string to be converted. |
+| defaultValue | *any*  | The default value if *value* is invalid. (Optional) |
 
 #### Returns:
 
-The converted integer value, or NaN if failing to convert.
+The converted integer value. If failing to convert, NaN or *defaultValue* (if specified) is returned. 
 
 **Type:** number
 

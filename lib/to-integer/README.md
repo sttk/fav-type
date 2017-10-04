@@ -27,25 +27,27 @@ var toInteger = require('@fav/type.to-integer');
 toInteger(123); // => 123
 toInteger('456'); // => 456
 toInteger(7.89); // => 7
+toInteger(null, 999); // => 999
 ```
 
 ## API
 
-### <u>toInteger(value): number</u>
+### <u>toInteger(value [, defaultValue]): number</u>
 
 Convert a number or a string to an integer.
 If *value* is a floating point number, this function discard decimals.
-If *value* is neither a finite number, a numeric string nor other data type, this function returns NaN.
+If *value* is neither a finite number, a numeric string nor other data type, this function returns NaN or *defaultValue* if it is specified.
 
 #### Parameter:
 
-| Parameter |  Type  | Description                           |
-|-----------|:------:|---------------------------------------|
-| value     | *any*  | The number or string to be converted. |
+| Parameter    |  Type  | Description                           |
+|--------------|:------:|---------------------------------------|
+| value        | *any*  | The number or string to be converted. |
+| defaultValue | *any*  | The default value if *value* is invalid. (Optional) |
 
 #### Returns:
 
-The converted integer value, or NaN if failing to convert.
+The converted integer value. If failing to convert, NaN or *defaultValue* (if specified) is returned. 
 
 **Type:** number
 
@@ -57,7 +59,7 @@ This program is free software under [MIT][mit-url] License.
 See the file LICENSE in this distribution for more details.
 
 [repo-url]: https://github.com/sttk/fav-type/
-[npm-img]: https://img.shields.io/badge/npm-v0.6.0-blue.svg
+[npm-img]: https://img.shields.io/badge/npm-v0.7.0-blue.svg
 [npm-url]: https://www.npmjs.com/package/@fav/type.to-integer
 [mit-img]: https://img.shields.io/badge/license-MIT-green.svg
 [mit-url]: https://opensource.org/licenses/MIT

@@ -76,4 +76,21 @@ describe('fav.type.toFiniteNumber', function() {
       expect(toFiniteNumber(Symbol(123))).toEqual(NaN);
     }
   });
+
+  it('Should return 1st arg number when 2nd arg is specified but 1st arg is' +
+  ' valid', function() {
+    expect(toFiniteNumber(0, 99.99)).toEqual(0);
+    expect(toFiniteNumber(1.23)).toEqual(1.23);
+    expect(toFiniteNumber(-0.88)).toEqual(-0.88);
+  });
+
+  it('Should return 2nd arg when 1st arg is valid and 2nd arg is specified',
+  function() {
+    expect(toFiniteNumber(undefined, 9.99)).toEqual(9.99);
+    expect(toFiniteNumber(null, 9.99)).toEqual(9.99);
+    expect(toFiniteNumber('', 9.99)).toEqual(9.99);
+    expect(toFiniteNumber(NaN, 9.99)).toEqual(9.99);
+    expect(toFiniteNumber(Infinity, 9.99)).toEqual(9.99);
+    expect(toFiniteNumber('ABC', 9.99)).toEqual(9.99);
+  });
 });

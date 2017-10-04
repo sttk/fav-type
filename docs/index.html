@@ -509,10 +509,10 @@ If <em>value</em> is neither a finite number, a numeric string nor other type, t
 <p>The converted finite number, or NaN if failing to convert.</p>
 <p><strong>Type:</strong> number</p>
 <hr>
-<h3 id="-u-tointeger-value-number-u-"><u>toInteger(value): number</u></h3>
+<h3 id="-u-tointeger-value-defaultvalue-number-u-"><u>toInteger(value [, defaultValue]): number</u></h3>
 <p>Convert a number or a string to an integer.
 If <em>value</em> is a floating point number, this function discard decimals.
-If <em>value</em> is neither a finite number, a numeric string nor other data type, this function returns NaN.</p>
+If <em>value</em> is neither a finite number, a numeric string nor other data type, this function returns NaN or <em>defaultValue</em> if it is specified.</p>
 <h4 id="parameter-">Parameter:</h4>
 <table>
 <thead>
@@ -528,10 +528,15 @@ If <em>value</em> is neither a finite number, a numeric string nor other data ty
 <td style="text-align:center"><em>any</em></td>
 <td>The number or string to be converted.</td>
 </tr>
+<tr>
+<td>defaultValue</td>
+<td style="text-align:center"><em>any</em></td>
+<td>The default value if <em>value</em> is invalid. (Optional)</td>
+</tr>
 </tbody>
 </table>
 <h4 id="returns-">Returns:</h4>
-<p>The converted integer value, or NaN if failing to convert.</p>
+<p>The converted integer value. If failing to convert, NaN or <em>defaultValue</em> (if specified) is returned. </p>
 <p><strong>Type:</strong> number</p>
 <hr>
 </body>

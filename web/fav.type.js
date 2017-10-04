@@ -891,11 +891,17 @@ var isFiniteNumber = require('../is-finite-number');
 
 function toFiniteNumber(value) {
   if (isString(value)) {
-    return parseFloat(value);
+    value = parseFloat(value);
   }
+
   if (isFiniteNumber(value)) {
     return value;
   }
+
+  if (arguments.length > 1) {
+    return arguments[1];
+  }
+
   return NaN;
 }
 
@@ -911,11 +917,16 @@ var isFiniteNumber = require('../is-finite-number');
 function toInteger(value) {
   if (isString(value)) {
     value = parseFloat(value);
-    return value < 0 ? Math.ceil(value) : Math.floor(value);
   }
+
   if (isFiniteNumber(value)) {
     return value < 0 ? Math.ceil(value) : Math.floor(value);
   }
+
+  if (arguments.length > 1) {
+    return arguments[1];
+  }
+
   return NaN;
 }
 
