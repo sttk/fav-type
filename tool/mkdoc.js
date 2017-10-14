@@ -6,7 +6,7 @@ var concatFile = require('./lib/concat-file');
 var marked = require('marked');
 
 var path = require('path');
-var libdir = path.resolve(__dirname, '../lib');
+var libdir = path.resolve(__dirname, '../node_modules/@fav');
 
 
 var mdheadfile = path.resolve(__dirname, './tmpl/api-header.md');

@@ -20,6 +20,7 @@ True, if *value* is an array.
 
 **Type:** boolean
 
+
 ----
 ### <u>isEmpty(value) : boolean</u>
 
@@ -49,6 +50,7 @@ True, if *value* is empty.
 
 **Type:** boolean
 
+
 ----
 ### <u>isFiniteNumber(value) : boolean</u>
 
@@ -66,6 +68,7 @@ True, if *value* is a finite number.
 
 **Type:** boolean
 
+
 ----
 ### <u>isFunction(value) : boolean</u>
 
@@ -77,12 +80,12 @@ Checks if *value* is a function.
 |-----------|:------:|-----------------------------|
 | value     | *any*  | The value to be checked.    |
 
-
 #### Return:
 
 True, if *value* is a function.
 
 **Type:** boolean
+
 
 ----
 ### <u>isInteger(value) : boolean</u>
@@ -101,6 +104,7 @@ True, if *value* is an integer.
 
 **Type:** boolean
 
+
 ----
 ### <u>isPlainObject(value) : boolean</u>
 
@@ -118,6 +122,7 @@ True, if *value* is a plain object.
 
 **Type:** boolean
 
+
 ----
 ### <u>isString(value) : boolean</u>
 
@@ -134,6 +139,7 @@ Checks if *value* is an string.
 True, if *value* is a string.
 
 **Type:** boolean
+
 
 ----
 ### <u>isValidDate(value) : boolean</u>
@@ -409,6 +415,7 @@ The converted finite number, or NaN if failing to convert.
 
 **Type:** number
 
+
 ----
 ### <u>toInteger(value [, defaultValue]): number</u>
 
@@ -428,6 +435,7 @@ If *value* is neither a finite number, a numeric string nor other data type, thi
 The converted integer value. If failing to convert, NaN or *defaultValue* (if specified) is returned. 
 
 **Type:** number
+
 
 ----
 [repo-url]: https://github.com/sttk/fav-type/

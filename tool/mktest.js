@@ -7,7 +7,7 @@ var concatFile = require('./lib/concat-file');
 var path = require('path');
 var srcdir = path.resolve(__dirname, '../test');
 var outdir = path.resolve(__dirname, '../test/web');
-var outfile = path.resolve(outdir, 'fav-type.test.js');
+var outfile = path.resolve(outdir, 'browser-test.js');
 
 truncFile(outfile);
 listFiles(srcdir, '.test.js').forEach(bundleFile);

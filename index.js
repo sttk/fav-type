@@ -1,16 +1,16 @@
 'use strict';
 
-var isEmpty = require('./lib/is-empty');
-var isArray = require('./lib/is-array');
-var isString = require('./lib/is-string');
-var isFunction = require('./lib/is-function');
-var isPlainObject = require('./lib/is-plain-object');
-var isInteger = require('./lib/is-integer');
-var isFiniteNumber = require('./lib/is-finite-number');
-var isValidDate = require('./lib/is-valid-date');
-var toInteger = require('./lib/to-integer');
-var toFiniteNumber = require('./lib/to-finite-number');
-var toDate = require('./lib/to-date');
+var isEmpty = require('@fav/type.is-empty');
+var isArray = require('@fav/type.is-array');
+var isString = require('@fav/type.is-string');
+var isFunction = require('@fav/type.is-function');
+var isPlainObject = require('@fav/type.is-plain-object');
+var isInteger = require('@fav/type.is-integer');
+var isFiniteNumber = require('@fav/type.is-finite-number');
+var isValidDate = require('@fav/type.is-valid-date');
+var toInteger = require('@fav/type.to-integer');
+var toFiniteNumber = require('@fav/type.to-finite-number');
+var toDate = require('@fav/type.to-date');
 
 var type = {};
 

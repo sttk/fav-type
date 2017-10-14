@@ -1,6 +1,7 @@
 'use strict';
 
-var expect = require('expect');
+var chai = require('chai');
+var expect = chai.expect;
 var fav = {}; fav.type = require('..');
 
 var isArray = fav.type.isArray;
@@ -8,42 +9,42 @@ var isArray = fav.type.isArray;
 describe('fav.type.isArray', function() {
 
   it('Should return true when value is an array', function() {
-    expect(isArray([])).toEqual(true);
-    expect(isArray([0, 1, 2])).toEqual(true);
-    expect(isArray(new Array('a', 'b'))).toEqual(true);
+    expect(isArray([])).to.equal(true);
+    expect(isArray([0, 1, 2])).to.equal(true);
+    expect(isArray(new Array('a', 'b'))).to.equal(true);
   });
 
   it('Should return false when value is not an array', function() {
-    expect(isArray(undefined)).toEqual(false);
-    expect(isArray(null)).toEqual(false);
-    expect(isArray(true)).toEqual(false);
-    expect(isArray(false)).toEqual(false);
-    expect(isArray(0)).toEqual(false);
-    expect(isArray(123)).toEqual(false);
-    expect(isArray('')).toEqual(false);
-    expect(isArray('ABC')).toEqual(false);
-    expect(isArray({})).toEqual(false);
-    expect(isArray({ a: 0 })).toEqual(false);
-    expect(isArray(/a/g)).toEqual(false);
-    expect(isArray(new RegExp('a', 'g'))).toEqual(false);
-    expect(isArray(function() {})).toEqual(false);
-    expect(isArray(new Date())).toEqual(false);
-    expect(isArray(new Error())).toEqual(false);
+    expect(isArray(undefined)).to.equal(false);
+    expect(isArray(null)).to.equal(false);
+    expect(isArray(true)).to.equal(false);
+    expect(isArray(false)).to.equal(false);
+    expect(isArray(0)).to.equal(false);
+    expect(isArray(123)).to.equal(false);
+    expect(isArray('')).to.equal(false);
+    expect(isArray('ABC')).to.equal(false);
+    expect(isArray({})).to.equal(false);
+    expect(isArray({ a: 0 })).to.equal(false);
+    expect(isArray(/a/g)).to.equal(false);
+    expect(isArray(new RegExp('a', 'g'))).to.equal(false);
+    expect(isArray(function() {})).to.equal(false);
+    expect(isArray(new Date())).to.equal(false);
+    expect(isArray(new Error())).to.equal(false);
 
     if (typeof Symbol === 'function') {
-      expect(isArray(Symbol('foo'))).toEqual(false);
+      expect(isArray(Symbol('foo'))).to.equal(false);
     }
     if (typeof Map === 'function') {
-      expect(isArray(new Map())).toEqual(false);
+      expect(isArray(new Map())).to.equal(false);
     }
     if (typeof Set === 'function') {
-      expect(isArray(new Set())).toEqual(false);
+      expect(isArray(new Set())).to.equal(false);
     }
     if (typeof WeakMap === 'function') {
-      expect(isArray(new WeakMap())).toEqual(false);
+      expect(isArray(new WeakMap())).to.equal(false);
     }
     if (typeof WeakSet === 'function') {
-      expect(isArray(new WeakSet())).toEqual(false);
+      expect(isArray(new WeakSet())).to.equal(false);
     }
   });
 
@@ -52,43 +53,43 @@ describe('fav.type.isArray', function() {
 
     if (typeof Uint8Array === 'function') {
       tested = true;
-      expect(isArray(new Uint8Array())).toEqual(false);
+      expect(isArray(new Uint8Array())).to.equal(false);
     }
     if (typeof Int8Array === 'function') {
       tested = true;
-      expect(isArray(new Int8Array())).toEqual(false);
+      expect(isArray(new Int8Array())).to.equal(false);
     }
     if (typeof Uint8ClampedArray === 'function') {
       tested = true;
-      expect(isArray(new Uint8ClampedArray())).toEqual(false);
+      expect(isArray(new Uint8ClampedArray())).to.equal(false);
     }
     if (typeof Int16Array === 'function') {
       tested = true;
-      expect(isArray(new Int16Array())).toEqual(false);
+      expect(isArray(new Int16Array())).to.equal(false);
     }
     if (typeof Uint16Array === 'function') {
       tested = true;
-      expect(isArray(new Uint16Array())).toEqual(false);
+      expect(isArray(new Uint16Array())).to.equal(false);
     }
     if (typeof Float16Array === 'function') {
       tested = true;
-      expect(isArray(new Float16Array())).toEqual(false);
+      expect(isArray(new Float16Array())).to.equal(false);
     }
     if (typeof Int32Array === 'function') {
       tested = true;
-      expect(isArray(new Int32Array())).toEqual(false);
+      expect(isArray(new Int32Array())).to.equal(false);
     }
     if (typeof Uint32Array === 'function') {
       tested = true;
-      expect(isArray(new Int32Array())).toEqual(false);
+      expect(isArray(new Int32Array())).to.equal(false);
     }
     if (typeof Float32Array === 'function') {
       tested = true;
-      expect(isArray(new Float32Array())).toEqual(false);
+      expect(isArray(new Float32Array())).to.equal(false);
     }
     if (typeof Float64Array === 'function') {
       tested = true;
-      expect(isArray(new Float64Array())).toEqual(false);
+      expect(isArray(new Float64Array())).to.equal(false);
     }
 
     if (!tested) {

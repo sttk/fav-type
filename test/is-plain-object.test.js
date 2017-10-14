@@ -1,6 +1,7 @@
 'use strict';
 
-var expect = require('expect');
+var chai = require('chai');
+var expect = chai.expect;
 var semver = require('semver');
 var fav = {}; fav.type = require('..');
 
@@ -9,35 +10,35 @@ var isPlainObject = fav.type.isPlainObject;
 describe('fav.type.isPlainObject', function() {
 
   it('Should return true when value is a plain object', function() {
-    expect(isPlainObject({})).toEqual(true);
-    expect(isPlainObject({ a: 1 })).toEqual(true);
-    expect(isPlainObject(new Object())).toEqual(true);
-    expect(isPlainObject(Object.create(Object.prototype))).toEqual(true);
-    expect(isPlainObject(Object.create(null))).toEqual(true);
+    expect(isPlainObject({})).to.equal(true);
+    expect(isPlainObject({ a: 1 })).to.equal(true);
+    expect(isPlainObject(new Object())).to.equal(true);
+    expect(isPlainObject(Object.create(Object.prototype))).to.equal(true);
+    expect(isPlainObject(Object.create(null))).to.equal(true);
   });
 
   it('Should return false when value is not a plain object', function() {
-    expect(isPlainObject(undefined)).toEqual(false);
-    expect(isPlainObject(null)).toEqual(false);
-    expect(isPlainObject(true)).toEqual(false);
-    expect(isPlainObject(false)).toEqual(false);
-    expect(isPlainObject(0)).toEqual(false);
-    expect(isPlainObject(123)).toEqual(false);
-    expect(isPlainObject(NaN)).toEqual(false);
-    expect(isPlainObject(Infinity)).toEqual(false);
-    expect(isPlainObject(new Number(123))).toEqual(false);
-    expect(isPlainObject([])).toEqual(false);
-    expect(isPlainObject([1, 2])).toEqual(false);
-    expect(isPlainObject(new Array(1, 2))).toEqual(false);
-    expect(isPlainObject(/a/g)).toEqual(false);
-    expect(isPlainObject(new RegExp('a', 'g'))).toEqual(false);
-    expect(isPlainObject(function() {})).toEqual(false);
-    expect(isPlainObject(new Date())).toEqual(false);
-    expect(isPlainObject(new Error())).toEqual(false);
-    expect(isPlainObject(new Foo())).toEqual(false);
-    expect(isPlainObject(new FooEx())).toEqual(false);
-    expect(isPlainObject(new SubclassOfPlainObject())).toEqual(false);
-    expect(isPlainObject(Object.create({}))).toEqual(false);
+    expect(isPlainObject(undefined)).to.equal(false);
+    expect(isPlainObject(null)).to.equal(false);
+    expect(isPlainObject(true)).to.equal(false);
+    expect(isPlainObject(false)).to.equal(false);
+    expect(isPlainObject(0)).to.equal(false);
+    expect(isPlainObject(123)).to.equal(false);
+    expect(isPlainObject(NaN)).to.equal(false);
+    expect(isPlainObject(Infinity)).to.equal(false);
+    expect(isPlainObject(new Number(123))).to.equal(false);
+    expect(isPlainObject([])).to.equal(false);
+    expect(isPlainObject([1, 2])).to.equal(false);
+    expect(isPlainObject(new Array(1, 2))).to.equal(false);
+    expect(isPlainObject(/a/g)).to.equal(false);
+    expect(isPlainObject(new RegExp('a', 'g'))).to.equal(false);
+    expect(isPlainObject(function() {})).to.equal(false);
+    expect(isPlainObject(new Date())).to.equal(false);
+    expect(isPlainObject(new Error())).to.equal(false);
+    expect(isPlainObject(new Foo())).to.equal(false);
+    expect(isPlainObject(new FooEx())).to.equal(false);
+    expect(isPlainObject(new SubclassOfPlainObject())).to.equal(false);
+    expect(isPlainObject(Object.create({}))).to.equal(false);
   });
 
   it('Should return false when value is a class instance', function() {
@@ -56,7 +57,7 @@ describe('fav.type.isPlainObject', function() {
       return;
     }
 
-    expect(isPlainObject(Symbol('foo'))).toEqual(false);
+    expect(isPlainObject(Symbol('foo'))).to.equal(false);
   });
 
 });
@@ -137,8 +138,8 @@ console.log(quux.text);\
 console.log(quux.constructor === Object);\
 */\
 \
-expect(isPlainObject(new Qux())).toEqual(false);\
-expect(isPlainObject(new Quux())).toEqual(false);\
+expect(isPlainObject(new Qux())).to.equal(false);\
+expect(isPlainObject(new Quux())).to.equal(false);\
 ";
 }
 

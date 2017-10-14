@@ -1,6 +1,7 @@
 'use strict';
 
-var expect = require('expect');
+var chai = require('chai');
+var expect = chai.expect;
 var fav = {}; fav.type = require('..');
 
 var toDate = fav.type.toDate['YYMMDDHHmmss'];
@@ -14,60 +15,60 @@ describe('fav.type.toDate["YYMMDDHHmmss"]', function() {
     for (var y = yyyy - 50; y < yyyy + 50; y++) {
       yy = String(yyyy).slice(-2);
       expect(toDate(yy + '0101000000'))
-        .toEqual(new Date(yyyy, 0, 1, 0, 0, 0));
+        .to.eql(new Date(yyyy, 0, 1, 0, 0, 0));
       expect(toDate(yy + '0615123030'))
-        .toEqual(new Date(yyyy, 5, 15, 12, 30, 30));
+        .to.eql(new Date(yyyy, 5, 15, 12, 30, 30));
       expect(toDate(yy + '1231235959'))
-        .toEqual(new Date(yyyy, 11, 31, 23, 59, 59));
+        .to.eql(new Date(yyyy, 11, 31, 23, 59, 59));
     }
 
     yy = String(yyyy + 49).slice(-2);
     expect(toDate(yy + '1231235959'))
-      .toEqual(new Date(yyyy + 49, 11, 31, 23, 59, 59));
+      .to.eql(new Date(yyyy + 49, 11, 31, 23, 59, 59));
     expect(toDate(yy + '1231235960'))
-      .toEqual(new Date(yyyy + 50, 0, 1, 0, 0, 0));
+      .to.eql(new Date(yyyy + 50, 0, 1, 0, 0, 0));
 
     yy = String(yyyy + 50).slice(-2);
     expect(toDate(yy + '0101000000'))
-      .toEqual(new Date(yyyy - 50, 0, 1, 0, 0, 0));
+      .to.eql(new Date(yyyy - 50, 0, 1, 0, 0, 0));
     expect(toDate(yy + '0100235959'))
-      .toEqual(new Date(yyyy - 51, 11,31, 23, 59, 59));
+      .to.eql(new Date(yyyy - 51, 11,31, 23, 59, 59));
 
-    expect(toDate('000000000000')).toNotEqual(null);
-    expect(toDate('999999999999')).toNotEqual(null);
+    expect(toDate('000000000000')).to.not.equal(null);
+    expect(toDate('999999999999')).to.not.equal(null);
   });
 
   it('Should return null if value is a illegal string', function() {
-    expect(toDate('')).toEqual(null);
-    expect(toDate('17')).toEqual(null);
-    expect(toDate('1709')).toEqual(null);
-    expect(toDate('17093')).toEqual(null);
-    expect(toDate('17093012')).toEqual(null);
-    expect(toDate('1709301234')).toEqual(null);
-    expect(toDate('17093012345')).toEqual(null);
-    expect(toDate('1709301234567')).toEqual(null);
-    expect(toDate('20170930123456')).toEqual(null);
-    expect(toDate('17-09-30 12:34:56')).toEqual(null);
+    expect(toDate('')).to.equal(null);
+    expect(toDate('17')).to.equal(null);
+    expect(toDate('1709')).to.equal(null);
+    expect(toDate('17093')).to.equal(null);
+    expect(toDate('17093012')).to.equal(null);
+    expect(toDate('1709301234')).to.equal(null);
+    expect(toDate('17093012345')).to.equal(null);
+    expect(toDate('1709301234567')).to.equal(null);
+    expect(toDate('20170930123456')).to.equal(null);
+    expect(toDate('17-09-30 12:34:56')).to.equal(null);
   });
 
   it('Should return null if value is illegal data type', function() {
-    expect(toDate(undefined)).toEqual(null);
-    expect(toDate(null)).toEqual(null);
-    expect(toDate(true)).toEqual(null);
-    expect(toDate(false)).toEqual(null);
-    expect(toDate(123)).toEqual(null);
-    expect(toDate([])).toEqual(null);
-    expect(toDate([1, 2, 3])).toEqual(null);
-    expect(toDate({})).toEqual(null);
-    expect(toDate({ y: 1, m: 2, d: 3 })).toEqual(null);
-    expect(toDate(/a/g)).toEqual(null);
-    expect(toDate(new RegExp('a', 'g'))).toEqual(null);
-    expect(toDate(function() {})).toEqual(null);
-    expect(toDate(new Date())).toEqual(null);
-    expect(toDate(new Error())).toEqual(null);
+    expect(toDate(undefined)).to.equal(null);
+    expect(toDate(null)).to.equal(null);
+    expect(toDate(true)).to.equal(null);
+    expect(toDate(false)).to.equal(null);
+    expect(toDate(123)).to.equal(null);
+    expect(toDate([])).to.equal(null);
+    expect(toDate([1, 2, 3])).to.equal(null);
+    expect(toDate({})).to.equal(null);
+    expect(toDate({ y: 1, m: 2, d: 3 })).to.equal(null);
+    expect(toDate(/a/g)).to.equal(null);
+    expect(toDate(new RegExp('a', 'g'))).to.equal(null);
+    expect(toDate(function() {})).to.equal(null);
+    expect(toDate(new Date())).to.equal(null);
+    expect(toDate(new Error())).to.equal(null);
 
     if (typeof Symbol === 'function') {
-      expect(toDate(Symbol('17-09-10'))).toEqual(null);
+      expect(toDate(Symbol('17-09-10'))).to.equal(null);
     }
   });
 

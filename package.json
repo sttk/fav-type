@@ -1,11 +1,10 @@
 {
-  "name": "fav-type",
+  "name": "@fav/type",
   "version": "0.6.2",
   "description": "Function set related to data types for all versions of nodejs and major browsers",
   "main": "index.js",
   "files": [
     "index.js",
-    "lib/",
     "web/"
   ],
   "scripts": {
@@ -13,11 +12,13 @@
     "test": "mocha",
     "coverage": "nyc --reporter=lcov --reporter=text-summary npm test",
     "coveralls": "nyc --reporter=text-lcov npm test | coveralls",
-    "web:install": "npm i --no-save phantomjs-prebuilt mocha-phantomjs",
     "web:build": "npm run web:build-src && npm run web:build-test",
     "web:build-src": "browserify index.js --standalone fav.type -o web/fav.type.js && cd web && uglifyjs fav.type.js --compress --mangle -o fav.type.min.js --source-map url=fav.type.min.js.map",
     "web:build-test": "node tool/mktest.js",
-    "web:test": "mocha-phantomjs -p node_modules/.bin/phantomjs test/web/fav-type.test.html",
+    "chrome:install": "npm i --no-save mocha-chrome",
+    "chrome:test": "mocha-chrome test/web/browser-test.html",
+    "phantom:install": "npm i --no-save phantomjs-prebuilt mocha-phantomjs",
+    "phantom:test": "mocha-phantomjs -p node_modules/.bin/phantomjs test/web/browser-test.html",
     "mkdoc": "node tool/mkdoc.js",
     "build": "npm run lint && npm run coverage && npm run mkdoc && npm run web:build"
   },
@@ -39,13 +40,26 @@
   "devDependencies": {
     "@xslet/platform": "^0.1.5",
     "browserify": "^14.4.0",
+    "chai": "^3.5.0",
     "coveralls": "^2.13.1",
     "eslint": "^4.3.0",
-    "expect": "^1.20.2",
     "marked": "^0.3.6",
     "mocha": "^3.4.2",
     "nyc": "^11.1.0",
     "semver": "^5.4.1",
     "uglify-js": "^3.0.26"
+  },
+  "dependencies": {
+    "@fav/type.is-array": "^0.6.0",
+    "@fav/type.is-empty": "^0.6.0",
+    "@fav/type.is-finite-number": "^0.6.0",
+    "@fav/type.is-function": "^0.6.0",
+    "@fav/type.is-integer": "^0.6.0",
+    "@fav/type.is-plain-object": "^0.6.0",
+    "@fav/type.is-string": "^0.6.0",
+    "@fav/type.is-valid-date": "^0.8.0",
+    "@fav/type.to-date": "^0.7.0",
+    "@fav/type.to-finite-number": "^0.7.0",
+    "@fav/type.to-integer": "^0.7.0"
   }
 }

@@ -1,17 +1,17 @@
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}(g.fav || (g.fav = {})).type = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
-var isEmpty = require('./lib/is-empty');
-var isArray = require('./lib/is-array');
-var isString = require('./lib/is-string');
-var isFunction = require('./lib/is-function');
-var isPlainObject = require('./lib/is-plain-object');
-var isInteger = require('./lib/is-integer');
-var isFiniteNumber = require('./lib/is-finite-number');
-var isValidDate = require('./lib/is-valid-date');
-var toInteger = require('./lib/to-integer');
-var toFiniteNumber = require('./lib/to-finite-number');
-var toDate = require('./lib/to-date');
+var isEmpty = require('@fav/type.is-empty');
+var isArray = require('@fav/type.is-array');
+var isString = require('@fav/type.is-string');
+var isFunction = require('@fav/type.is-function');
+var isPlainObject = require('@fav/type.is-plain-object');
+var isInteger = require('@fav/type.is-integer');
+var isFiniteNumber = require('@fav/type.is-finite-number');
+var isValidDate = require('@fav/type.is-valid-date');
+var toInteger = require('@fav/type.to-integer');
+var toFiniteNumber = require('@fav/type.to-finite-number');
+var toDate = require('@fav/type.to-date');
 
 var type = {};
 
@@ -31,7 +31,7 @@ Object.defineProperties(type, {
 
 module.exports = type;
 
-},{"./lib/is-array":2,"./lib/is-empty":3,"./lib/is-finite-number":4,"./lib/is-function":5,"./lib/is-integer":6,"./lib/is-plain-object":7,"./lib/is-string":8,"./lib/is-valid-date":9,"./lib/to-date":21,"./lib/to-finite-number":22,"./lib/to-integer":23}],2:[function(require,module,exports){
+},{"@fav/type.is-array":2,"@fav/type.is-empty":3,"@fav/type.is-finite-number":4,"@fav/type.is-function":5,"@fav/type.is-integer":6,"@fav/type.is-plain-object":7,"@fav/type.is-string":8,"@fav/type.is-valid-date":9,"@fav/type.to-date":10,"@fav/type.to-finite-number":22,"@fav/type.to-integer":23}],2:[function(require,module,exports){
 'use strict';
 
 function isArray(value) {
@@ -43,8 +43,8 @@ module.exports = isArray;
 },{}],3:[function(require,module,exports){
 'use strict';
 
-var isArray = require('../is-array');
-var isPlainObject = require('../is-plain-object');
+var isArray = require('@fav/type.is-array');
+var isPlainObject = require('@fav/type.is-plain-object');
 
 function isEmpty(value) {
   if (value === undefined || value === null) {
@@ -87,7 +87,7 @@ function isEmpty(value) {
 
 module.exports = isEmpty;
 
-},{"../is-array":2,"../is-plain-object":7}],4:[function(require,module,exports){
+},{"@fav/type.is-array":2,"@fav/type.is-plain-object":7}],4:[function(require,module,exports){
 'use strict';
 
 function isFiniteNumber(value) {
@@ -196,8 +196,41 @@ module.exports = isValidDate;
 },{}],10:[function(require,module,exports){
 'use strict';
 
-var isString = require('../is-string');
-var isValidDate = require('../is-valid-date');
+var fromHyphenedYmd = require('./lib/from-hyphened-ymd');
+var fromHyphenedYmdAndHms = require('./lib/from-hyphened-ymd-and-hms');
+var fromSlashedYmd = require('./lib/from-slashed-ymd');
+var fromSlashedYmdAndHms = require('./lib/from-slashed-ymd-and-hms');
+var fromYymmdd = require('./lib/from-yymmdd');
+var fromYyyymmdd = require('./lib/from-yyyymmdd');
+var fromYymmddhhmmss = require('./lib/from-yymmddhhmmss');
+var fromYyyymmddhhmmss = require('./lib/from-yyyymmddhhmmss');
+var fromRfc2822 = require('./lib/from-rfc2822');
+var fromRfc3339 = require('./lib/from-rfc3339');
+var fromIso8601 = require('./lib/from-iso8601');
+
+var toDate = {};
+
+Object.defineProperties(toDate, {
+  'Y-M-D': { enumerable: true, value: fromHyphenedYmd },
+  'Y-M-D H:m:s': { enumerable: true, value: fromHyphenedYmdAndHms },
+  'Y/M/D': { enumerable: true, value: fromSlashedYmd },
+  'Y/M/D H:m:s': { enumerable: true, value: fromSlashedYmdAndHms },
+  'YYMMDD': { enumerable: true, value: fromYymmdd },
+  'YYYYMMDD': { enumerable: true, value: fromYyyymmdd },
+  'YYMMDDHHmmss': { enumerable: true, value: fromYymmddhhmmss },
+  'YYYYMMDDHHmmss': { enumerable: true, value: fromYyyymmddhhmmss },
+  'RFC2822': { enumerable: true, value: fromRfc2822 },
+  'RFC3339': { enumerable: true, value: fromRfc3339 },
+  'ISO8601': { enumerable: true, value: fromIso8601 },
+});
+
+module.exports = toDate;
+
+},{"./lib/from-hyphened-ymd":12,"./lib/from-hyphened-ymd-and-hms":11,"./lib/from-iso8601":13,"./lib/from-rfc2822":14,"./lib/from-rfc3339":15,"./lib/from-slashed-ymd":17,"./lib/from-slashed-ymd-and-hms":16,"./lib/from-yymmdd":18,"./lib/from-yymmddhhmmss":19,"./lib/from-yyyymmdd":20,"./lib/from-yyyymmddhhmmss":21}],11:[function(require,module,exports){
+'use strict';
+
+var isString = require('@fav/type.is-string');
+var isValidDate = require('@fav/type.is-valid-date');
 
 function fromHyphenedYmdAndHms(text) {
   if (!isString(text)) {
@@ -229,11 +262,11 @@ function fromHyphenedYmdAndHms(text) {
 
 module.exports = fromHyphenedYmdAndHms;
 
-},{"../is-string":8,"../is-valid-date":9}],11:[function(require,module,exports){
+},{"@fav/type.is-string":8,"@fav/type.is-valid-date":9}],12:[function(require,module,exports){
 'use strict';
 
-var isString = require('../is-string');
-var isValidDate = require('../is-valid-date');
+var isString = require('@fav/type.is-string');
+var isValidDate = require('@fav/type.is-valid-date');
 
 function fromHyphenedYmd(text) {
   if (!isString(text)) {
@@ -255,11 +288,11 @@ function fromHyphenedYmd(text) {
 
 module.exports = fromHyphenedYmd;
 
-},{"../is-string":8,"../is-valid-date":9}],12:[function(require,module,exports){
+},{"@fav/type.is-string":8,"@fav/type.is-valid-date":9}],13:[function(require,module,exports){
 'use strict';
 
-var isString = require('../is-string');
-var isValidDate = require('../is-valid-date');
+var isString = require('@fav/type.is-string');
+var isValidDate = require('@fav/type.is-valid-date');
 
 function fromIso8601(text) {
   if (!isString(text)) {
@@ -529,11 +562,11 @@ function fromBasicWeekDate(text) {
 
 module.exports = fromIso8601;
 
-},{"../is-string":8,"../is-valid-date":9}],13:[function(require,module,exports){
+},{"@fav/type.is-string":8,"@fav/type.is-valid-date":9}],14:[function(require,module,exports){
 'use strict';
 
-var isString = require('../is-string');
-var isValidDate = require('../is-valid-date');
+var isString = require('@fav/type.is-string');
+var isValidDate = require('@fav/type.is-valid-date');
 
 function fromRfc2822(text) {
   if (!isString(text)) {
@@ -587,11 +620,11 @@ function fromRfc2822(text) {
 
 module.exports = fromRfc2822;
 
-},{"../is-string":8,"../is-valid-date":9}],14:[function(require,module,exports){
+},{"@fav/type.is-string":8,"@fav/type.is-valid-date":9}],15:[function(require,module,exports){
 'use strict';
 
-var isString = require('../is-string');
-var isValidDate = require('../is-valid-date');
+var isString = require('@fav/type.is-string');
+var isValidDate = require('@fav/type.is-valid-date');
 
 function fromRfc3339(text) {
   if (!isString(text)) {
@@ -644,11 +677,11 @@ function fromRfc3339(text) {
 
 module.exports = fromRfc3339;
 
-},{"../is-string":8,"../is-valid-date":9}],15:[function(require,module,exports){
+},{"@fav/type.is-string":8,"@fav/type.is-valid-date":9}],16:[function(require,module,exports){
 'use strict';
 
-var isString = require('../is-string');
-var isValidDate = require('../is-valid-date');
+var isString = require('@fav/type.is-string');
+var isValidDate = require('@fav/type.is-valid-date');
 
 function fromHyphenedYmdAndHms(text) {
   if (!isString(text)) {
@@ -681,11 +714,11 @@ function fromHyphenedYmdAndHms(text) {
 
 module.exports = fromHyphenedYmdAndHms;
 
-},{"../is-string":8,"../is-valid-date":9}],16:[function(require,module,exports){
+},{"@fav/type.is-string":8,"@fav/type.is-valid-date":9}],17:[function(require,module,exports){
 'use strict';
 
-var isString = require('../is-string');
-var isValidDate = require('../is-valid-date');
+var isString = require('@fav/type.is-string');
+var isValidDate = require('@fav/type.is-valid-date');
 
 function fromSlashedYmd(text) {
   if (!isString(text)) {
@@ -708,11 +741,11 @@ function fromSlashedYmd(text) {
 
 module.exports = fromSlashedYmd;
 
-},{"../is-string":8,"../is-valid-date":9}],17:[function(require,module,exports){
+},{"@fav/type.is-string":8,"@fav/type.is-valid-date":9}],18:[function(require,module,exports){
 'use strict';
 
-var isString = require('../is-string');
-var isValidDate = require('../is-valid-date');
+var isString = require('@fav/type.is-string');
+var isValidDate = require('@fav/type.is-valid-date');
 
 function fromYymmdd(text) {
   if (!isString(text)) {
@@ -745,11 +778,11 @@ function fromYymmdd(text) {
 
 module.exports = fromYymmdd;
 
-},{"../is-string":8,"../is-valid-date":9}],18:[function(require,module,exports){
+},{"@fav/type.is-string":8,"@fav/type.is-valid-date":9}],19:[function(require,module,exports){
 'use strict';
 
-var isString = require('../is-string');
-var isValidDate = require('../is-valid-date');
+var isString = require('@fav/type.is-string');
+var isValidDate = require('@fav/type.is-valid-date');
 
 function fromYymmddhhmmss(text) {
   if (!isString(text)) {
@@ -785,11 +818,11 @@ function fromYymmddhhmmss(text) {
 
 module.exports = fromYymmddhhmmss;
 
-},{"../is-string":8,"../is-valid-date":9}],19:[function(require,module,exports){
+},{"@fav/type.is-string":8,"@fav/type.is-valid-date":9}],20:[function(require,module,exports){
 'use strict';
 
-var isString = require('../is-string');
-var isValidDate = require('../is-valid-date');
+var isString = require('@fav/type.is-string');
+var isValidDate = require('@fav/type.is-valid-date');
 
 function fromYyyymmdd(text) {
   if (!isString(text)) {
@@ -816,11 +849,11 @@ function fromYyyymmdd(text) {
 
 module.exports = fromYyyymmdd;
 
-},{"../is-string":8,"../is-valid-date":9}],20:[function(require,module,exports){
+},{"@fav/type.is-string":8,"@fav/type.is-valid-date":9}],21:[function(require,module,exports){
 'use strict';
 
-var isString = require('../is-string');
-var isValidDate = require('../is-valid-date');
+var isString = require('@fav/type.is-string');
+var isValidDate = require('@fav/type.is-valid-date');
 
 function fromYyyymmddhhmmss(text) {
   if (!isString(text)) {
@@ -850,44 +883,11 @@ function fromYyyymmddhhmmss(text) {
 
 module.exports = fromYyyymmddhhmmss;
 
-},{"../is-string":8,"../is-valid-date":9}],21:[function(require,module,exports){
+},{"@fav/type.is-string":8,"@fav/type.is-valid-date":9}],22:[function(require,module,exports){
 'use strict';
 
-var fromHyphenedYmd = require('./from-hyphened-ymd');
-var fromHyphenedYmdAndHms = require('./from-hyphened-ymd-and-hms');
-var fromSlashedYmd = require('./from-slashed-ymd');
-var fromSlashedYmdAndHms = require('./from-slashed-ymd-and-hms');
-var fromYymmdd = require('./from-yymmdd');
-var fromYyyymmdd = require('./from-yyyymmdd');
-var fromYymmddhhmmss = require('./from-yymmddhhmmss');
-var fromYyyymmddhhmmss = require('./from-yyyymmddhhmmss');
-var fromRfc2822 = require('./from-rfc2822');
-var fromRfc3339 = require('./from-rfc3339');
-var fromIso8601 = require('./from-iso8601');
-
-var toDate = {};
-
-Object.defineProperties(toDate, {
-  'Y-M-D': { enumerable: true, value: fromHyphenedYmd },
-  'Y-M-D H:m:s': { enumerable: true, value: fromHyphenedYmdAndHms },
-  'Y/M/D': { enumerable: true, value: fromSlashedYmd },
-  'Y/M/D H:m:s': { enumerable: true, value: fromSlashedYmdAndHms },
-  'YYMMDD': { enumerable: true, value: fromYymmdd },
-  'YYYYMMDD': { enumerable: true, value: fromYyyymmdd },
-  'YYMMDDHHmmss': { enumerable: true, value: fromYymmddhhmmss },
-  'YYYYMMDDHHmmss': { enumerable: true, value: fromYyyymmddhhmmss },
-  'RFC2822': { enumerable: true, value: fromRfc2822 },
-  'RFC3339': { enumerable: true, value: fromRfc3339 },
-  'ISO8601': { enumerable: true, value: fromIso8601 },
-});
-
-module.exports = toDate;
-
-},{"./from-hyphened-ymd":11,"./from-hyphened-ymd-and-hms":10,"./from-iso8601":12,"./from-rfc2822":13,"./from-rfc3339":14,"./from-slashed-ymd":16,"./from-slashed-ymd-and-hms":15,"./from-yymmdd":17,"./from-yymmddhhmmss":18,"./from-yyyymmdd":19,"./from-yyyymmddhhmmss":20}],22:[function(require,module,exports){
-'use strict';
-
-var isString = require('../is-string');
-var isFiniteNumber = require('../is-finite-number');
+var isString = require('@fav/type.is-string');
+var isFiniteNumber = require('@fav/type.is-finite-number');
 
 function toFiniteNumber(value) {
   if (isString(value)) {
@@ -908,11 +908,11 @@ function toFiniteNumber(value) {
 module.exports = toFiniteNumber;
 
 
-},{"../is-finite-number":4,"../is-string":8}],23:[function(require,module,exports){
+},{"@fav/type.is-finite-number":4,"@fav/type.is-string":8}],23:[function(require,module,exports){
 'use strict';
 
-var isString = require('../is-string');
-var isFiniteNumber = require('../is-finite-number');
+var isString = require('@fav/type.is-string');
+var isFiniteNumber = require('@fav/type.is-finite-number');
 
 function toInteger(value) {
   if (isString(value)) {
@@ -932,5 +932,5 @@ function toInteger(value) {
 
 module.exports = toInteger;
 
-},{"../is-finite-number":4,"../is-string":8}]},{},[1])(1)
+},{"@fav/type.is-finite-number":4,"@fav/type.is-string":8}]},{},[1])(1)
 });
