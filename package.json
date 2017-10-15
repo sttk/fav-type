@@ -1,6 +1,6 @@
 {
   "name": "@fav/type",
-  "version": "0.6.2",
+  "version": "0.7.0",
   "description": "Function set related to data types for all versions of nodejs and major browsers",
   "main": "index.js",
   "files": [
