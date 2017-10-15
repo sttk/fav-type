@@ -14,11 +14,7 @@ To install from npm:
 $ npm install --save @fav/type
 ```
 
-Or from github (when npm < 2.7.0 which is not support scoped package):
-
-```sh
-$ npm install --save sttk/fav-type
-```
+***NOTE:*** *npm < 2.7.0 does not support scoped package, but even old version Node.js supports it. So when you use such older npm, you should download this package from [github.com][repo-url], and move it in `node_modules/@fav/` direcotry manually.*
 
 ## Usage
 
@@ -29,14 +25,6 @@ const type = require('@fav/type');
 
 const isString = type.isString;
 isString('abc'); // => true
-```
-
-Or when installing `fav-type` from github:
-
-```js
-var type = require('fav-type');
-var isString = type. isString;
-isString('abc') // => true
 ```
 
 For Web browsers:
