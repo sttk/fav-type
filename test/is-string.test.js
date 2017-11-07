@@ -1,9 +1,10 @@
 'use strict';
 
 var chai = require('chai');
+var expect = chai.expect;
+
 var fav = {}; fav.type = require('..');
 
-var expect = chai.expect;
 var isString = fav.type.isString;
 
 describe('fav.type.isString', function() {

@@ -2,27 +2,31 @@
 
 var chai = require('chai');
 var expect = chai.expect;
+
 var fav = {}; fav.type = require('..');
 
-var toDate = fav.type.toDate['Y-M-D H:m:s'];
+var isPhantomJs = require('./tool/env').isPhantomJs;
+
+var newDate = fav.type.toDate;
+var toDate = newDate['Y-M-D H:m:s'];
 
 describe('fav.type.toDate["Y-M-D H:m:s"]', function() {
 
   it('Should return a date object if value is normal', function() {
     expect(toDate('2017-09-21 19:23:01'))
-      .to.eql(new Date(2017, 8, 21, 19, 23, 1));
+      .to.eql(newDate(2017, 8, 21, 19, 23, 1));
     expect(toDate('2017-09-21 9:03:01.5'))
-      .to.eql(new Date(2017, 8, 21, 9, 3, 1, 500));
+      .to.eql(newDate(2017, 8, 21, 9, 3, 1, 500));
     expect(toDate('123-4-5 10:20:30.40'))
-      .to.eql(new Date(123, 3, 5, 10, 20, 30, 400));
+      .to.eql(newDate(123, 3, 5, 10, 20, 30, 400));
     expect(toDate('-99-9-9 1:2:3'))
-      .to.eql(new Date(-99, 8, 9, 1, 2, 3));
+      .to.eql(newDate(-99, 8, 9, 1, 2, 3));
     expect(toDate('+99-9-9 23:59:59.99999'))
-      .to.eql(new Date(99, 8, 9, 23, 59, 59, 999));
+      .to.eql(newDate(99, 8, 9, 23, 59, 59, 999));
     expect(toDate('2017-13-21 00:00:00'))
-      .to.eql(new Date(2018, 0, 21, 0, 0, 0));
+      .to.eql(newDate(2018, 0, 21, 0, 0, 0));
     expect(toDate('2017-09-31    01:23:45.678'))
-      .to.eql(new Date(2017, 9, 1, 1, 23, 45, 678));
+      .to.eql(newDate(2017, 9, 1, 1, 23, 45, 678));
   });
 
   it('Should return null if value is a illegal string', function() {
@@ -43,7 +47,9 @@ describe('fav.type.toDate["Y-M-D H:m:s"]', function() {
     expect(toDate('20170921223311')).to.equal(null);
     expect(toDate('２０１７-９-２１ １１:２２:３３')).to.equal(null);
     expect(toDate('2017/09/21 11:22:33')).to.equal(null);
-    expect(toDate('9999999-09-21 11:22:33')).to.equal(null);
+    if (!isPhantomJs()) {
+      expect(toDate('9999999-09-21 11:22:33')).to.equal(null);
+    }
   });
 
   it('Should return null if value is illegal data type', function() {
@@ -68,3 +74,4 @@ describe('fav.type.toDate["Y-M-D H:m:s"]', function() {
   });
 
 });
+

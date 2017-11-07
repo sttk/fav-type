@@ -29,15 +29,20 @@ function createNav() {
   srchbox.addEventListener('keypress', keypressSearchbox);
   srchbox.addEventListener('keyup', keyupSearchbox);
 
+  var navlist = document.createElement('div');
+  navlist.className = 'nav-list';
+
+  nav.appendChild(srchbox);
+  nav.appendChild(navlist);
+
   var arr = document.getElementsByTagName('h3');
   for (var i = 0; i < arr.length; i++) {
     var h3 = arr[i];
     var name = getFunctionName(h3.textContent);
     h3.id = name;
-    nav.appendChild(createNavItem(name));
+    navlist.appendChild(createNavItem(name));
   }
 
-  nav.insertBefore(srchbox, nav.firstChild);
   return nav;
 }
 
@@ -59,14 +64,16 @@ function blurSearchbox(event) {
 
 function keypressSearchbox(event) {
   var textbox = event.currentTarget;
+  var navlist = textbox.nextElementSibling;
   if (event.key.length === 1) {
-    filterNav(textbox.nextElementSibling, textbox.value + event.key);
+    filterNav(navlist.firstElementChild, textbox.value + event.key);
   }
 }
 
 function keyupSearchbox(event) {
   var textbox = event.currentTarget;
-  filterNav(textbox.nextElementSibling, textbox.value);
+  var navlist = textbox.nextElementSibling;
+  filterNav(navlist.firstElementChild, textbox.value);
   textbox._empty = !textbox.value;
   if (!textbox._empty) {
     textbox.style.color = 'black';
@@ -74,10 +81,10 @@ function keyupSearchbox(event) {
 }
 
 function filterNav(firstItem, text) {
-  console.log(text);
+  //console.log(text);
   for (var item = firstItem; item != null; item = item.nextElementSibling) {
     var regex = new RegExp(text, 'i');
-    console.log(item.textContent, regex.test(item.textContent));
     item.style.display = regex.test(item.textContent) ? 'block' : 'none';
+    //console.log(item.textContent, regex.test(item.textContent));
   }
 }

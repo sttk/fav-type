@@ -6,43 +6,43 @@ var semver = require('semver');
 
 var fav = {}; fav.type = require('..');
 
-var isPlainObject = fav.type.isPlainObject;
+var isNotPlainObject = fav.type.isPlainObject.not;
 
-describe('fav.type.isPlainObject', function() {
+describe('fav.type.isPlainObject.not', function() {
 
-  it('Should return true when value is a plain object', function() {
-    expect(isPlainObject({})).to.equal(true);
-    expect(isPlainObject({ a: 1 })).to.equal(true);
-    expect(isPlainObject(new Object())).to.equal(true);
-    expect(isPlainObject(Object.create(Object.prototype))).to.equal(true);
-    expect(isPlainObject(Object.create(null))).to.equal(true);
+  it('Should return false when value is a plain object', function() {
+    expect(isNotPlainObject({})).to.equal(false);
+    expect(isNotPlainObject({ a: 1 })).to.equal(false);
+    expect(isNotPlainObject(new Object())).to.equal(false);
+    expect(isNotPlainObject(Object.create(Object.prototype))).to.equal(false);
+    expect(isNotPlainObject(Object.create(null))).to.equal(false);
   });
 
-  it('Should return false when value is not a plain object', function() {
-    expect(isPlainObject(undefined)).to.equal(false);
-    expect(isPlainObject(null)).to.equal(false);
-    expect(isPlainObject(true)).to.equal(false);
-    expect(isPlainObject(false)).to.equal(false);
-    expect(isPlainObject(0)).to.equal(false);
-    expect(isPlainObject(123)).to.equal(false);
-    expect(isPlainObject(NaN)).to.equal(false);
-    expect(isPlainObject(Infinity)).to.equal(false);
-    expect(isPlainObject(new Number(123))).to.equal(false);
-    expect(isPlainObject([])).to.equal(false);
-    expect(isPlainObject([1, 2])).to.equal(false);
-    expect(isPlainObject(new Array(1, 2))).to.equal(false);
-    expect(isPlainObject(/a/g)).to.equal(false);
-    expect(isPlainObject(new RegExp('a', 'g'))).to.equal(false);
-    expect(isPlainObject(function() {})).to.equal(false);
-    expect(isPlainObject(new Date())).to.equal(false);
-    expect(isPlainObject(new Error())).to.equal(false);
-    expect(isPlainObject(new Foo())).to.equal(false);
-    expect(isPlainObject(new FooEx())).to.equal(false);
-    expect(isPlainObject(new SubclassOfPlainObject())).to.equal(false);
-    expect(isPlainObject(Object.create({}))).to.equal(false);
+  it('Should return true when value is not a plain object', function() {
+    expect(isNotPlainObject(undefined)).to.equal(true);
+    expect(isNotPlainObject(null)).to.equal(true);
+    expect(isNotPlainObject(true)).to.equal(true);
+    expect(isNotPlainObject(false)).to.equal(true);
+    expect(isNotPlainObject(0)).to.equal(true);
+    expect(isNotPlainObject(123)).to.equal(true);
+    expect(isNotPlainObject(NaN)).to.equal(true);
+    expect(isNotPlainObject(Infinity)).to.equal(true);
+    expect(isNotPlainObject(new Number(123))).to.equal(true);
+    expect(isNotPlainObject([])).to.equal(true);
+    expect(isNotPlainObject([1, 2])).to.equal(true);
+    expect(isNotPlainObject(new Array(1, 2))).to.equal(true);
+    expect(isNotPlainObject(/a/g)).to.equal(true);
+    expect(isNotPlainObject(new RegExp('a', 'g'))).to.equal(true);
+    expect(isNotPlainObject(function() {})).to.equal(true);
+    expect(isNotPlainObject(new Date())).to.equal(true);
+    expect(isNotPlainObject(new Error())).to.equal(true);
+    expect(isNotPlainObject(new Foo())).to.equal(true);
+    expect(isNotPlainObject(new FooEx())).to.equal(true);
+    expect(isNotPlainObject(new SubclassOfPlainObject())).to.equal(true);
+    expect(isNotPlainObject(Object.create({}))).to.equal(true);
   });
 
-  it('Should return false when value is a class instance', function() {
+  it('Should return true when value is a class instance', function() {
     if (!isSupportClass()) {
       this.skip();
       return;
@@ -52,13 +52,13 @@ describe('fav.type.isPlainObject', function() {
     eval(code);
   });
 
-  it('Should return false when value is a symbol', function() {
+  it('Should return true when value is a symbol', function() {
     if (typeof Symbol !== 'function') {
       this.skip();
       return;
     }
 
-    expect(isPlainObject(Symbol('foo'))).to.equal(false);
+    expect(isNotPlainObject(Symbol('foo'))).to.equal(true);
   });
 
 });
@@ -139,8 +139,8 @@ console.log(quux.text);\
 console.log(quux.constructor === Object);\
 */\
 \
-expect(isPlainObject(new Qux())).to.equal(false);\
-expect(isPlainObject(new Quux())).to.equal(false);\
+expect(isNotPlainObject(new Qux())).to.equal(true);\
+expect(isNotPlainObject(new Quux())).to.equal(true);\
 ";
 }
 

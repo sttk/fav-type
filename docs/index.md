@@ -2,6 +2,162 @@
 
 ----
 
+### <u>padLeft(source, [, length ] [, padding ]) : string</u>
+
+Pads *padding* on left side of *source*.
+
+If *length* is less than the length of *source*, return *source* with no padding.
+
+If *padding* is not specified, this function use a white space (`'\u0020'`) as a padding.
+
+**NOTE:** This function doesn't check data types of the arguments, and assumes that they are given as per the specific data type.
+
+
+#### Parameter:
+
+| Parameter |  Type  | Description                      |
+|-----------|--------|----------------------------------|
+| source    | string | The source string.               |
+| length    | number | The length of the result text. (Optional, and `source.length` in default.) |
+| padding   | string | The padding characters. (Optional, and `' '` in default.) |
+
+#### Return:
+
+The padded string.
+
+**Type:** string
+
+
+----
+### <u>padRight(source, [, length ] [, padding ]) : string</u>
+
+Pads *padding* on right side of *source*.
+
+If *length* is less than the length of *source*, return *source* with no padding.
+
+If *padding* is not specified, this function use a white space (`'\u0020'`) as a padding.
+
+**NOTE:** This function doesn't check data types of the arguments, and assumes that they are given as per the specific data type.
+
+
+#### Parameter:
+
+| Parameter |  Type  | Description                      |
+|-----------|--------|----------------------------------|
+| source    | string | The source string.               |
+| length    | number | The length of the result text. (Optional, and `source.length` in default. |
+| padding   | string | The padding characters. (Optional, and `' '` in default. |
+
+#### Return:
+
+The padded string.
+
+**Type:** string
+
+
+----
+### <u>repeat(source, ntimes) : string</u>
+
+Repeat *source* *ntimes* times.
+
+**NOTE:** This function doesn't check data types of the arguments, and assumes that they are given as per the specific data types.
+
+#### Parameter:
+
+| Parameter |  Type  | Description              |
+|-----------|:------:|--------------------------|
+| source    | string | The string to repeat.    |
+| ntimes    | number | The number of times to repeat. |
+
+#### Return:
+
+The repeated string.
+
+**Type:** string
+
+
+----
+### <u>formatDate(format) : function</u>
+
+Creates a date format function which convert a date to a string in the specified format.
+
+#### Parameters:
+
+| Parameter |  Type  | Description                            |
+|-----------|:------:|----------------------------------------|
+| format    | string | A date format string, which consists of the following date element fields. |
+
+##### Date element fields:
+
+| Character | Description                | Example                 |
+|-----------|----------------------------|-------------------------|
+| 'Y'*      | Full year.                 | 'YYYY' => '2017'        |
+| 'y'*      | Year of century (0〜±99). | 'yy' => '17'            |
+| 'M'*      | Month (1〜12)              | 'MM' => '11'            |
+| 'Mmm'     | Month abbreviation         | 'Mmm' => 'Nov'          |
+| 'Month'   | Month full name            | 'Month' => 'November'   |
+| 'D'*      | Day of month (1〜31)       | 'DD' => '05'            |
+| 'H'*      | Hours (0〜23)              | 'HH' => '14'            |
+| 'm'*      | Minutes (0〜59)            | 'mm' => '45'            |
+| 's'*      | Seconds (0〜59)            | 'ss' => '06'            |
+| 'S'*      | Hours (0〜59)              | 'SSS' => '023'          |
+| 'Www'     | Week abbreviation          | 'Www' => 'Sun'          |
+| 'Week'    | Week full name             | 'Week' => 'Sunday'      |
+
+#### Returns:
+
+A formatted string which represents the specified date.
+
+**Type:** string
+
+
+----
+### <u>formatNumber(format [, rounding]) : function</u>
+
+Creates a number format function which convert a number to a string in the specified format.
+
+#### Parameters:
+
+| Parameter |   Type   | Description                                      |
+|-----------|:--------:|--------------------------------------------------|
+| format    | string   | A number format string as follows.               |
+| rounding  | function | A rounding function. (Optional, and `Math.round` in default.) |
+
+##### Number format
+
+The regular expression of number format is as follows:
+
+`/^([\+\-]?)(9?)([^0-9]*)(9*)([^0-9]*)(0*)$/`
+
+* `([\+\-]?)` represents signs.
+* `(9?)([^0-9]*)(9*)` represents integer part, and `([^0-9]*)` in it represents place separator.
+* `([^0-9]*)(0*)` represents decimal part, and `([^0-9]*)` in it represents decimal point.
+
+Following table is a set of examples of number formats:
+
+| Format     | Example (positive) | Example (negative) |
+|------------|--------------------|--------------------|
+| `'+9'`     | `123.4 => '+123'`  | `-123.4 => '-123'` |
+| `'-9'`     | `123.4 => '123'`   | `-123.4 => '-123'` |
+| `'9'`      | `123.4 => '123'`   | `-123.4 => '123'`  |
+| `'+9.000'` | `123.4 => '+123.400'` | `-123.4 => '-123.400'` |
+| `'-9.000'` | `123.4 => '123.400'`  | `-123.4 => '-123.400'` |
+| `'9.000'`  | `123.4 => '123.400'`  | `-123.4 => '123.400'`  |
+| `'+9,999'` | `1234.1 => '+1,234'`  | `-1234.1 => '-1,234'`  |
+| `'-9 99'`  | `1234.1 => '12 34'`   | `-1234.1 => '-12 34'`  |
+| `'9_9999'` | `12345.1 => '1_2345'` | `-12345.1 => '1_2345'` |
+| `'+9,999.000'` | `12345.1` => `'+12,345.100'` | `-12345.1 => '-12,345.100'` |
+| `'-9.999,000'` | `12345.1` => `'12.345,100'`  | `-12345.1 => '-12.345,100'` |
+| `'9 999.000'`  | `12345.1` => `'12 345.100'`  | `-12345.1 => '12 345.100'`  |
+
+#### Returns:
+
+A formatted string which represents the specified date.
+
+**Type:** string
+
+
+----
 ### <u>isArray(value) : boolean</u>
 
 Checks if *value* is an array.
@@ -17,6 +173,24 @@ Checks if *value* is an array.
 #### Return:
 
 True, if *value* is an array.
+
+**Type:** boolean
+
+### <u>isArray.not(value) : boolean</u>
+
+Checks if *value* is not an array.
+
+> This function returns true for typed-arrays, e.g. Int16Array.
+
+#### Parameter:
+
+| Parameter |  Type  | Description               |
+|-----------|:------:|---------------------------|
+| value     | *any*  | The value to be checked.  |
+
+#### Return:
+
+True, if *value* is not an array.
 
 **Type:** boolean
 
@@ -36,7 +210,7 @@ Definition of "empty" is different by data type.
 * **HTMLCollection:** empty if it has no element.
 * <i>**others:**</i> always not empty.
 
-> This function always return false for other collections like Map, Set, typed-array and so on, because I think there are few needs to check them without knowing their data types. If data type of a collection is known, its own API to get size of itself should be used.
+> This function always returns false for other collections like Map, Set, typed-array and so on, because I think there are few needs to check them without knowing their data types. If data type of a collection is known, its own API to get size of itself should be used.
 
 #### Parameter:
 
@@ -47,6 +221,25 @@ Definition of "empty" is different by data type.
 #### Return:
 
 True, if *value* is empty.
+
+**Type:** boolean
+
+
+### <u>isEmpty.not(value) : boolean</u>
+
+Checks if *value* is not empty.
+
+This function always returns a negative boolean of `isEmpty(value)`.
+
+#### Parameter:
+
+| Parameter |  Type  | Description             |
+|-----------|:------:|-------------------------|
+| value     | *any*  | The value to be checked |
+
+#### Return:
+
+True, if *value* is not empty.
 
 **Type:** boolean
 
@@ -69,6 +262,25 @@ True, if *value* is a finite number.
 **Type:** boolean
 
 
+### <u>isFiniteNumber.not(value) : boolean</u>
+
+Checks if *value* is not a finite number.
+
+This function always returns a negative boolean of `isFiniteNumber(value)`.
+
+#### Parameter:
+
+| Parameter |  Type  | Description              |
+|-----------|:------:|--------------------------|
+| value     | *any*  | The value to be checked. |
+
+#### Return:
+
+True, if *value* is not a finite number.
+
+**Type:** boolean
+
+
 ----
 ### <u>isFunction(value) : boolean</u>
 
@@ -83,6 +295,25 @@ Checks if *value* is a function.
 #### Return:
 
 True, if *value* is a function.
+
+**Type:** boolean
+
+
+### <u>isFunction.not(value) : boolean</u>
+
+Checks if *value* is not a function.
+
+This function always returns a negative boolean of `isFunction(value)`.
+
+#### Parameter:
+
+| Parameter |  Type  | Description                 |
+|-----------|:------:|-----------------------------|
+| value     | *any*  | The value to be checked.    |
+
+#### Return:
+
+True, if *value* is not a function.
 
 **Type:** boolean
 
@@ -105,6 +336,25 @@ True, if *value* is an integer.
 **Type:** boolean
 
 
+### <u>isInteger.not(value) : boolean</u>
+
+Checks if *value* is not an integer.
+
+This function always returns a negative boolean of `isInteger(value)`.
+
+#### Parameter:
+
+| Parameter |  Type  | Description              |
+|-----------|:------:|--------------------------|
+| value     | *any*  | The value to be checked. |
+
+#### Return:
+
+True, if *value* is not an integer.
+
+**Type:** boolean
+
+
 ----
 ### <u>isPlainObject(value) : boolean</u>
 
@@ -119,6 +369,25 @@ Checks if *value* is a plain object.
 #### Return:
 
 True, if *value* is a plain object.
+
+**Type:** boolean
+
+
+### <u>isPlainObject.not(value) : boolean</u>
+
+Checks if *value* is not a plain object.
+
+This function always returns a negative boolean of `isPlainObject(value)`.
+
+#### Parameter:
+
+| Parameter |  Type  | Description              |
+|-----------|:------:|--------------------------|
+| value     | *any*  | The value to be checked. |
+
+#### Return:
+
+True, if *value* is not a plain object.
 
 **Type:** boolean
 
@@ -141,6 +410,25 @@ True, if *value* is a string.
 **Type:** boolean
 
 
+### <u>isString.not(value) : boolean</u>
+
+Checks if *value* is not an string.
+
+This function always returns a negative boolean of `isString(value)`.
+
+#### Parameter:
+
+| Parameter |  Type  | Description               |
+|-----------|:------:|---------------------------|
+| value     | *any*  | The value to be checked.  |
+
+#### Return:
+
+True, if *value* is not a string.
+
+**Type:** boolean
+
+
 ----
 ### <u>isValidDate(value) : boolean</u>
 
@@ -159,11 +447,52 @@ True, if *value* is a valid date.
 **Type:** boolean
 
 
+### <u>isValidDate.not(value) : boolean</u>
+
+Checks if *value* is not a valid date object.
+
+This function always returns a negative boolean of `isValidDate(value)`.
+
+#### Parameter:
+
+| Parameter |  Type  | Description              |
+|-----------|:------:|--------------------------|
+| value     | *any*  | The value to be checked. |
+
+#### Return:
+
+True, if *value* is not a valid date.
+
+**Type:** boolean
+
+
 ----
-### <u>toDate : object</u>
+### <u>toDate([ year ][, month ][, day ][, hour ][, min ][, sec ][, msec ])  : Date</u>
 
-Is a set of functions to convert a date format string to a date object.
+Creates a Date object which represents a moment in time.
 
+#### Parameters:
+
+| Parameter |  Type  | Description                              |
+|-----------|:------:|------------------------------------------|
+| year      | number | An integer value represents a full year. This can be specified a year before 1900. (Optional) |
+| month     | number | An integer value represents a month, beginning with 0 for January to 11 for December. (Optional) |
+| day       | number | An integer value represents a day. (Optional) |
+| hour      | number | An integer value represents a hour. (Optional) |
+| min       | number | An integer value represents a minute. (Optional) |
+| sec       | number | An integer value represents a second. (Optional.) |
+| msec      | number | An integer value represents a millisecond. (Optional.) | 
+
+Each element of date and time is set to the first value (zero, or one) if any leading elements are specified but the element is not specified, or is set to the current value if every leading elements and the element are not specified.
+
+#### Returns:
+
+A date object which represents the specified date.
+
+**Type:** Date
+
+
+In addition, this function has a set of functions to convert a date format string to a date object as its properties.
 This function set provides functions supporting following date formats:
 
 - [Y-M-D](#hyphened_ymd)

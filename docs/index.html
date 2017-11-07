@@ -9,6 +9,310 @@
 <body>
 <h1 id="-fav-type-repo-url-ver-0-7-0-api-document"><a href="https://github.com/sttk/fav-type/">@fav/type</a> ver. 0.7.0 - API document</h1>
 <hr>
+<h3 id="-u-padleft-source-length-padding-string-u-"><u>padLeft(source, [, length ] [, padding ]) : string</u></h3>
+<p>Pads <em>padding</em> on left side of <em>source</em>.</p>
+<p>If <em>length</em> is less than the length of <em>source</em>, return <em>source</em> with no padding.</p>
+<p>If <em>padding</em> is not specified, this function use a white space (<code>&#39;\u0020&#39;</code>) as a padding.</p>
+<p><strong>NOTE:</strong> This function doesn&#39;t check data types of the arguments, and assumes that they are given as per the specific data type.</p>
+<h4 id="parameter-">Parameter:</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>source</td>
+<td>string</td>
+<td>The source string.</td>
+</tr>
+<tr>
+<td>length</td>
+<td>number</td>
+<td>The length of the result text. (Optional, and <code>source.length</code> in default.)</td>
+</tr>
+<tr>
+<td>padding</td>
+<td>string</td>
+<td>The padding characters. (Optional, and <code>&#39; &#39;</code> in default.)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="return-">Return:</h4>
+<p>The padded string.</p>
+<p><strong>Type:</strong> string</p>
+<hr>
+<h3 id="-u-padright-source-length-padding-string-u-"><u>padRight(source, [, length ] [, padding ]) : string</u></h3>
+<p>Pads <em>padding</em> on right side of <em>source</em>.</p>
+<p>If <em>length</em> is less than the length of <em>source</em>, return <em>source</em> with no padding.</p>
+<p>If <em>padding</em> is not specified, this function use a white space (<code>&#39;\u0020&#39;</code>) as a padding.</p>
+<p><strong>NOTE:</strong> This function doesn&#39;t check data types of the arguments, and assumes that they are given as per the specific data type.</p>
+<h4 id="parameter-">Parameter:</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>source</td>
+<td>string</td>
+<td>The source string.</td>
+</tr>
+<tr>
+<td>length</td>
+<td>number</td>
+<td>The length of the result text. (Optional, and <code>source.length</code> in default.</td>
+</tr>
+<tr>
+<td>padding</td>
+<td>string</td>
+<td>The padding characters. (Optional, and <code>&#39; &#39;</code> in default.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="return-">Return:</h4>
+<p>The padded string.</p>
+<p><strong>Type:</strong> string</p>
+<hr>
+<h3 id="-u-repeat-source-ntimes-string-u-"><u>repeat(source, ntimes) : string</u></h3>
+<p>Repeat <em>source</em> <em>ntimes</em> times.</p>
+<p><strong>NOTE:</strong> This function doesn&#39;t check data types of the arguments, and assumes that they are given as per the specific data types.</p>
+<h4 id="parameter-">Parameter:</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th style="text-align:center">Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>source</td>
+<td style="text-align:center">string</td>
+<td>The string to repeat.</td>
+</tr>
+<tr>
+<td>ntimes</td>
+<td style="text-align:center">number</td>
+<td>The number of times to repeat.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="return-">Return:</h4>
+<p>The repeated string.</p>
+<p><strong>Type:</strong> string</p>
+<hr>
+<h3 id="-u-formatdate-format-function-u-"><u>formatDate(format) : function</u></h3>
+<p>Creates a date format function which convert a date to a string in the specified format.</p>
+<h4 id="parameters-">Parameters:</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th style="text-align:center">Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>format</td>
+<td style="text-align:center">string</td>
+<td>A date format string, which consists of the following date element fields.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="date-element-fields-">Date element fields:</h5>
+<table>
+<thead>
+<tr>
+<th>Character</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#39;Y&#39;*</td>
+<td>Full year.</td>
+<td>&#39;YYYY&#39; =&gt; &#39;2017&#39;</td>
+</tr>
+<tr>
+<td>&#39;y&#39;*</td>
+<td>Year of century (0〜±99).</td>
+<td>&#39;yy&#39; =&gt; &#39;17&#39;</td>
+</tr>
+<tr>
+<td>&#39;M&#39;*</td>
+<td>Month (1〜12)</td>
+<td>&#39;MM&#39; =&gt; &#39;11&#39;</td>
+</tr>
+<tr>
+<td>&#39;Mmm&#39;</td>
+<td>Month abbreviation</td>
+<td>&#39;Mmm&#39; =&gt; &#39;Nov&#39;</td>
+</tr>
+<tr>
+<td>&#39;Month&#39;</td>
+<td>Month full name</td>
+<td>&#39;Month&#39; =&gt; &#39;November&#39;</td>
+</tr>
+<tr>
+<td>&#39;D&#39;*</td>
+<td>Day of month (1〜31)</td>
+<td>&#39;DD&#39; =&gt; &#39;05&#39;</td>
+</tr>
+<tr>
+<td>&#39;H&#39;*</td>
+<td>Hours (0〜23)</td>
+<td>&#39;HH&#39; =&gt; &#39;14&#39;</td>
+</tr>
+<tr>
+<td>&#39;m&#39;*</td>
+<td>Minutes (0〜59)</td>
+<td>&#39;mm&#39; =&gt; &#39;45&#39;</td>
+</tr>
+<tr>
+<td>&#39;s&#39;*</td>
+<td>Seconds (0〜59)</td>
+<td>&#39;ss&#39; =&gt; &#39;06&#39;</td>
+</tr>
+<tr>
+<td>&#39;S&#39;*</td>
+<td>Hours (0〜59)</td>
+<td>&#39;SSS&#39; =&gt; &#39;023&#39;</td>
+</tr>
+<tr>
+<td>&#39;Www&#39;</td>
+<td>Week abbreviation</td>
+<td>&#39;Www&#39; =&gt; &#39;Sun&#39;</td>
+</tr>
+<tr>
+<td>&#39;Week&#39;</td>
+<td>Week full name</td>
+<td>&#39;Week&#39; =&gt; &#39;Sunday&#39;</td>
+</tr>
+</tbody>
+</table>
+<h4 id="returns-">Returns:</h4>
+<p>A formatted string which represents the specified date.</p>
+<p><strong>Type:</strong> string</p>
+<hr>
+<h3 id="-u-formatnumber-format-rounding-function-u-"><u>formatNumber(format [, rounding]) : function</u></h3>
+<p>Creates a number format function which convert a number to a string in the specified format.</p>
+<h4 id="parameters-">Parameters:</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th style="text-align:center">Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>format</td>
+<td style="text-align:center">string</td>
+<td>A number format string as follows.</td>
+</tr>
+<tr>
+<td>rounding</td>
+<td style="text-align:center">function</td>
+<td>A rounding function. (Optional, and <code>Math.round</code> in default.)</td>
+</tr>
+</tbody>
+</table>
+<h5 id="number-format">Number format</h5>
+<p>The regular expression of number format is as follows:</p>
+<p><code>/^([\+\-]?)(9?)([^0-9]*)(9*)([^0-9]*)(0*)$/</code></p>
+<ul>
+<li><code>([\+\-]?)</code> represents signs.</li>
+<li><code>(9?)([^0-9]*)(9*)</code> represents integer part, and <code>([^0-9]*)</code> in it represents place separator.</li>
+<li><code>([^0-9]*)(0*)</code> represents decimal part, and <code>([^0-9]*)</code> in it represents decimal point.</li>
+</ul>
+<p>Following table is a set of examples of number formats:</p>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Example (positive)</th>
+<th>Example (negative)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&#39;+9&#39;</code></td>
+<td><code>123.4 =&gt; &#39;+123&#39;</code></td>
+<td><code>-123.4 =&gt; &#39;-123&#39;</code></td>
+</tr>
+<tr>
+<td><code>&#39;-9&#39;</code></td>
+<td><code>123.4 =&gt; &#39;123&#39;</code></td>
+<td><code>-123.4 =&gt; &#39;-123&#39;</code></td>
+</tr>
+<tr>
+<td><code>&#39;9&#39;</code></td>
+<td><code>123.4 =&gt; &#39;123&#39;</code></td>
+<td><code>-123.4 =&gt; &#39;123&#39;</code></td>
+</tr>
+<tr>
+<td><code>&#39;+9.000&#39;</code></td>
+<td><code>123.4 =&gt; &#39;+123.400&#39;</code></td>
+<td><code>-123.4 =&gt; &#39;-123.400&#39;</code></td>
+</tr>
+<tr>
+<td><code>&#39;-9.000&#39;</code></td>
+<td><code>123.4 =&gt; &#39;123.400&#39;</code></td>
+<td><code>-123.4 =&gt; &#39;-123.400&#39;</code></td>
+</tr>
+<tr>
+<td><code>&#39;9.000&#39;</code></td>
+<td><code>123.4 =&gt; &#39;123.400&#39;</code></td>
+<td><code>-123.4 =&gt; &#39;123.400&#39;</code></td>
+</tr>
+<tr>
+<td><code>&#39;+9,999&#39;</code></td>
+<td><code>1234.1 =&gt; &#39;+1,234&#39;</code></td>
+<td><code>-1234.1 =&gt; &#39;-1,234&#39;</code></td>
+</tr>
+<tr>
+<td><code>&#39;-9 99&#39;</code></td>
+<td><code>1234.1 =&gt; &#39;12 34&#39;</code></td>
+<td><code>-1234.1 =&gt; &#39;-12 34&#39;</code></td>
+</tr>
+<tr>
+<td><code>&#39;9_9999&#39;</code></td>
+<td><code>12345.1 =&gt; &#39;1_2345&#39;</code></td>
+<td><code>-12345.1 =&gt; &#39;1_2345&#39;</code></td>
+</tr>
+<tr>
+<td><code>&#39;+9,999.000&#39;</code></td>
+<td><code>12345.1</code> =&gt; <code>&#39;+12,345.100&#39;</code></td>
+<td><code>-12345.1 =&gt; &#39;-12,345.100&#39;</code></td>
+</tr>
+<tr>
+<td><code>&#39;-9.999,000&#39;</code></td>
+<td><code>12345.1</code> =&gt; <code>&#39;12.345,100&#39;</code></td>
+<td><code>-12345.1 =&gt; &#39;-12.345,100&#39;</code></td>
+</tr>
+<tr>
+<td><code>&#39;9 999.000&#39;</code></td>
+<td><code>12345.1</code> =&gt; <code>&#39;12 345.100&#39;</code></td>
+<td><code>-12345.1 =&gt; &#39;12 345.100&#39;</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="returns-">Returns:</h4>
+<p>A formatted string which represents the specified date.</p>
+<p><strong>Type:</strong> string</p>
+<hr>
 <h3 id="-u-isarray-value-boolean-u-"><u>isArray(value) : boolean</u></h3>
 <p>Checks if <em>value</em> is an array.</p>
 <blockquote>
@@ -34,6 +338,31 @@
 <h4 id="return-">Return:</h4>
 <p>True, if <em>value</em> is an array.</p>
 <p><strong>Type:</strong> boolean</p>
+<h3 id="-u-isarray-not-value-boolean-u-"><u>isArray.not(value) : boolean</u></h3>
+<p>Checks if <em>value</em> is not an array.</p>
+<blockquote>
+<p>This function returns true for typed-arrays, e.g. Int16Array.</p>
+</blockquote>
+<h4 id="parameter-">Parameter:</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th style="text-align:center">Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td style="text-align:center"><em>any</em></td>
+<td>The value to be checked.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="return-">Return:</h4>
+<p>True, if <em>value</em> is not an array.</p>
+<p><strong>Type:</strong> boolean</p>
 <hr>
 <h3 id="-u-isempty-value-boolean-u-"><u>isEmpty(value) : boolean</u></h3>
 <p>Checks if <em>value</em> is empty.</p>
@@ -48,7 +377,7 @@
 <li><i><strong>others:</strong></i> always not empty.</li>
 </ul>
 <blockquote>
-<p>This function always return false for other collections like Map, Set, typed-array and so on, because I think there are few needs to check them without knowing their data types. If data type of a collection is known, its own API to get size of itself should be used.</p>
+<p>This function always returns false for other collections like Map, Set, typed-array and so on, because I think there are few needs to check them without knowing their data types. If data type of a collection is known, its own API to get size of itself should be used.</p>
 </blockquote>
 <h4 id="parameter-">Parameter:</h4>
 <table>
@@ -69,6 +398,29 @@
 </table>
 <h4 id="return-">Return:</h4>
 <p>True, if <em>value</em> is empty.</p>
+<p><strong>Type:</strong> boolean</p>
+<h3 id="-u-isempty-not-value-boolean-u-"><u>isEmpty.not(value) : boolean</u></h3>
+<p>Checks if <em>value</em> is not empty.</p>
+<p>This function always returns a negative boolean of <code>isEmpty(value)</code>.</p>
+<h4 id="parameter-">Parameter:</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th style="text-align:center">Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td style="text-align:center"><em>any</em></td>
+<td>The value to be checked</td>
+</tr>
+</tbody>
+</table>
+<h4 id="return-">Return:</h4>
+<p>True, if <em>value</em> is not empty.</p>
 <p><strong>Type:</strong> boolean</p>
 <hr>
 <h3 id="-u-isfinitenumber-value-boolean-u-"><u>isFiniteNumber(value) : boolean</u></h3>
@@ -93,6 +445,29 @@
 <h4 id="return-">Return:</h4>
 <p>True, if <em>value</em> is a finite number.</p>
 <p><strong>Type:</strong> boolean</p>
+<h3 id="-u-isfinitenumber-not-value-boolean-u-"><u>isFiniteNumber.not(value) : boolean</u></h3>
+<p>Checks if <em>value</em> is not a finite number.</p>
+<p>This function always returns a negative boolean of <code>isFiniteNumber(value)</code>.</p>
+<h4 id="parameter-">Parameter:</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th style="text-align:center">Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td style="text-align:center"><em>any</em></td>
+<td>The value to be checked.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="return-">Return:</h4>
+<p>True, if <em>value</em> is not a finite number.</p>
+<p><strong>Type:</strong> boolean</p>
 <hr>
 <h3 id="-u-isfunction-value-boolean-u-"><u>isFunction(value) : boolean</u></h3>
 <p>Checks if <em>value</em> is a function.</p>
@@ -115,6 +490,29 @@
 </table>
 <h4 id="return-">Return:</h4>
 <p>True, if <em>value</em> is a function.</p>
+<p><strong>Type:</strong> boolean</p>
+<h3 id="-u-isfunction-not-value-boolean-u-"><u>isFunction.not(value) : boolean</u></h3>
+<p>Checks if <em>value</em> is not a function.</p>
+<p>This function always returns a negative boolean of <code>isFunction(value)</code>.</p>
+<h4 id="parameter-">Parameter:</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th style="text-align:center">Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td style="text-align:center"><em>any</em></td>
+<td>The value to be checked.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="return-">Return:</h4>
+<p>True, if <em>value</em> is not a function.</p>
 <p><strong>Type:</strong> boolean</p>
 <hr>
 <h3 id="-u-isinteger-value-boolean-u-"><u>isInteger(value) : boolean</u></h3>
@@ -139,6 +537,29 @@
 <h4 id="return-">Return:</h4>
 <p>True, if <em>value</em> is an integer.</p>
 <p><strong>Type:</strong> boolean</p>
+<h3 id="-u-isinteger-not-value-boolean-u-"><u>isInteger.not(value) : boolean</u></h3>
+<p>Checks if <em>value</em> is not an integer.</p>
+<p>This function always returns a negative boolean of <code>isInteger(value)</code>.</p>
+<h4 id="parameter-">Parameter:</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th style="text-align:center">Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td style="text-align:center"><em>any</em></td>
+<td>The value to be checked.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="return-">Return:</h4>
+<p>True, if <em>value</em> is not an integer.</p>
+<p><strong>Type:</strong> boolean</p>
 <hr>
 <h3 id="-u-isplainobject-value-boolean-u-"><u>isPlainObject(value) : boolean</u></h3>
 <p>Checks if <em>value</em> is a plain object.</p>
@@ -161,6 +582,29 @@
 </table>
 <h4 id="return-">Return:</h4>
 <p>True, if <em>value</em> is a plain object.</p>
+<p><strong>Type:</strong> boolean</p>
+<h3 id="-u-isplainobject-not-value-boolean-u-"><u>isPlainObject.not(value) : boolean</u></h3>
+<p>Checks if <em>value</em> is not a plain object.</p>
+<p>This function always returns a negative boolean of <code>isPlainObject(value)</code>.</p>
+<h4 id="parameter-">Parameter:</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th style="text-align:center">Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td style="text-align:center"><em>any</em></td>
+<td>The value to be checked.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="return-">Return:</h4>
+<p>True, if <em>value</em> is not a plain object.</p>
 <p><strong>Type:</strong> boolean</p>
 <hr>
 <h3 id="-u-isstring-value-boolean-u-"><u>isString(value) : boolean</u></h3>
@@ -185,6 +629,29 @@
 <h4 id="return-">Return:</h4>
 <p>True, if <em>value</em> is a string.</p>
 <p><strong>Type:</strong> boolean</p>
+<h3 id="-u-isstring-not-value-boolean-u-"><u>isString.not(value) : boolean</u></h3>
+<p>Checks if <em>value</em> is not an string.</p>
+<p>This function always returns a negative boolean of <code>isString(value)</code>.</p>
+<h4 id="parameter-">Parameter:</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th style="text-align:center">Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td style="text-align:center"><em>any</em></td>
+<td>The value to be checked.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="return-">Return:</h4>
+<p>True, if <em>value</em> is not a string.</p>
+<p><strong>Type:</strong> boolean</p>
 <hr>
 <h3 id="-u-isvaliddate-value-boolean-u-"><u>isValidDate(value) : boolean</u></h3>
 <p>Checks if <em>value</em> is a valid date object.</p>
@@ -208,10 +675,85 @@
 <h4 id="return-">Return:</h4>
 <p>True, if <em>value</em> is a valid date.</p>
 <p><strong>Type:</strong> boolean</p>
+<h3 id="-u-isvaliddate-not-value-boolean-u-"><u>isValidDate.not(value) : boolean</u></h3>
+<p>Checks if <em>value</em> is not a valid date object.</p>
+<p>This function always returns a negative boolean of <code>isValidDate(value)</code>.</p>
+<h4 id="parameter-">Parameter:</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th style="text-align:center">Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td style="text-align:center"><em>any</em></td>
+<td>The value to be checked.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="return-">Return:</h4>
+<p>True, if <em>value</em> is not a valid date.</p>
+<p><strong>Type:</strong> boolean</p>
 <hr>
-<h3 id="-u-todate-object-u-"><u>toDate : object</u></h3>
-<p>Is a set of functions to convert a date format string to a date object.</p>
-<p>This function set provides functions supporting following date formats:</p>
+<h3 id="-u-todate-year-month-day-hour-min-sec-msec-date-u-"><u>toDate([ year ][, month ][, day ][, hour ][, min ][, sec ][, msec ])  : Date</u></h3>
+<p>Creates a Date object which represents a moment in time.</p>
+<h4 id="parameters-">Parameters:</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th style="text-align:center">Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>year</td>
+<td style="text-align:center">number</td>
+<td>An integer value represents a full year. This can be specified a year before 1900. (Optional)</td>
+</tr>
+<tr>
+<td>month</td>
+<td style="text-align:center">number</td>
+<td>An integer value represents a month, beginning with 0 for January to 11 for December. (Optional)</td>
+</tr>
+<tr>
+<td>day</td>
+<td style="text-align:center">number</td>
+<td>An integer value represents a day. (Optional)</td>
+</tr>
+<tr>
+<td>hour</td>
+<td style="text-align:center">number</td>
+<td>An integer value represents a hour. (Optional)</td>
+</tr>
+<tr>
+<td>min</td>
+<td style="text-align:center">number</td>
+<td>An integer value represents a minute. (Optional)</td>
+</tr>
+<tr>
+<td>sec</td>
+<td style="text-align:center">number</td>
+<td>An integer value represents a second. (Optional.)</td>
+</tr>
+<tr>
+<td>msec</td>
+<td style="text-align:center">number</td>
+<td>An integer value represents a millisecond. (Optional.)</td>
+</tr>
+</tbody>
+</table>
+<p>Each element of date and time is set to the first value (zero, or one) if any leading elements are specified but the element is not specified, or is set to the current value if every leading elements and the element are not specified.</p>
+<h4 id="returns-">Returns:</h4>
+<p>A date object which represents the specified date.</p>
+<p><strong>Type:</strong> Date</p>
+<p>In addition, this function has a set of functions to convert a date format string to a date object as its properties.
+This function set provides functions supporting following date formats:</p>
 <ul>
 <li><a href="#hyphened_ymd">Y-M-D</a></li>
 <li><a href="#hyphened_ymd_and_hms">Y-M-D H:m:s</a></li>

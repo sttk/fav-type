@@ -296,49 +296,60 @@ nav {
 }
 
 * {
-	-webkit-print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
 }
 @media screen and (min-width: 914px) {
-    body {
-        width: 854px;
-        margin:0 auto;
-    }
+  body {
+      width: 854px;
+      margin:0 auto;
+  }
 
-    nav {
-      display: block;
-      position: fixed;
-      border: solid #9ac 2px;
-      top: 20px;
-      left: calc(100% - 154px - 40px - 30px);
-    }
-    nav > div {
-      overflow: hidden;
-      border-top: solid #9ac 2px;
-      width: 150px;
-      padding: 5px 20px;
-      font-weight: bold;
-      background-color: #def;
-      cursor: pointer;
-    }
-    nav > div:hover {
-      background-color: #abc;
-    }
-    nav > input[type='text'] {
-      border: 0px;
-      width: 165px;
-      font-size: 12px;
-      padding: 5px 5px 5px 20px;
-    }
-    th {
-      background-color: #dde;
-    }
+  nav {
+    display: block;
+    position: fixed;
+    top: 20px;
+    left: calc(100% - 154px - 40px - 30px);
+  }
+  nav > div.nav-list {
+    border-bottom: solid #9ac 2px;
+    overflow-y: auto;
+    max-height: calc(100vh - 60px);
+    background-color: #ccc;
+  }
+  nav > div.nav-list > div {
+    overflow: hidden;
+    border-style: solid;
+    border-color: #9ac;
+    border-width: 0px 2px 2px 2px;
+    width: 150px;
+    padding: 4px 20px;
+    font-weight: bold;
+    background-color: #def;
+    cursor: pointer;
+  }
+  nav > div.nav-list > div:last-of-type {
+    border-bottom-width: 0px;
+  }
+  nav > div.nav-list > div:hover {
+    background-color: #abc;
+  }
+  nav > input[type='text'] {
+    border: solid #9ac 2px;
+    width: 165px;
+    font-size: 12px;
+    padding: 5px 5px 5px 20px;
+  }
+
+  th {
+    background-color: #dde;
+  }
 }
-*/
+
 @media print {
-	table, pre {
-		page-break-inside: avoid;
-	}
-	pre {
-		word-wrap: break-word;
-	}
+  table, pre {
+    page-break-inside: avoid;
+  }
+  pre {
+    word-wrap: break-word;
+  }
 }
