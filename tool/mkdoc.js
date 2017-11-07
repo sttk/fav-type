@@ -16,8 +16,15 @@ var mdfile = path.resolve(__dirname, '../docs/index.md');
 truncFile(mdfile);
 
 concatFile(mdheadfile, mdfile);
-listFiles(libdir).forEach(function(subprjdir) {
-  var readmefile = path.join(subprjdir, 'README.md');
+listFiles(libdir).filter(includeDirs).forEach(concatSubPackage);
+concatFile(mdfootfile, mdfile);
+
+function includeDirs(subpkgdir) {
+  return /@fav\/type\./.test(subpkgdir);
+}
+
+function concatSubPackage(subpkgdir) {
+  var readmefile = path.join(subpkgdir, 'README.md');
   concatFile(readmefile, mdfile, function(data) {
     var lines = data.split(/\n/);
     var apisection = false;
@@ -32,9 +39,7 @@ listFiles(libdir).forEach(function(subprjdir) {
       return apisection;
     }).concat('----').join('\n');
   });
-});
-
-concatFile(mdfootfile, mdfile);
+}
 
 
 var htmlfile = path.resolve(__dirname, '../docs/index.html');
