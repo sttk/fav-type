@@ -29,7 +29,7 @@ function concatSubPackage(subpkgdir) {
     var lines = data.split(/\n/);
     var apisection = false;
     return lines.filter(function(line) {
-      if (!apisection && line === "## API") {
+      if (!apisection && line === '## API') {
         apisection = true;
         return false;
       }
