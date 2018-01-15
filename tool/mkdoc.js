@@ -15,9 +15,14 @@ var mdfile = path.resolve(__dirname, '../docs/index.md');
 
 truncFile(mdfile);
 
-concatFile(mdheadfile, mdfile);
+concatFile(mdheadfile, mdfile, converter);
 listFiles(libdir).filter(includeDirs).forEach(concatSubPackage);
 concatFile(mdfootfile, mdfile);
+
+function converter(data) {
+  var version = require('../package.json').version;
+  return data.replace(/%%API_VERSION%%/, version);
+}
 
 function includeDirs(subpkgdir) {
   return /@fav\/type\./.test(subpkgdir);
