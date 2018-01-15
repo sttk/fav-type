@@ -2,7 +2,6 @@
 
 var chai = require('chai');
 var expect = chai.expect;
-
 var fav = {}; fav.type = require('..');
 
 var toInteger = fav.type.toInteger;

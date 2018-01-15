@@ -3,7 +3,6 @@
 var chai = require('chai');
 var expect = chai.expect;
 var semver = require('semver');
-
 var fav = {}; fav.type = require('..');
 
 var isNotFunction = fav.type.isFunction.not;

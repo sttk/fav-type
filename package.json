@@ -38,7 +38,7 @@
   },
   "homepage": "https://github.com/sttk/fav-type#readme",
   "devDependencies": {
-    "@xslet/platform": "^0.1.5",
+    "@xslet/platform": "^0.2.0",
     "browserify": "^14.4.0",
     "chai": "^3.5.0",
     "coveralls": "^2.13.1",
@@ -50,18 +50,18 @@
     "uglify-js": "^3.0.26"
   },
   "dependencies": {
-    "@fav/type.format-date": "^0.1.1",
-    "@fav/type.format-number": "^0.1.0",
-    "@fav/type.is-array": "^0.7.0",
-    "@fav/type.is-empty": "^0.7.0",
-    "@fav/type.is-finite-number": "^0.7.0",
-    "@fav/type.is-function": "^0.7.0",
-    "@fav/type.is-integer": "^0.7.0",
-    "@fav/type.is-plain-object": "^0.7.0",
-    "@fav/type.is-string": "^0.7.0",
-    "@fav/type.is-valid-date": "^0.9.0",
-    "@fav/type.to-date": "^0.8.0",
-    "@fav/type.to-finite-number": "^0.7.2",
-    "@fav/type.to-integer": "^0.7.1"
+    "@fav/type.format-date": "^1.0.0",
+    "@fav/type.format-number": "^1.0.0",
+    "@fav/type.is-array": "^1.0.0",
+    "@fav/type.is-empty": "^1.0.0",
+    "@fav/type.is-finite-number": "^1.0.0",
+    "@fav/type.is-function": "^1.0.0",
+    "@fav/type.is-integer": "^1.0.0",
+    "@fav/type.is-plain-object": "^1.0.0",
+    "@fav/type.is-string": "^1.0.0",
+    "@fav/type.is-valid-date": "^1.0.0",
+    "@fav/type.to-date": "^1.0.0",
+    "@fav/type.to-finite-number": "^1.0.0",
+    "@fav/type.to-integer": "^1.0.0"
   }
 }
