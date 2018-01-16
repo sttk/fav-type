@@ -35,7 +35,23 @@ Object.defineProperties(type, {
 
 module.exports = type;
 
-},{"@fav/type.format-date":5,"@fav/type.format-number":16,"@fav/type.is-array":26,"@fav/type.is-empty":27,"@fav/type.is-finite-number":30,"@fav/type.is-function":31,"@fav/type.is-integer":32,"@fav/type.is-plain-object":33,"@fav/type.is-string":34,"@fav/type.is-valid-date":35,"@fav/type.to-date":36,"@fav/type.to-finite-number":51,"@fav/type.to-integer":54}],2:[function(require,module,exports){
+},{"@fav/type.format-date":7,"@fav/type.format-number":16,"@fav/type.is-array":22,"@fav/type.is-empty":23,"@fav/type.is-finite-number":24,"@fav/type.is-function":25,"@fav/type.is-integer":26,"@fav/type.is-plain-object":27,"@fav/type.is-string":28,"@fav/type.is-valid-date":29,"@fav/type.to-date":30,"@fav/type.to-finite-number":43,"@fav/type.to-integer":44}],2:[function(require,module,exports){
+'use strict';
+
+var padLeft;
+
+/* istanbul ignore if */
+if (!Boolean(String.prototype.padStart)) {
+  padLeft = require('./lib/pad-left');
+} else {
+  padLeft = function(source, length, padding) {
+    return source.padStart(length, padding || ' ');
+  };
+}
+
+module.exports = padLeft;
+
+},{"./lib/pad-left":3}],3:[function(require,module,exports){
 'use strict';
 
 var repeat = require('@fav/text.repeat');
@@ -58,7 +74,23 @@ function padLeft(source, length, padding) {
 
 module.exports = padLeft;
 
-},{"@fav/text.repeat":4}],3:[function(require,module,exports){
+},{"@fav/text.repeat":6}],4:[function(require,module,exports){
+'use strict';
+
+var padRight;
+
+/* istanbul ignore if */
+if (!Boolean(String.prototype.padEnd)) {
+  padRight = require('./lib/pad-right');
+} else {
+  padRight = function(source, length, padding) {
+    return source.padEnd(length, padding || ' ');
+  };
+}
+
+module.exports = padRight;
+
+},{"./lib/pad-right":5}],5:[function(require,module,exports){
 'use strict';
 
 var repeat = require('@fav/text.repeat');
@@ -81,7 +113,7 @@ function padRight(source, length, padding) {
 
 module.exports = padRight;
 
-},{"@fav/text.repeat":4}],4:[function(require,module,exports){
+},{"@fav/text.repeat":6}],6:[function(require,module,exports){
 'use strict';
 
 function repeat(source, ntimes) {
@@ -92,7 +124,8 @@ function repeat(source, ntimes) {
   var unitlen = source.length;
   var halftime = Math.ceil(ntimes / 2);
 
-  for (var i = 1; i < halftime; i += i) {
+  var i;
+  for (i = 1; i < halftime; i += i) {
     source += source;
   }
 
@@ -101,7 +134,7 @@ function repeat(source, ntimes) {
 
 module.exports = repeat;
 
-},{}],5:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 'use strict';
 
 var isString = require('@fav/type.is-string');
@@ -191,7 +224,7 @@ function formatDate(format) {
       }
     }
   }
-  
+
   return function(date) {
     if (!isValidDate(date)) {
       return '';
@@ -216,7 +249,7 @@ function noop() {
 
 module.exports = formatDate;
 
-},{"./lib/day-formatter":6,"./lib/hour-formatter":7,"./lib/millisecond-formatter":8,"./lib/minute-formatter":9,"./lib/month-formatter":10,"./lib/second-formatter":11,"./lib/week-formatter":12,"./lib/year-formatter":13,"@fav/type.is-function":31,"@fav/type.is-string":14,"@fav/type.is-valid-date":15}],6:[function(require,module,exports){
+},{"./lib/day-formatter":8,"./lib/hour-formatter":9,"./lib/millisecond-formatter":10,"./lib/minute-formatter":11,"./lib/month-formatter":12,"./lib/second-formatter":13,"./lib/week-formatter":14,"./lib/year-formatter":15,"@fav/type.is-function":25,"@fav/type.is-string":28,"@fav/type.is-valid-date":29}],8:[function(require,module,exports){
 'use strict';
 
 var padLeft = require('@fav/text.pad-left');
@@ -229,7 +262,7 @@ function dayFormatter(format) {
 
 module.exports = dayFormatter;
 
-},{"@fav/text.pad-left":2}],7:[function(require,module,exports){
+},{"@fav/text.pad-left":2}],9:[function(require,module,exports){
 'use strict';
 
 var padLeft = require('@fav/text.pad-left');
@@ -242,7 +275,7 @@ function hourFormatter(format) {
 
 module.exports = hourFormatter;
 
-},{"@fav/text.pad-left":2}],8:[function(require,module,exports){
+},{"@fav/text.pad-left":2}],10:[function(require,module,exports){
 'use strict';
 
 var padLeft = require('@fav/text.pad-left');
@@ -255,7 +288,7 @@ function millisecondFormatter(format) {
 
 module.exports = millisecondFormatter;
 
-},{"@fav/text.pad-left":2}],9:[function(require,module,exports){
+},{"@fav/text.pad-left":2}],11:[function(require,module,exports){
 'use strict';
 
 var padLeft = require('@fav/text.pad-left');
@@ -268,7 +301,7 @@ function minuteFormatter(format) {
 
 module.exports = minuteFormatter;
 
-},{"@fav/text.pad-left":2}],10:[function(require,module,exports){
+},{"@fav/text.pad-left":2}],12:[function(require,module,exports){
 'use strict';
 
 var padLeft = require('@fav/text.pad-left');
@@ -329,7 +362,7 @@ monthFormatter.abbreviation = getAbbreviation;
 
 module.exports = monthFormatter;
 
-},{"@fav/text.pad-left":2}],11:[function(require,module,exports){
+},{"@fav/text.pad-left":2}],13:[function(require,module,exports){
 'use strict';
 
 var padLeft = require('@fav/text.pad-left');
@@ -342,7 +375,7 @@ function secondFormatter(format) {
 
 module.exports = secondFormatter;
 
-},{"@fav/text.pad-left":2}],12:[function(require,module,exports){
+},{"@fav/text.pad-left":2}],14:[function(require,module,exports){
 'use strict';
 
 function getFullname(date) {
@@ -382,7 +415,7 @@ var weekFormatter = {
 
 module.exports = weekFormatter;
 
-},{}],13:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 'use strict';
 
 var padLeft = require('@fav/text.pad-left');
@@ -407,54 +440,7 @@ yearFormatter.yearsOfCentury = yearsOfCentury;
 
 module.exports = yearFormatter;
 
-},{"@fav/text.pad-left":2}],14:[function(require,module,exports){
-'use strict';
-
-function isString(value) {
-  if (typeof value === 'string') {
-    return true;
-  }
-  if (Object.prototype.toString.call(value) === '[object String]') {
-    return true;
-  }
-  return false;
-}
-
-function isNotString(value) {
-  return !isString(value);
-}
-
-Object.defineProperty(isString, 'not', {
-  enumerable: true,
-  value: isNotString,
-});
-
-module.exports = isString;
-
-},{}],15:[function(require,module,exports){
-'use strict';
-
-function isValidDate(value) {
-  if (!(value instanceof Date)) {
-    return false;
-  }
-
-  var time = value.getTime();
-  return time === time;
-}
-
-function isNotValidDate(value) {
-  return !isValidDate(value);
-}
-
-Object.defineProperty(isValidDate, 'not', {
-  enumerable: true,
-  value: isNotValidDate,
-});
-
-module.exports = isValidDate;
-
-},{}],16:[function(require,module,exports){
+},{"@fav/text.pad-left":2}],16:[function(require,module,exports){
 'use strict';
 
 var isString = require('@fav/type.is-string');
@@ -484,7 +470,7 @@ function formatNumber(format, rounding) {
 
   var formatSign = signFormatter(parsed[1]);
 
-  var formatDecimal, intRounding
+  var formatDecimal, intRounding;
   if (parsed[5]) {
     formatDecimal = decimalFormatter(parsed[5], parsed[6].length, rounding);
     intRounding = toInteger;
@@ -518,7 +504,7 @@ function formatNumber(format, rounding) {
 
 module.exports = formatNumber;
 
-},{"./lib/decimal-formatter":17,"./lib/format-empty":18,"./lib/integer-formatter":19,"./lib/parse-format":20,"./lib/sign-formatter":21,"@fav/type.is-finite-number":30,"@fav/type.is-function":31,"@fav/type.is-string":22,"@fav/type.to-integer":23}],17:[function(require,module,exports){
+},{"./lib/decimal-formatter":17,"./lib/format-empty":18,"./lib/integer-formatter":19,"./lib/parse-format":20,"./lib/sign-formatter":21,"@fav/type.is-finite-number":24,"@fav/type.is-function":25,"@fav/type.is-string":28,"@fav/type.to-integer":44}],17:[function(require,module,exports){
 'use strict';
 
 var padRight = require('@fav/text.pad-right');
@@ -533,7 +519,7 @@ function decimalFormatter(decimalPoint, decimalLen, rounding) {
       return { roundUp: 0, text: decimalPoint + decimalPart };
     }
 
-    if (decimalPart.length == decimalLen) {
+    if (decimalPart.length === decimalLen) {
       return { roundUp: 0, text: decimalPoint + decimalPart };
     }
 
@@ -561,7 +547,7 @@ function decimalFormatter(decimalPoint, decimalLen, rounding) {
 
 module.exports = decimalFormatter;
 
-},{"@fav/text.pad-right":3}],18:[function(require,module,exports){
+},{"@fav/text.pad-right":4}],18:[function(require,module,exports){
 'use strict';
 
 function formatEmpty() {
@@ -572,8 +558,6 @@ module.exports = formatEmpty;
 
 },{}],19:[function(require,module,exports){
 'use strict';
-
-var formatEmpty = require('./format-empty');
 
 function integerFormatter(sep, place, rounding) {
   return function(num, roundUp) {
@@ -592,11 +576,11 @@ function integerFormatter(sep, place, rounding) {
 
 module.exports = integerFormatter;
 
-},{"./format-empty":18}],20:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 'use strict';
 
 function parseFormat(format) {
-  var parsed = /^([\+\-]?)(9?)([^0-9]*)(9*)([^0-9]*)(0*)$/.exec(format); 
+  var parsed = /^([\+\-]?)(9?)([^0-9]*)(9*)([^0-9]*)(0*)$/.exec(format);
   if (!parsed) {
     return null;
   }
@@ -649,62 +633,6 @@ function minusOnly(num) {
 module.exports = signFormatter;
 
 },{"./format-empty":18}],22:[function(require,module,exports){
-arguments[4][14][0].apply(exports,arguments)
-},{"dup":14}],23:[function(require,module,exports){
-'use strict';
-
-var isString = require('@fav/type.is-string');
-var isFiniteNumber = require('@fav/type.is-finite-number');
-
-function toInteger(value) {
-  if (isString(value)) {
-    value = parseFloat(value);
-  }
-
-  if (isFiniteNumber(value)) {
-    return value < 0 ? Math.ceil(value) : Math.floor(value);
-  }
-
-  if (arguments.length > 1) {
-    return arguments[1];
-  }
-
-  return NaN;
-}
-
-module.exports = toInteger;
-
-},{"@fav/type.is-finite-number":24,"@fav/type.is-string":25}],24:[function(require,module,exports){
-'use strict';
-
-function isFiniteNumber(value) {
-  if (typeof value === 'number') {
-    return isFinite(value);
-  }
-  if (Object.prototype.toString.call(value) === '[object Number]') {
-    return isFinite(value);
-  }
-  return false;
-}
-
-module.exports = isFiniteNumber;
-
-},{}],25:[function(require,module,exports){
-'use strict';
-
-function isString(value) {
-  if (typeof value === 'string') {
-    return true;
-  }
-  if (Object.prototype.toString.call(value) === '[object String]') {
-    return true;
-  }
-  return false;
-}
-
-module.exports = isString;
-
-},{}],26:[function(require,module,exports){
 'use strict';
 
 function isArray(value) {
@@ -722,7 +650,7 @@ Object.defineProperty(isArray, 'not', {
 
 module.exports = isArray;
 
-},{}],27:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 'use strict';
 
 var isArray = require('@fav/type.is-array');
@@ -748,7 +676,7 @@ function isEmpty(value) {
   switch (typeof HTMLCollection) {
     case 'object': // PhantomJS
     case 'function': {
-      if(value instanceof HTMLCollection) {
+      if (value instanceof HTMLCollection) {
         return value.length === 0;
       }
     }
@@ -778,43 +706,7 @@ Object.defineProperty(isEmpty, 'not', {
 
 module.exports = isEmpty;
 
-},{"@fav/type.is-array":28,"@fav/type.is-plain-object":29}],28:[function(require,module,exports){
-'use strict';
-
-function isArray(value) {
-  return Array.isArray(value);
-}
-
-module.exports = isArray;
-
-},{}],29:[function(require,module,exports){
-'use strict';
-
-function isPlainObject(value) {
-  if (typeof value !== 'object') {
-    return false;
-  }
-
-  if (Object.prototype.toString.call(value) !== '[object Object]') {
-    return false;
-  }
-
-  switch (Object.getPrototypeOf(value)) {
-    case Object.prototype: {
-      return true;
-    }
-    case null: {
-      return true;
-    }
-    default: {
-      return false;
-    }
-  }
-}
-
-module.exports = isPlainObject;
-
-},{}],30:[function(require,module,exports){
+},{"@fav/type.is-array":22,"@fav/type.is-plain-object":27}],24:[function(require,module,exports){
 'use strict';
 
 function isFiniteNumber(value) {
@@ -838,7 +730,7 @@ Object.defineProperty(isFiniteNumber, 'not', {
 
 module.exports = isFiniteNumber;
 
-},{}],31:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 'use strict';
 
 function isFunction(value) {
@@ -856,7 +748,7 @@ Object.defineProperty(isFunction, 'not', {
 
 module.exports = isFunction;
 
-},{}],32:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 'use strict';
 
 function isInteger(value) {
@@ -891,7 +783,7 @@ Object.defineProperty(isInteger, 'not', {
 
 module.exports = isInteger;
 
-},{}],33:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 'use strict';
 
 function isPlainObject(value) {
@@ -927,11 +819,54 @@ Object.defineProperty(isPlainObject, 'not', {
 
 module.exports = isPlainObject;
 
-},{}],34:[function(require,module,exports){
-arguments[4][14][0].apply(exports,arguments)
-},{"dup":14}],35:[function(require,module,exports){
-arguments[4][15][0].apply(exports,arguments)
-},{"dup":15}],36:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
+'use strict';
+
+function isString(value) {
+  if (typeof value === 'string') {
+    return true;
+  }
+  if (Object.prototype.toString.call(value) === '[object String]') {
+    return true;
+  }
+  return false;
+}
+
+function isNotString(value) {
+  return !isString(value);
+}
+
+Object.defineProperty(isString, 'not', {
+  enumerable: true,
+  value: isNotString,
+});
+
+module.exports = isString;
+
+},{}],29:[function(require,module,exports){
+'use strict';
+
+function isValidDate(value) {
+  if (!(value instanceof Date)) {
+    return false;
+  }
+
+  var time = value.getTime();
+  return time === time;
+}
+
+function isNotValidDate(value) {
+  return !isValidDate(value);
+}
+
+Object.defineProperty(isValidDate, 'not', {
+  enumerable: true,
+  value: isNotValidDate,
+});
+
+module.exports = isValidDate;
+
+},{}],30:[function(require,module,exports){
 'use strict';
 
 var newDate = require('./lib/new-date');
@@ -965,7 +900,7 @@ Object.defineProperties(toDate, {
 
 module.exports = toDate;
 
-},{"./lib/from-hyphened-ymd":38,"./lib/from-hyphened-ymd-and-hms":37,"./lib/from-iso8601":39,"./lib/from-rfc2822":40,"./lib/from-rfc3339":41,"./lib/from-slashed-ymd":43,"./lib/from-slashed-ymd-and-hms":42,"./lib/from-yymmdd":44,"./lib/from-yymmddhhmmss":45,"./lib/from-yyyymmdd":46,"./lib/from-yyyymmddhhmmss":47,"./lib/new-date":48}],37:[function(require,module,exports){
+},{"./lib/from-hyphened-ymd":32,"./lib/from-hyphened-ymd-and-hms":31,"./lib/from-iso8601":33,"./lib/from-rfc2822":34,"./lib/from-rfc3339":35,"./lib/from-slashed-ymd":37,"./lib/from-slashed-ymd-and-hms":36,"./lib/from-yymmdd":38,"./lib/from-yymmddhhmmss":39,"./lib/from-yyyymmdd":40,"./lib/from-yyyymmddhhmmss":41,"./lib/new-date":42}],31:[function(require,module,exports){
 'use strict';
 
 var isString = require('@fav/type.is-string');
@@ -978,7 +913,9 @@ function fromHyphenedYmdAndHms(text) {
     return null;
   }
 
+  /* eslint-disable max-len */
   var result = /^([\+\-]?[0-9]+)-([0-9]+)-([0-9]+)\s+([0-9]+):([0-9]+):([0-9]+)(\.[0-9]+){0,1}$/.exec(text);
+  /* eslint-enable max-len */
   if (!result) {
     return null;
   }
@@ -1003,7 +940,7 @@ function fromHyphenedYmdAndHms(text) {
 
 module.exports = fromHyphenedYmdAndHms;
 
-},{"./new-date":48,"@fav/type.is-string":49,"@fav/type.is-valid-date":50}],38:[function(require,module,exports){
+},{"./new-date":42,"@fav/type.is-string":28,"@fav/type.is-valid-date":29}],32:[function(require,module,exports){
 'use strict';
 
 var isString = require('@fav/type.is-string');
@@ -1031,7 +968,7 @@ function fromHyphenedYmd(text) {
 
 module.exports = fromHyphenedYmd;
 
-},{"./new-date":48,"@fav/type.is-string":49,"@fav/type.is-valid-date":50}],39:[function(require,module,exports){
+},{"./new-date":42,"@fav/type.is-string":28,"@fav/type.is-valid-date":29}],33:[function(require,module,exports){
 'use strict';
 
 var isString = require('@fav/type.is-string');
@@ -1091,7 +1028,7 @@ function parseBasicZone(time, zone) {
   if (zone[0] !== 'Z') {
     var zSign = (zone[1] === '-') ? -1 : 1;
     var zHour = parseInt(zone[2], 10) * zSign;
-    var zMinute = zone[3] ? parseInt(zone[3], 10) * zSign : 0; 
+    var zMinute = zone[3] ? parseInt(zone[3], 10) * zSign : 0;
 
     time[0] -= zHour;
     time[1] -= zMinute;
@@ -1108,7 +1045,7 @@ function parseExtendedZone(time, zone) {
   if (zone[0] !== 'Z') {
     var zSign = (zone[1] === '-') ? -1 : 1;
     var zHour = parseInt(zone[2], 10) * zSign;
-    var zMinute = zone[3] ? parseInt(zone[3].slice(1), 10) * zSign : 0; 
+    var zMinute = zone[3] ? parseInt(zone[3].slice(1), 10) * zSign : 0;
 
     time[0] -= zHour;
     time[1] -= zMinute;
@@ -1116,7 +1053,9 @@ function parseExtendedZone(time, zone) {
 }
 
 function fromExtendedCalendarDate(text) {
+  /* eslint-disable max-len */
   var result = /^([\+\-][0-9]{4,}|[0-9]{4})-([0-9]{2})-([0-9]{2})(T([0-9]{2}):([0-9]{2}):([0-9]{2})(Z|([\+\-])([0-9]{2})(:[0-9]{2})?|))?$/.exec(text);
+  /* eslint-enable max-len */
   if (!result) {
     return NaN;
   }
@@ -1147,7 +1086,9 @@ function fromExtendedCalendarDate(text) {
 }
 
 function fromExtendedOrdinalDate(text) {
+  /* eslint-disable max-len */
   var result = /^([\+\-][0-9]{4,}|[0-9]{4})-([0-9]{3})(T([0-9]{2}):([0-9]{2}):([0-9]{2})(Z|([\+\-])([0-9]{2})(:[0-9]{2})?|))?$/.exec(text);
+  /* eslint-enable max-len */
   if (!result) {
     return NaN;
   }
@@ -1177,7 +1118,9 @@ function fromExtendedOrdinalDate(text) {
 }
 
 function fromExtendedWeekDate(text) {
+  /* eslint-disable max-len */
   var result = /^([\+\-][0-9]{4,}|[0-9]{4})-W([0-9]{2})-([0-9]{1})(T([0-9]{2}):([0-9]{2}):([0-9]{2})(Z|([\+\-])([0-9]{2})(:[0-9]{2})?|))?$/.exec(text);
+  /* eslint-enable max-len */
   if (!result) {
     return NaN;
   }
@@ -1211,7 +1154,9 @@ function fromExtendedWeekDate(text) {
 }
 
 function fromBasicCalendarDate(text) {
+  /* eslint-disable max-len */
   var result = /^([\+\-][0-9]{4,}|[0-9]{4})([0-9]{2})([0-9]{2})(T([0-9]{2})([0-9]{2})([0-9]{2})(Z|([\+\-])([0-9]{2})([0-9]{2})?|))?$/.exec(text);
+  /* eslint-enable max-len */
   if (!result) {
     return NaN;
   }
@@ -1242,7 +1187,9 @@ function fromBasicCalendarDate(text) {
 }
 
 function fromBasicOrdinalDate(text) {
+  /* eslint-disable max-len */
   var result = /^([\+\-][0-9]{4,}|[0-9]{4})([0-9]{3})(T([0-9]{2})([0-9]{2})([0-9]{2})(Z|([\+\-])([0-9]{2})([0-9]{2})?|))?$/.exec(text);
+  /* eslint-enable max-len */
   if (!result) {
     return NaN;
   }
@@ -1272,7 +1219,9 @@ function fromBasicOrdinalDate(text) {
 }
 
 function fromBasicWeekDate(text) {
+  /* eslint-disable max-len */
   var result = /^([\+\-][0-9]{4,}|[0-9]{4})W([0-9]{2})([0-9]{1})(T([0-9]{2})([0-9]{2})([0-9]{2})(Z|([\+\-])([0-9]{2})([0-9]{2})?|))?$/.exec(text);
+  /* eslint-enable max-len */
   if (!result) {
     return NaN;
   }
@@ -1307,7 +1256,7 @@ function fromBasicWeekDate(text) {
 
 module.exports = fromIso8601;
 
-},{"./new-date":48,"@fav/type.is-string":49,"@fav/type.is-valid-date":50}],40:[function(require,module,exports){
+},{"./new-date":42,"@fav/type.is-string":28,"@fav/type.is-valid-date":29}],34:[function(require,module,exports){
 'use strict';
 
 var isString = require('@fav/type.is-string');
@@ -1318,7 +1267,9 @@ function fromRfc2822(text) {
     return null;
   }
 
+  /* eslint-disable max-len */
   var result = /^\s*(Mon,\s*|Tue,\s*|Wed,\s*|Thu,\s*|Fri,\s*|Sat,\s*|Sun,\s*|)([0-9]{1,2})\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+([0-9]{4,})\s+([0-9]{2}):([0-9]{2}):([0-9]{2})\s+([\+\-])([0-9]{2})([0-9]{2})\s*$/.exec(text);
+  /* eslint-enable max-len */
 
   if (!result) {
     return null;
@@ -1365,7 +1316,7 @@ function fromRfc2822(text) {
 
 module.exports = fromRfc2822;
 
-},{"@fav/type.is-string":49,"@fav/type.is-valid-date":50}],41:[function(require,module,exports){
+},{"@fav/type.is-string":28,"@fav/type.is-valid-date":29}],35:[function(require,module,exports){
 'use strict';
 
 var isString = require('@fav/type.is-string');
@@ -1378,7 +1329,9 @@ function fromRfc3339(text) {
     return null;
   }
 
+  /* eslint-disable max-len */
   var result = /^([0-9]{4})-([0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})(\.[0-9]+)?(Z|([\+\-])([0-9]{2}):([0-9]{2}))$/.exec(text);
+  /* eslint-enable max-len */
 
   if (!result) {
     return null;
@@ -1424,7 +1377,7 @@ function fromRfc3339(text) {
 
 module.exports = fromRfc3339;
 
-},{"./new-date":48,"@fav/type.is-string":49,"@fav/type.is-valid-date":50}],42:[function(require,module,exports){
+},{"./new-date":42,"@fav/type.is-string":28,"@fav/type.is-valid-date":29}],36:[function(require,module,exports){
 'use strict';
 
 var isString = require('@fav/type.is-string');
@@ -1437,7 +1390,9 @@ function fromHyphenedYmdAndHms(text) {
     return null;
   }
 
+  /* eslint-disable max-len */
   var result = /^([\+\-]?[0-9]+)\/([0-9]+)\/([0-9]+)\s+([0-9]+):([0-9]+):([0-9]+)(\.[0-9]+){0,1}$/.exec(text);
+  /* eslint-enable max-len */
 
   if (!result) {
     return null;
@@ -1463,7 +1418,7 @@ function fromHyphenedYmdAndHms(text) {
 
 module.exports = fromHyphenedYmdAndHms;
 
-},{"./new-date":48,"@fav/type.is-string":49,"@fav/type.is-valid-date":50}],43:[function(require,module,exports){
+},{"./new-date":42,"@fav/type.is-string":28,"@fav/type.is-valid-date":29}],37:[function(require,module,exports){
 'use strict';
 
 var isString = require('@fav/type.is-string');
@@ -1492,7 +1447,7 @@ function fromSlashedYmd(text) {
 
 module.exports = fromSlashedYmd;
 
-},{"./new-date":48,"@fav/type.is-string":49,"@fav/type.is-valid-date":50}],44:[function(require,module,exports){
+},{"./new-date":42,"@fav/type.is-string":28,"@fav/type.is-valid-date":29}],38:[function(require,module,exports){
 'use strict';
 
 var isString = require('@fav/type.is-string');
@@ -1531,7 +1486,7 @@ function fromYymmdd(text) {
 
 module.exports = fromYymmdd;
 
-},{"./new-date":48,"@fav/type.is-string":49,"@fav/type.is-valid-date":50}],45:[function(require,module,exports){
+},{"./new-date":42,"@fav/type.is-string":28,"@fav/type.is-valid-date":29}],39:[function(require,module,exports){
 'use strict';
 
 var isString = require('@fav/type.is-string');
@@ -1544,7 +1499,9 @@ function fromYymmddhhmmss(text) {
     return null;
   }
 
+  /* eslint-disable max-len */
   var result = /^([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})$/.exec(text);
+  /* eslint-enable max-len */
 
   if (!result) {
     return null;
@@ -1573,7 +1530,7 @@ function fromYymmddhhmmss(text) {
 
 module.exports = fromYymmddhhmmss;
 
-},{"./new-date":48,"@fav/type.is-string":49,"@fav/type.is-valid-date":50}],46:[function(require,module,exports){
+},{"./new-date":42,"@fav/type.is-string":28,"@fav/type.is-valid-date":29}],40:[function(require,module,exports){
 'use strict';
 
 var isString = require('@fav/type.is-string');
@@ -1606,7 +1563,7 @@ function fromYyyymmdd(text) {
 
 module.exports = fromYyyymmdd;
 
-},{"./new-date":48,"@fav/type.is-string":49,"@fav/type.is-valid-date":50}],47:[function(require,module,exports){
+},{"./new-date":42,"@fav/type.is-string":28,"@fav/type.is-valid-date":29}],41:[function(require,module,exports){
 'use strict';
 
 var isString = require('@fav/type.is-string');
@@ -1619,7 +1576,9 @@ function fromYyyymmddhhmmss(text) {
     return null;
   }
 
+  /* eslint-disable max-len */
   var result = /^([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})$/.exec(text);
+  /* eslint-enable max-len */
 
   if (!result) {
     return null;
@@ -1642,7 +1601,7 @@ function fromYyyymmddhhmmss(text) {
 
 module.exports = fromYyyymmddhhmmss;
 
-},{"./new-date":48,"@fav/type.is-string":49,"@fav/type.is-valid-date":50}],48:[function(require,module,exports){
+},{"./new-date":42,"@fav/type.is-string":28,"@fav/type.is-valid-date":29}],42:[function(require,module,exports){
 'use strict';
 
 function setDate(now, year, month, day, hour, min, sec, msec) {
@@ -1726,23 +1685,7 @@ newDate.setDate = setDate;
 
 module.exports = newDate;
 
-},{}],49:[function(require,module,exports){
-arguments[4][25][0].apply(exports,arguments)
-},{"dup":25}],50:[function(require,module,exports){
-'use strict';
-
-function isValidDate(value) {
-  if (!(value instanceof Date)) {
-    return false;
-  }
-
-  var time = value.getTime();
-  return time === time;
-}
-
-module.exports = isValidDate;
-
-},{}],51:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 'use strict';
 
 var isString = require('@fav/type.is-string');
@@ -1767,15 +1710,29 @@ function toFiniteNumber(value) {
 module.exports = toFiniteNumber;
 
 
-},{"@fav/type.is-finite-number":52,"@fav/type.is-string":53}],52:[function(require,module,exports){
-arguments[4][24][0].apply(exports,arguments)
-},{"dup":24}],53:[function(require,module,exports){
-arguments[4][25][0].apply(exports,arguments)
-},{"dup":25}],54:[function(require,module,exports){
-arguments[4][23][0].apply(exports,arguments)
-},{"@fav/type.is-finite-number":55,"@fav/type.is-string":56,"dup":23}],55:[function(require,module,exports){
-arguments[4][24][0].apply(exports,arguments)
-},{"dup":24}],56:[function(require,module,exports){
-arguments[4][25][0].apply(exports,arguments)
-},{"dup":25}]},{},[1])(1)
+},{"@fav/type.is-finite-number":24,"@fav/type.is-string":28}],44:[function(require,module,exports){
+'use strict';
+
+var isString = require('@fav/type.is-string');
+var isFiniteNumber = require('@fav/type.is-finite-number');
+
+function toInteger(value) {
+  if (isString(value)) {
+    value = parseFloat(value);
+  }
+
+  if (isFiniteNumber(value)) {
+    return value < 0 ? Math.ceil(value) : Math.floor(value);
+  }
+
+  if (arguments.length > 1) {
+    return arguments[1];
+  }
+
+  return NaN;
+}
+
+module.exports = toInteger;
+
+},{"@fav/type.is-finite-number":24,"@fav/type.is-string":28}]},{},[1])(1)
 });

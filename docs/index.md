@@ -16,18 +16,18 @@ Creates a date format function which convert a date to a string in the specified
 
 | Character | Description                | Example                 |
 |-----------|----------------------------|-------------------------|
-| 'Y'*      | Full year.                 | 'YYYY' => '2017'        |
-| 'y'*      | Year of century (0〜±99). | 'yy' => '17'            |
-| 'M'*      | Month (1〜12)              | 'MM' => '11'            |
-| 'Mmm'     | Month abbreviation         | 'Mmm' => 'Nov'          |
-| 'Month'   | Month full name            | 'Month' => 'November'   |
-| 'D'*      | Day of month (1〜31)       | 'DD' => '05'            |
-| 'H'*      | Hours (0〜23)              | 'HH' => '14'            |
-| 'm'*      | Minutes (0〜59)            | 'mm' => '45'            |
-| 's'*      | Seconds (0〜59)            | 'ss' => '06'            |
-| 'S'*      | Hours (0〜59)              | 'SSS' => '023'          |
-| 'Www'     | Week abbreviation          | 'Www' => 'Sun'          |
-| 'Week'    | Week full name             | 'Week' => 'Sunday'      |
+| `'Y'*`    | Full year.                 | `'YYYY' => '2017'`      |
+| `'y'*`    | Year of century (0〜±99). | `'yy' => '17'`          |
+| `'M'*`    | Month (1〜12)              | `'MM' => '11'`          |
+| `'Mmm'`   | Month abbreviation         | `'Mmm' => 'Nov'`        |
+| `'Month'` | Month full name            | `'Month' => 'November'`   |
+| `'D'*`    | Day of month (1〜31)       | `'DD' => '05'`            |
+| `'H'*`    | Hours (0〜23)              | `'HH' => '14'`            |
+| `'m'*`    | Minutes (0〜59)            | `'mm' => '45'`            |
+| `'s'*`    | Seconds (0〜59)            | `'ss' => '06'`            |
+| `'S'*`    | Hours (0〜59)              | `'SSS' => '023'`          |
+| `'Www'`   | Week abbreviation          | `'Www' => 'Sun'`          |
+| `'Week'`  | Week full name             | `'Week' => 'Sunday'`      |
 
 #### Returns:
 
@@ -437,7 +437,7 @@ This function set provides functions supporting following date formats:
 
 #### <u>toDate\['Y-M-D'\](value) : Date</u>
 
-Convert a date format string separated by hyphens to a data object. 
+Converts a date format string separated by hyphens to a data object. 
 
 ##### Parameter:
 
@@ -456,7 +456,7 @@ A `Date` object, or null if failing to convert.
 
 #### <u>toDate\['Y-M-D H:m:s'\](value) : Date</u>
 
-Convert a date-time format string separated by hyphens and colons to a data object. 
+Converts a date-time format string separated by hyphens and colons to a data object. 
 
 ##### Parameter:
 
@@ -475,7 +475,7 @@ A `Date` object, or null if failing to convert.
 
 #### <u>toDate\['Y/M/D'\](value) : Date</u>
 
-Convert a date format string separated by slashes to a data object. 
+Converts a date format string separated by slashes to a data object. 
 
 ##### Parameter:
 
@@ -494,7 +494,7 @@ A `Date` object, or null if failing to convert.
 
 #### <u>toDate\['Y/M/D H:m:s'\](value) : Date</u>
 
-Convert a date-time format string separated by slashes and colons to a data object. 
+Converts a date-time format string separated by slashes and colons to a data object. 
 
 ##### Parameter:
 
@@ -513,7 +513,7 @@ A `Date` object, or null if failing to convert.
 
 #### <u>toDate.YYMMDD(value) : Date</u>
 
-Convert a date format string in fixed size to a data object.
+Converts a date format string in fixed size to a data object.
 
 ##### Parameter:
 
@@ -535,7 +535,7 @@ This format can represent a date within the range 100 years centered the current
 
 #### <u>toDate.YYMMDDHHmmss(value) : Date</u>
 
-Convert a date format string in fixed size to a data object.
+Converts a date format string in fixed size to a data object.
 
 ##### Parameter:
 
@@ -557,7 +557,7 @@ This format can represent a date within the range 100 years centered the current
 
 #### <u>toDate.YYYYMMDD(value) : Date</u>
 
-Convert a date format string in fixed size to a data object.
+Converts a date format string in fixed size to a data object.
 
 ##### Parameter:
 
@@ -576,7 +576,7 @@ A `Date` object, or null if failing to convert.
 
 #### <u>toDate.YYYYMMDDHHmmss(value) : Date</u>
 
-Convert a date format string in fixed size to a data object.
+Converts a date format string in fixed size to a data object.
 
 ##### Parameter:
 
@@ -595,7 +595,7 @@ A `Date` object, or null if failing to convert.
 
 #### <u>toDate.RFC2822(value) : Date</u>
 
-Convert a date format string according to RFC2822 to a data object.
+Converts a date format string according to RFC2822 to a data object.
 
 ##### Parameter:
 
@@ -614,7 +614,7 @@ A `Date` object, or null if failing to convert.
 
 #### <u>toDate.RFC3339(value) : Date</u>
 
-Convert a date format string according to RFC3339 to a data object.
+Converts a date format string according to RFC3339 to a data object.
 
 ##### Parameter:
 
@@ -633,7 +633,7 @@ A `Date` object, or null if failing to convert.
 
 #### <u>toDate.ISO8601(value) : Date</u>
 
-Convert a date format string according to ISO8601 to a data object.
+Converts a date format string according to ISO8601 to a data object.
 
 There are many formats in ISO8601: basic/extended, calendar-date/ordinal-date/week-date and expanded/non-expanded, and this function supports all formats of them.
 
@@ -653,7 +653,7 @@ A `Date` object, or null if failing to convert.
 ----
 ### <u>toFiniteNumber(value): number</u>
 
-Convert a number or a string to a finite number.
+Converts a number or a string to a finite number.
 If *value* is a floating point number, this function discards decimals.
 If *value* is neither a finite number, a numeric string nor other type, this function returns NaN.
 
@@ -673,7 +673,7 @@ The converted finite number, or NaN if failing to convert.
 ----
 ### <u>toInteger(value [, defaultValue]): number</u>
 
-Convert a number or a string to an integer.
+Converts a number or a string to an integer.
 If *value* is a floating point number, this function discard decimals.
 If *value* is neither a finite number, a numeric string nor other data type, this function returns NaN or *defaultValue* if it is specified.
 

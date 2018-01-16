@@ -602,7 +602,6 @@ describe('fav.type.format-number', function() {
 var expect = chai.expect;
 
 
-
 var isNotArray = fav.type.isArray.not;
 
 describe('fav.type.isArray.not', function() {
@@ -706,7 +705,6 @@ describe('fav.type.isArray.not', function() {
 var expect = chai.expect;
 
 
-
 var isArray = fav.type.isArray;
 
 describe('fav.type.isArray', function() {
@@ -808,7 +806,6 @@ describe('fav.type.isArray', function() {
 
 
 var expect = chai.expect;
-
 
 
 var isNotEmpty = fav.type.isEmpty.not;
@@ -952,7 +949,6 @@ describe('fav.type.isEmpty.not', function() {
 var expect = chai.expect;
 
 
-
 var isEmpty = fav.type.isEmpty;
 
 describe('fav.type.isEmpty', function() {
@@ -1092,7 +1088,6 @@ describe('fav.type.isEmpty', function() {
 var expect = chai.expect;
 
 
-
 var isNotFiniteNumber = fav.type.isFiniteNumber.not;
 
 describe('fav.type.isFiniteNumber.not', function() {
@@ -1160,7 +1155,6 @@ describe('fav.type.isFiniteNumber.not', function() {
 var expect = chai.expect;
 
 
-
 var isFiniteNumber = fav.type.isFiniteNumber;
 
 describe('fav.type.isFiniteNumber', function() {
@@ -1226,7 +1220,6 @@ describe('fav.type.isFiniteNumber', function() {
 
 
 var expect = chai.expect;
-
 
 
 
@@ -1369,7 +1362,6 @@ var expect = chai.expect;
 
 
 
-
 var isFunction = fav.type.isFunction;
 
 describe('fav.type.isFunction', function() {
@@ -1508,7 +1500,6 @@ function isNode() {
 var expect = chai.expect;
 
 
-
 var isNotInteger = fav.type.isInteger.not;
 
 describe('fav.type.isInteger.not', function() {
@@ -1581,7 +1572,6 @@ describe('fav.type.isInteger.not', function() {
 var expect = chai.expect;
 
 
-
 var isInteger = fav.type.isInteger;
 
 describe('fav.type.isInteger', function() {
@@ -1652,7 +1642,6 @@ describe('fav.type.isInteger', function() {
 
 
 var expect = chai.expect;
-
 
 
 
@@ -1846,7 +1835,6 @@ var expect = chai.expect;
 
 
 
-
 var isPlainObject = fav.type.isPlainObject;
 
 describe('fav.type.isPlainObject', function() {
@@ -2033,10 +2021,9 @@ function isNode() {
 'use strict';
 
 
+
+
 var expect = chai.expect;
-
-
-
 var isNotString = fav.type.isString.not;
 
 describe('fav.type.isString.not', function() {
@@ -2086,10 +2073,9 @@ describe('fav.type.isString.not', function() {
 'use strict';
 
 
+
+
 var expect = chai.expect;
-
-
-
 var isString = fav.type.isString;
 
 describe('fav.type.isString', function() {
@@ -2142,7 +2128,6 @@ describe('fav.type.isString', function() {
 var expect = chai.expect;
 
 
-
 var isNotValidDate = fav.type.isValidDate.not;
 
 describe('fav.type.isValidDate.not', function() {
@@ -2184,7 +2169,6 @@ describe('fav.type.isValidDate.not', function() {
 var expect = chai.expect;
 
 
-
 var isValidDate = fav.type.isValidDate;
 
 describe('fav.type.isValidDate', function() {
@@ -2224,7 +2208,6 @@ describe('fav.type.isValidDate', function() {
 
 
 var expect = chai.expect;
-
 
 
 
@@ -2308,7 +2291,6 @@ var expect = chai.expect;
 
 
 
-
 var newDate = fav.type.toDate;
 var toDate = newDate['Y-M-D'];
 
@@ -2370,7 +2352,6 @@ describe('fav.type.toDate["Y-M-D"]', function() {
 
 
 var expect = chai.expect;
-
 
 
 var newDate = fav.type.toDate;
@@ -2705,7 +2686,6 @@ describe('fav.type.toDate["ISO8601"]', function() {
 var expect = chai.expect;
 
 
-
 var newDate = fav.type.toDate;
 var toDate = newDate.RFC2822;
 
@@ -2822,7 +2802,6 @@ describe('fav.type.toDate["RFC2822"]', function() {
 var expect = chai.expect;
 
 
-
 var newDate = fav.type.toDate;
 var toDate = fav.type.toDate.RFC3339;
 
@@ -2917,7 +2896,6 @@ var expect = chai.expect;
 
 
 
-
 var newDate = fav.type.toDate;
 var toDate = fav.type.toDate['Y/M/D H:m:s'];
 
@@ -2996,7 +2974,6 @@ var expect = chai.expect;
 
 
 
-
 var newDate = fav.type.toDate;
 var toDate = fav.type.toDate['Y/M/D'];
 
@@ -3057,7 +3034,6 @@ describe('fav.type.toDate["Y/M/D"]', function() {
 
 
 var expect = chai.expect;
-
 
 
 var newDate = fav.type.toDate;
@@ -3127,7 +3103,6 @@ describe('fav.type.toDate["YYMMDD"]', function() {
 
 
 var expect = chai.expect;
-
 
 
 var newDate = fav.type.toDate;
@@ -3209,7 +3184,6 @@ describe('fav.type.toDate["YYMMDDHHmmss"]', function() {
 var expect = chai.expect;
 
 
-
 var newDate = fav.type.toDate;
 var toDate = fav.type.toDate['YYYYMMDD'];
 
@@ -3258,7 +3232,6 @@ describe('fav.type.toDate["YYYYMMDD"]', function() {
 
 
 var expect = chai.expect;
-
 
 
 var newDate = fav.type.toDate;
@@ -3313,7 +3286,6 @@ describe('fav.type.toDate["YYYYMMDDHHmmss"]', function() {
 
 
 var expect = chai.expect;
-
 
 
 var toDate = fav.type.toDate;
@@ -3473,7 +3445,6 @@ describe('fav.type.toDate', function() {
 var expect = chai.expect;
 
 
-
 var toFiniteNumber = fav.type.toFiniteNumber;
 
 describe('fav.type.toFiniteNumber', function() {
@@ -3572,7 +3543,6 @@ describe('fav.type.toFiniteNumber', function() {
 
 
 var expect = chai.expect;
-
 
 
 var toInteger = fav.type.toInteger;
