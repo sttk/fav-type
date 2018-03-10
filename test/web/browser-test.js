@@ -6,6 +6,7 @@ var expect = chai.expect;
 
 
 
+
 var formatDate = fav.type.formatDate;
 var toDate = fav.type.toDate;
 
@@ -3488,14 +3489,24 @@ describe('fav.type.toFiniteNumber', function() {
 
   it('Should return NaN when value is a number but not finite', function() {
     expect(toFiniteNumber(NaN)).to.be.NaN;
+    expect(toFiniteNumber(Infinity)).to.be.NaN;
+    expect(toFiniteNumber(-Infinity)).to.be.NaN;
     expect(toFiniteNumber(Number.POSITIVE_INFINITY)).to.be.NaN;
     expect(toFiniteNumber(Number.NEGATIVE_INFINITY)).to.be.NaN;
   });
 
-  it('Should return NaN when value is a string but not numeric', function() {
+  it('Should return NaN when value is a string but not numeric or not finite',
+  function() {
     expect(toFiniteNumber('')).to.be.NaN;
+    expect(toFiniteNumber(' ')).to.be.NaN;
     expect(toFiniteNumber('abc')).to.be.NaN;
     expect(toFiniteNumber('１２３４５')).to.be.NaN;
+    expect(toFiniteNumber(' 123')).to.be.NaN;
+    expect(toFiniteNumber('123abc')).to.be.NaN;
+    expect(toFiniteNumber(String(Infinity))).to.be.NaN;
+    expect(toFiniteNumber(String(-Infinity))).to.be.NaN;
+    expect(toFiniteNumber(String(Number.POSITIVE_INFINITY))).to.be.NaN;
+    expect(toFiniteNumber(String(Number.NEGATIVE_INFINITY))).to.be.NaN;
   });
 
   it('Should return NaN when value is neither a number nor a string',
@@ -3522,11 +3533,11 @@ describe('fav.type.toFiniteNumber', function() {
   it('Should return 1st arg number when 2nd arg is specified but 1st arg is' +
   ' valid', function() {
     expect(toFiniteNumber(0, 99.99)).to.equal(0);
-    expect(toFiniteNumber(1.23)).to.equal(1.23);
-    expect(toFiniteNumber(-0.88)).to.equal(-0.88);
+    expect(toFiniteNumber(1.23, 9)).to.equal(1.23);
+    expect(toFiniteNumber(-0.88, 10)).to.equal(-0.88);
   });
 
-  it('Should return 2nd arg when 1st arg is valid and 2nd arg is specified',
+  it('Should return 2nd arg when 2nd arg is specified and 1st arg is invalid',
   function() {
     expect(toFiniteNumber(undefined, 9.99)).to.equal(9.99);
     expect(toFiniteNumber(null, 9.99)).to.equal(9.99);
@@ -3570,6 +3581,8 @@ describe('fav.type.toInteger', function() {
 
   it('Should return NaN when value is not a finite number', function() {
     expect(toInteger(NaN)).to.be.NaN;
+    expect(toInteger(Infinity)).to.be.NaN;
+    expect(toInteger(-Infinity)).to.be.NaN;
     expect(toInteger(Number.POSITIVE_INFINITY)).to.be.NaN;
     expect(toInteger(Number.NEGATIVE_INFINITY)).to.be.NaN;
   });
@@ -3592,8 +3605,11 @@ describe('fav.type.toInteger', function() {
 
   it('Should return NaN when value is a non-numeric string', function() {
     expect(toInteger('')).to.be.NaN;
+    expect(toInteger('  ')).to.be.NaN;
     expect(toInteger('abc')).to.be.NaN;
     expect(toInteger('１２３４５')).to.be.NaN;
+    expect(toInteger(' 123')).to.be.NaN;
+    expect(toInteger('123abc')).to.be.NaN;
   });
 
   it('Should return NaN when value is neither a number nor a string',
@@ -3635,6 +3651,113 @@ describe('fav.type.toInteger', function() {
   });
 });
 
+
+})();
+(function(){
+'use strict';
+
+
+var expect = chai.expect;
+
+
+var toNumber = fav.type.toNumber;
+
+describe('fav.type.toNumber', function() {
+
+  it('Should return value as it is when value is a number', function() {
+    expect(toNumber(0)).to.equal(0);
+    expect(toNumber(1)).to.equal(1);
+    expect(toNumber(-1)).to.equal(-1);
+    expect(toNumber(123456789)).to.equal(123456789);
+    expect(toNumber(-123456789)).to.equal(-123456789);
+    expect(toNumber(Number.MAX_VALUE)).to.equal(Number.MAX_VALUE);
+    expect(toNumber(-Number.MAX_VALUE)).to.equal(-Number.MAX_VALUE);
+    expect(toNumber(0.1234)).to.equal(0.1234);
+    expect(toNumber(-0.1234)).to.equal(-0.1234);
+    expect(toNumber(12345.6789)).to.equal(12345.6789);
+    expect(toNumber(-12345.6789)).to.equal(-12345.6789);
+    expect(toNumber(Number.MIN_VALUE)).to.equal(Number.MIN_VALUE);
+    expect(toNumber(-Number.MIN_VALUE)).to.equal(-Number.MIN_VALUE);
+    expect(toNumber(Infinity)).to.equal(Infinity);
+    expect(toNumber(-Infinity)).to.equal(-Infinity);
+    expect(toNumber(Number.POSITIVE_INFINITY))
+      .to.equal(Number.POSITIVE_INFINITY);
+    expect(toNumber(-Number.POSITIVE_INFINITY))
+      .to.equal(-Number.POSITIVE_INFINITY);
+  });
+
+  it('Should return a number when value is a numeric string', function() {
+    expect(toNumber('0')).to.equal(0);
+    expect(toNumber('1')).to.equal(1);
+    expect(toNumber('-1')).to.equal(-1);
+    expect(toNumber('123456789')).to.equal(123456789);
+    expect(toNumber('-123456789')).to.equal(-123456789);
+    expect(toNumber(String(Number.MAX_VALUE))).to.equal(Number.MAX_VALUE);
+    expect(toNumber(String(-Number.MAX_VALUE))).to.equal(-Number.MAX_VALUE);
+    expect(toNumber('0.1234')).to.equal(0.1234);
+    expect(toNumber('-0.1234')).to.equal(-0.1234);
+    expect(toNumber('12345.6789')).to.equal(12345.6789);
+    expect(toNumber('-12345.6789')).to.equal(-12345.6789);
+    expect(toNumber(String(Number.MIN_VALUE))).to.equal(Number.MIN_VALUE);
+    expect(toNumber(String(-Number.MIN_VALUE))).to.equal(-Number.MIN_VALUE);
+    expect(toNumber(String(Infinity))).to.equal(Infinity);
+    expect(toNumber(String(-Infinity))).to.equal(-Infinity);
+    expect(toNumber(String(Number.POSITIVE_INFINITY)))
+      .to.equal(Number.POSITIVE_INFINITY);
+    expect(toNumber(String(-Number.POSITIVE_INFINITY)))
+      .to.equal(-Number.POSITIVE_INFINITY);
+  });
+
+  it('Should return NaN when value is NaN', function() {
+    expect(toNumber(NaN)).to.be.NaN;
+  });
+
+  it('Should return NaN when value is a string but not numeric', function() {
+    expect(toNumber('')).to.be.NaN;
+    expect(toNumber('   ')).to.be.NaN;
+    expect(toNumber('abc')).to.be.NaN;
+    expect(toNumber('１２３４５')).to.be.NaN;
+    expect(toNumber(' 123')).to.be.NaN;
+    expect(toNumber('123abc')).to.be.NaN;
+  });
+
+  it('Should return NaN when value is neither a number nor a string',
+  function() {
+    expect(toNumber(undefined)).to.be.NaN;
+    expect(toNumber(null)).to.be.NaN;
+    expect(toNumber(true)).to.be.NaN;
+    expect(toNumber(false)).to.be.NaN;
+    expect(toNumber([])).to.be.NaN;
+    expect(toNumber([1,2,3])).to.be.NaN;
+    expect(toNumber({})).to.be.NaN;
+    expect(toNumber({ a: 0 })).to.be.NaN;
+    expect(toNumber(/1/g)).to.be.NaN;
+    expect(toNumber(new RegExp('1', 'g'))).to.be.NaN;
+    expect(toNumber(function() {})).to.be.NaN;
+    expect(toNumber(new Date())).to.be.NaN;
+    expect(toNumber(new Error())).to.be.NaN;
+
+    if (typeof Symbol === 'function') {
+      expect(toNumber(Symbol(123))).to.be.NaN;
+    }
+  });
+
+  it('Should return 1st arg number when 2nd arg is specified but 1st arg is' +
+  '\n\tvalid', function() {
+    expect(toNumber(0, 99.99)).to.equal(0);
+    expect(toNumber(1.23, 9)).to.equal(1.23);
+    expect(toNumber(-0.88, 10)).to.equal(-0.88);
+  });
+
+  it('Should return 2nd arg when 2nd arg is specified and 1st arg is invalid',
+  function() {
+    expect(toNumber(undefined, 9.99)).to.equal(9.99);
+    expect(toNumber(null, 9.99)).to.equal(9.99);
+    expect(toNumber('', 9.99)).to.equal(9.99);
+    expect(toNumber(NaN, 9.99)).to.equal(9.99);
+    expect(toNumber('ABC', 9.99)).to.equal(9.99);
+  });
+});
 
 })();
 (function(){

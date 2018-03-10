@@ -5,6 +5,7 @@ var expect = chai.expect;
 
 var fav = {}; fav.type = require('..');
 
+
 var formatDate = fav.type.formatDate;
 var toDate = fav.type.toDate;
 

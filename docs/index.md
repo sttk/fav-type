@@ -651,42 +651,68 @@ A `Date` object, or null if failing to convert.
 
 
 ----
-### <u>toFiniteNumber(value): number</u>
+### <u>toFiniteNumber(value [, defaultValue]): number</u>
 
 Converts a number or a string to a finite number.
-If *value* is a floating point number, this function discards decimals.
-If *value* is neither a finite number, a numeric string nor other type, this function returns NaN.
+If *value* is neither a finite number nor a numeric string, this function returns NaN, or *defaultValue* if specified.
+
+***NOTE:*** `Number('')` and `Number(' ')` return `0`. `parseInt(' 123')`,  `parseInt('123abc')`, `parseFloat(' 123')` and `parseFloat('123abc')` return `123`. However, this function returns `NaN` in all such cases.
 
 #### Parameter:
 
-| Parameter |  Type  | Description                           |
-|-----------|:------:|---------------------------------------|
-| value     | *any*  | The number or string to be converted. |
+| Parameter      |  Type  | Description                           |
+|----------------|:------:|---------------------------------------|
+| *value*        | *any*  | The number or string to be converted. |
+| *defaultValue* | *any*  | Is returned when failing to convert. (Optional) | 
 
 #### Returns:
 
-The converted finite number, or NaN if failing to convert.
+The converted finite number, or NaN (or *defaultValue* if specified) when failing to convert.
 
 **Type:** number
 
 
 ----
-### <u>toInteger(value [, defaultValue]): number</u>
+### <u>toInteger(value [, defaultValue]) : number</u>
 
 Converts a number or a string to an integer.
 If *value* is a floating point number, this function discard decimals.
-If *value* is neither a finite number, a numeric string nor other data type, this function returns NaN or *defaultValue* if it is specified.
+If *value* is neither an integer nor a numeric string, this function returns NaN, or *defaultValue* if specified.
 
+***NOTE:*** `Number('')` and `Number(' ')` return `0`. `parseInt(' 123')`,  `parseInt('123abc')`, `parseFloat(' 123')` and `parseFloat('123abc')` return `123`. However, this function returns `NaN` in all such cases.
 #### Parameter:
 
 | Parameter    |  Type  | Description                           |
 |--------------|:------:|---------------------------------------|
 | value        | *any*  | The number or string to be converted. |
-| defaultValue | *any*  | The default value if *value* is invalid. (Optional) |
+| defaultValue | *any*  | Is returned when failing to convert. (Optional) |
 
 #### Returns:
 
-The converted integer value. If failing to convert, NaN or *defaultValue* (if specified) is returned. 
+The converted integer value, or NaN (or *defaultValue* if specified) when failing to convert.
+
+**Type:** number
+
+
+----
+### <u>toNumber(value [, defaultValue]): number</u>
+
+Converts a number or a string to a number.
+If *value* is neither a number nor a numeric string, this function returns NaN, or *defaultValue* if specified.
+
+***NOTE:*** `Number('')` and `Number(' ')` return `0`. `parseInt(' 123')`,  `parseInt('123abc')`, `parseFloat(' 123')` and `parseFloat('123abc')` return `123`. However, this function returns `NaN` in all such cases.
+
+
+#### Parameter:
+
+| Parameter      |  Type  | Description                           |
+|----------------|:------:|---------------------------------------|
+| *value*        | *any*  | The number or string to be converted. |
+| *defaultValue* | *any*  | Is returned when failing to convert. (Optional) | 
+
+#### Returns:
+
+The converted number, or NaN (or *defaultValue* if specified) when failing to convert.
 
 **Type:** number
 

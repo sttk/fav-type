@@ -1,4 +1,4 @@
-(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}(g.fav || (g.fav = {})).type = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}(g.fav || (g.fav = {})).type = f()}})(function(){var define,module,exports;return (function(){function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s}return e})()({1:[function(require,module,exports){
 'use strict';
 
 var formatDate = require('@fav/type.format-date');
@@ -12,8 +12,9 @@ var isPlainObject = require('@fav/type.is-plain-object');
 var isString = require('@fav/type.is-string');
 var isValidDate = require('@fav/type.is-valid-date');
 var toDate = require('@fav/type.to-date');
-var toInteger = require('@fav/type.to-integer');
 var toFiniteNumber = require('@fav/type.to-finite-number');
+var toInteger = require('@fav/type.to-integer');
+var toNumber = require('@fav/type.to-number');
 
 var type = {};
 
@@ -31,11 +32,12 @@ Object.defineProperties(type, {
   toDate: { enumerable: true, value: toDate },
   toFiniteNumber: { enumerable: true, value: toFiniteNumber },
   toInteger: { enumerable: true, value: toInteger },
+  toNumber: { enumerable: true, value: toNumber },
 });
 
 module.exports = type;
 
-},{"@fav/type.format-date":7,"@fav/type.format-number":16,"@fav/type.is-array":22,"@fav/type.is-empty":23,"@fav/type.is-finite-number":24,"@fav/type.is-function":25,"@fav/type.is-integer":26,"@fav/type.is-plain-object":27,"@fav/type.is-string":28,"@fav/type.is-valid-date":29,"@fav/type.to-date":30,"@fav/type.to-finite-number":43,"@fav/type.to-integer":44}],2:[function(require,module,exports){
+},{"@fav/type.format-date":7,"@fav/type.format-number":16,"@fav/type.is-array":22,"@fav/type.is-empty":23,"@fav/type.is-finite-number":24,"@fav/type.is-function":25,"@fav/type.is-integer":26,"@fav/type.is-plain-object":27,"@fav/type.is-string":28,"@fav/type.is-valid-date":29,"@fav/type.to-date":30,"@fav/type.to-finite-number":43,"@fav/type.to-integer":44,"@fav/type.to-number":45}],2:[function(require,module,exports){
 'use strict';
 
 var padLeft;
@@ -1688,13 +1690,11 @@ module.exports = newDate;
 },{}],43:[function(require,module,exports){
 'use strict';
 
-var isString = require('@fav/type.is-string');
 var isFiniteNumber = require('@fav/type.is-finite-number');
+var toNumber = require('@fav/type.to-number');
 
 function toFiniteNumber(value) {
-  if (isString(value)) {
-    value = parseFloat(value);
-  }
+  value = toNumber(value);
 
   if (isFiniteNumber(value)) {
     return value;
@@ -1710,16 +1710,14 @@ function toFiniteNumber(value) {
 module.exports = toFiniteNumber;
 
 
-},{"@fav/type.is-finite-number":24,"@fav/type.is-string":28}],44:[function(require,module,exports){
+},{"@fav/type.is-finite-number":24,"@fav/type.to-number":45}],44:[function(require,module,exports){
 'use strict';
 
-var isString = require('@fav/type.is-string');
 var isFiniteNumber = require('@fav/type.is-finite-number');
+var toNumber = require('@fav/type.to-number');
 
 function toInteger(value) {
-  if (isString(value)) {
-    value = parseFloat(value);
-  }
+  value = toNumber(value);
 
   if (isFiniteNumber(value)) {
     return value < 0 ? Math.ceil(value) : Math.floor(value);
@@ -1734,5 +1732,33 @@ function toInteger(value) {
 
 module.exports = toInteger;
 
-},{"@fav/type.is-finite-number":24,"@fav/type.is-string":28}]},{},[1])(1)
+},{"@fav/type.is-finite-number":24,"@fav/type.to-number":45}],45:[function(require,module,exports){
+'use strict';
+
+var isString = require('@fav/type.is-string');
+
+function toNumber(value) {
+  if (typeof value === 'number') {
+    if (value === value) {
+      return value;
+    }
+
+  } else if (isString(value)) {
+    if (value && !/ /.test(value)) {
+      value = Number(value);
+      if (value === value) {
+        return value;
+      }
+    }
+  }
+
+  if (arguments.length > 1) {
+    return arguments[1];
+  }
+  return NaN;
+}
+
+module.exports = toNumber;
+
+},{"@fav/type.is-string":28}]},{},[1])(1)
 });

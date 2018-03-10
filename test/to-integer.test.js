@@ -29,6 +29,8 @@ describe('fav.type.toInteger', function() {
 
   it('Should return NaN when value is not a finite number', function() {
     expect(toInteger(NaN)).to.be.NaN;
+    expect(toInteger(Infinity)).to.be.NaN;
+    expect(toInteger(-Infinity)).to.be.NaN;
     expect(toInteger(Number.POSITIVE_INFINITY)).to.be.NaN;
     expect(toInteger(Number.NEGATIVE_INFINITY)).to.be.NaN;
   });
@@ -51,8 +53,11 @@ describe('fav.type.toInteger', function() {
 
   it('Should return NaN when value is a non-numeric string', function() {
     expect(toInteger('')).to.be.NaN;
+    expect(toInteger('  ')).to.be.NaN;
     expect(toInteger('abc')).to.be.NaN;
     expect(toInteger('１２３４５')).to.be.NaN;
+    expect(toInteger(' 123')).to.be.NaN;
+    expect(toInteger('123abc')).to.be.NaN;
   });
 
   it('Should return NaN when value is neither a number nor a string',

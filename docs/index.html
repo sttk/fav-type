@@ -7,7 +7,7 @@
 <script src="./api.js"></script>
 </head>
 <body>
-<h1 id="-fav-type-repo-url-ver-1-0-0-api-document"><a href="https://github.com/sttk/fav-type/">@fav/type</a> ver. 1.0.0 API document</h1>
+<h1 id="-fav-type-ver-1-0-0-api-document"><a href="https://github.com/sttk/fav-type/">@fav/type</a> ver. 1.0.0 API document</h1>
 <hr>
 <h3 id="-u-formatdate-format-function-u-"><u>formatDate(format) : function</u></h3>
 <p>Creates a date format function which convert a date to a string in the specified format.</p>
@@ -925,10 +925,10 @@ This function set provides functions supporting following date formats:</p>
 <p>A <code>Date</code> object, or null if failing to convert.</p>
 <p><strong>Type:</strong> Date</p>
 <hr>
-<h3 id="-u-tofinitenumber-value-number-u-"><u>toFiniteNumber(value): number</u></h3>
+<h3 id="-u-tofinitenumber-value-defaultvalue-number-u-"><u>toFiniteNumber(value [, defaultValue]): number</u></h3>
 <p>Converts a number or a string to a finite number.
-If <em>value</em> is a floating point number, this function discards decimals.
-If <em>value</em> is neither a finite number, a numeric string nor other type, this function returns NaN.</p>
+If <em>value</em> is neither a finite number nor a numeric string, this function returns NaN, or <em>defaultValue</em> if specified.</p>
+<p><strong><em>NOTE:</em></strong> <code>Number(&#39;&#39;)</code> and <code>Number(&#39; &#39;)</code> return <code>0</code>. <code>parseInt(&#39; 123&#39;)</code>,  <code>parseInt(&#39;123abc&#39;)</code>, <code>parseFloat(&#39; 123&#39;)</code> and <code>parseFloat(&#39;123abc&#39;)</code> return <code>123</code>. However, this function returns <code>NaN</code> in all such cases.</p>
 <h4 id="parameter-">Parameter:</h4>
 <table>
 <thead>
@@ -940,20 +940,26 @@ If <em>value</em> is neither a finite number, a numeric string nor other type, t
 </thead>
 <tbody>
 <tr>
-<td>value</td>
+<td><em>value</em></td>
 <td style="text-align:center"><em>any</em></td>
 <td>The number or string to be converted.</td>
+</tr>
+<tr>
+<td><em>defaultValue</em></td>
+<td style="text-align:center"><em>any</em></td>
+<td>Is returned when failing to convert. (Optional)</td>
 </tr>
 </tbody>
 </table>
 <h4 id="returns-">Returns:</h4>
-<p>The converted finite number, or NaN if failing to convert.</p>
+<p>The converted finite number, or NaN (or <em>defaultValue</em> if specified) when failing to convert.</p>
 <p><strong>Type:</strong> number</p>
 <hr>
-<h3 id="-u-tointeger-value-defaultvalue-number-u-"><u>toInteger(value [, defaultValue]): number</u></h3>
+<h3 id="-u-tointeger-value-defaultvalue-number-u-"><u>toInteger(value [, defaultValue]) : number</u></h3>
 <p>Converts a number or a string to an integer.
 If <em>value</em> is a floating point number, this function discard decimals.
-If <em>value</em> is neither a finite number, a numeric string nor other data type, this function returns NaN or <em>defaultValue</em> if it is specified.</p>
+If <em>value</em> is neither an integer nor a numeric string, this function returns NaN, or <em>defaultValue</em> if specified.</p>
+<p><strong><em>NOTE:</em></strong> <code>Number(&#39;&#39;)</code> and <code>Number(&#39; &#39;)</code> return <code>0</code>. <code>parseInt(&#39; 123&#39;)</code>,  <code>parseInt(&#39;123abc&#39;)</code>, <code>parseFloat(&#39; 123&#39;)</code> and <code>parseFloat(&#39;123abc&#39;)</code> return <code>123</code>. However, this function returns <code>NaN</code> in all such cases.</p>
 <h4 id="parameter-">Parameter:</h4>
 <table>
 <thead>
@@ -972,12 +978,42 @@ If <em>value</em> is neither a finite number, a numeric string nor other data ty
 <tr>
 <td>defaultValue</td>
 <td style="text-align:center"><em>any</em></td>
-<td>The default value if <em>value</em> is invalid. (Optional)</td>
+<td>Is returned when failing to convert. (Optional)</td>
 </tr>
 </tbody>
 </table>
 <h4 id="returns-">Returns:</h4>
-<p>The converted integer value. If failing to convert, NaN or <em>defaultValue</em> (if specified) is returned. </p>
+<p>The converted integer value, or NaN (or <em>defaultValue</em> if specified) when failing to convert.</p>
+<p><strong>Type:</strong> number</p>
+<hr>
+<h3 id="-u-tonumber-value-defaultvalue-number-u-"><u>toNumber(value [, defaultValue]): number</u></h3>
+<p>Converts a number or a string to a number.
+If <em>value</em> is neither a number nor a numeric string, this function returns NaN, or <em>defaultValue</em> if specified.</p>
+<p><strong><em>NOTE:</em></strong> <code>Number(&#39;&#39;)</code> and <code>Number(&#39; &#39;)</code> return <code>0</code>. <code>parseInt(&#39; 123&#39;)</code>,  <code>parseInt(&#39;123abc&#39;)</code>, <code>parseFloat(&#39; 123&#39;)</code> and <code>parseFloat(&#39;123abc&#39;)</code> return <code>123</code>. However, this function returns <code>NaN</code> in all such cases.</p>
+<h4 id="parameter-">Parameter:</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th style="text-align:center">Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>value</em></td>
+<td style="text-align:center"><em>any</em></td>
+<td>The number or string to be converted.</td>
+</tr>
+<tr>
+<td><em>defaultValue</em></td>
+<td style="text-align:center"><em>any</em></td>
+<td>Is returned when failing to convert. (Optional)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="returns-">Returns:</h4>
+<p>The converted number, or NaN (or <em>defaultValue</em> if specified) when failing to convert.</p>
 <p><strong>Type:</strong> number</p>
 <hr>
 </body>

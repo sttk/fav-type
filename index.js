@@ -11,8 +11,9 @@ var isPlainObject = require('@fav/type.is-plain-object');
 var isString = require('@fav/type.is-string');
 var isValidDate = require('@fav/type.is-valid-date');
 var toDate = require('@fav/type.to-date');
-var toInteger = require('@fav/type.to-integer');
 var toFiniteNumber = require('@fav/type.to-finite-number');
+var toInteger = require('@fav/type.to-integer');
+var toNumber = require('@fav/type.to-number');
 
 var type = {};
 
@@ -30,6 +31,7 @@ Object.defineProperties(type, {
   toDate: { enumerable: true, value: toDate },
   toFiniteNumber: { enumerable: true, value: toFiniteNumber },
   toInteger: { enumerable: true, value: toInteger },
+  toNumber: { enumerable: true, value: toNumber },
 });
 
 module.exports = type;

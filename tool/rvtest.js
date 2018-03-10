@@ -17,6 +17,7 @@ function revise(fp) {
     concatFile(fp, outFp, function(data) {
       data = data.replace(/[\r\n]var fav = {};[^\r\n]*/g,
         "\nvar fav = {}; fav.type = require('..');");
+      data = data.replace(/[\r\n][^\r\n]*require\('@fav\/type[^\r\n]*/g, '\n');
       return data;
     });
   }
