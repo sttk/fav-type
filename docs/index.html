@@ -9,25 +9,29 @@
 <body>
 <h1 id="-fav-type-ver-1-0-1-api-document"><a href="https://github.com/sttk/fav-type/">@fav/type</a> ver. 1.0.1 API document</h1>
 <hr>
-<h3 id="-u-formatdate-format-function-u-"><u>formatDate(format) : function</u></h3>
+<h3 id="-u-formatdate-format-opts-function-u-"><u>formatDate(format [, opts]) : function</u></h3>
 <p>Creates a date format function which convert a date to a string in the specified format.</p>
+<p>Conversion of each element field in <em>format</em> can be customized with the parameter <em>opts</em>, which is a plain object of which keys are field characters and of which values are converting functions.</p>
 <h4 id="parameters-">Parameters:</h4>
 <table>
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td>format</td>
-<td style="text-align:center">string</td>
+<tbody><tr>
+<td><em>format</em></td>
+<td align="center">string</td>
 <td>A date format string, which consists of the following date element fields.</td>
 </tr>
-</tbody>
-</table>
+<tr>
+<td><em>opts</em></td>
+<td align="center">object</td>
+<td>A plain object having pairs of a field character and a converting function.</td>
+</tr>
+</tbody></table>
 <h5 id="date-element-fields-">Date element fields:</h5>
 <table>
 <thead>
@@ -37,8 +41,7 @@
 <th>Example</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td><code>&#39;Y&#39;*</code></td>
 <td>Full year.</td>
 <td><code>&#39;YYYY&#39; =&gt; &#39;2017&#39;</code></td>
@@ -98,8 +101,7 @@
 <td>Week full name</td>
 <td><code>&#39;Week&#39; =&gt; &#39;Sunday&#39;</code></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="returns-">Returns:</h4>
 <p>A formatted string which represents the specified date.</p>
 <p><strong>Type:</strong> string</p>
@@ -111,23 +113,21 @@
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>format</td>
-<td style="text-align:center">string</td>
+<td align="center">string</td>
 <td>A number format string as follows.</td>
 </tr>
 <tr>
 <td>rounding</td>
-<td style="text-align:center">function</td>
+<td align="center">function</td>
 <td>A rounding function. (Optional, and <code>Math.round</code> in default.)</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h5 id="number-format">Number format</h5>
 <p>The regular expression of number format is as follows:</p>
 <p><code>/^([\+\-]?)(9?)([^0-9]*)(9*)([^0-9]*)(0*)$/</code></p>
@@ -145,8 +145,7 @@
 <th>Example (negative)</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td><code>&#39;+9&#39;</code></td>
 <td><code>123.4 =&gt; &#39;+123&#39;</code></td>
 <td><code>-123.4 =&gt; &#39;-123&#39;</code></td>
@@ -206,8 +205,7 @@
 <td><code>12345.1</code> =&gt; <code>&#39;12 345.100&#39;</code></td>
 <td><code>-12345.1 =&gt; &#39;12 345.100&#39;</code></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="returns-">Returns:</h4>
 <p>A formatted string which represents the specified date.</p>
 <p><strong>Type:</strong> string</p>
@@ -222,18 +220,16 @@
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>value</td>
-<td style="text-align:center"><em>any</em></td>
+<td align="center"><em>any</em></td>
 <td>The value to be checked.</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="return-">Return:</h4>
 <p>True, if <em>value</em> is an array.</p>
 <p><strong>Type:</strong> boolean</p>
@@ -247,18 +243,16 @@
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>value</td>
-<td style="text-align:center"><em>any</em></td>
+<td align="center"><em>any</em></td>
 <td>The value to be checked.</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="return-">Return:</h4>
 <p>True, if <em>value</em> is not an array.</p>
 <p><strong>Type:</strong> boolean</p>
@@ -283,18 +277,16 @@
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>value</td>
-<td style="text-align:center"><em>any</em></td>
+<td align="center"><em>any</em></td>
 <td>The value to be checked</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="return-">Return:</h4>
 <p>True, if <em>value</em> is empty.</p>
 <p><strong>Type:</strong> boolean</p>
@@ -306,18 +298,16 @@
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>value</td>
-<td style="text-align:center"><em>any</em></td>
+<td align="center"><em>any</em></td>
 <td>The value to be checked</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="return-">Return:</h4>
 <p>True, if <em>value</em> is not empty.</p>
 <p><strong>Type:</strong> boolean</p>
@@ -329,18 +319,16 @@
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>value</td>
-<td style="text-align:center"><em>any</em></td>
+<td align="center"><em>any</em></td>
 <td>The value to be checked.</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="return-">Return:</h4>
 <p>True, if <em>value</em> is a finite number.</p>
 <p><strong>Type:</strong> boolean</p>
@@ -352,18 +340,16 @@
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>value</td>
-<td style="text-align:center"><em>any</em></td>
+<td align="center"><em>any</em></td>
 <td>The value to be checked.</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="return-">Return:</h4>
 <p>True, if <em>value</em> is not a finite number.</p>
 <p><strong>Type:</strong> boolean</p>
@@ -375,18 +361,16 @@
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>value</td>
-<td style="text-align:center"><em>any</em></td>
+<td align="center"><em>any</em></td>
 <td>The value to be checked.</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="return-">Return:</h4>
 <p>True, if <em>value</em> is a function.</p>
 <p><strong>Type:</strong> boolean</p>
@@ -398,18 +382,16 @@
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>value</td>
-<td style="text-align:center"><em>any</em></td>
+<td align="center"><em>any</em></td>
 <td>The value to be checked.</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="return-">Return:</h4>
 <p>True, if <em>value</em> is not a function.</p>
 <p><strong>Type:</strong> boolean</p>
@@ -421,18 +403,16 @@
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>value</td>
-<td style="text-align:center"><em>any</em></td>
+<td align="center"><em>any</em></td>
 <td>The value to be checked.</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="return-">Return:</h4>
 <p>True, if <em>value</em> is an integer.</p>
 <p><strong>Type:</strong> boolean</p>
@@ -444,18 +424,16 @@
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>value</td>
-<td style="text-align:center"><em>any</em></td>
+<td align="center"><em>any</em></td>
 <td>The value to be checked.</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="return-">Return:</h4>
 <p>True, if <em>value</em> is not an integer.</p>
 <p><strong>Type:</strong> boolean</p>
@@ -467,18 +445,16 @@
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>value</td>
-<td style="text-align:center"><em>any</em></td>
+<td align="center"><em>any</em></td>
 <td>The value to be checked.</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="return-">Return:</h4>
 <p>True, if <em>value</em> is a plain object.</p>
 <p><strong>Type:</strong> boolean</p>
@@ -490,18 +466,16 @@
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>value</td>
-<td style="text-align:center"><em>any</em></td>
+<td align="center"><em>any</em></td>
 <td>The value to be checked.</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="return-">Return:</h4>
 <p>True, if <em>value</em> is not a plain object.</p>
 <p><strong>Type:</strong> boolean</p>
@@ -513,18 +487,16 @@
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>value</td>
-<td style="text-align:center"><em>any</em></td>
+<td align="center"><em>any</em></td>
 <td>The value to be checked.</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="return-">Return:</h4>
 <p>True, if <em>value</em> is a string.</p>
 <p><strong>Type:</strong> boolean</p>
@@ -536,18 +508,16 @@
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>value</td>
-<td style="text-align:center"><em>any</em></td>
+<td align="center"><em>any</em></td>
 <td>The value to be checked.</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="return-">Return:</h4>
 <p>True, if <em>value</em> is not a string.</p>
 <p><strong>Type:</strong> boolean</p>
@@ -559,18 +529,16 @@
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>value</td>
-<td style="text-align:center"><em>any</em></td>
+<td align="center"><em>any</em></td>
 <td>The value to be checked.</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="return-">Return:</h4>
 <p>True, if <em>value</em> is a valid date.</p>
 <p><strong>Type:</strong> boolean</p>
@@ -582,18 +550,16 @@
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>value</td>
-<td style="text-align:center"><em>any</em></td>
+<td align="center"><em>any</em></td>
 <td>The value to be checked.</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="return-">Return:</h4>
 <p>True, if <em>value</em> is not a valid date.</p>
 <p><strong>Type:</strong> boolean</p>
@@ -605,48 +571,46 @@
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>year</td>
-<td style="text-align:center">number</td>
+<td align="center">number</td>
 <td>An integer value represents a full year. This can be specified a year before 1900. (Optional)</td>
 </tr>
 <tr>
 <td>month</td>
-<td style="text-align:center">number</td>
+<td align="center">number</td>
 <td>An integer value represents a month, beginning with 0 for January to 11 for December. (Optional)</td>
 </tr>
 <tr>
 <td>day</td>
-<td style="text-align:center">number</td>
+<td align="center">number</td>
 <td>An integer value represents a day. (Optional)</td>
 </tr>
 <tr>
 <td>hour</td>
-<td style="text-align:center">number</td>
+<td align="center">number</td>
 <td>An integer value represents a hour. (Optional)</td>
 </tr>
 <tr>
 <td>min</td>
-<td style="text-align:center">number</td>
+<td align="center">number</td>
 <td>An integer value represents a minute. (Optional)</td>
 </tr>
 <tr>
 <td>sec</td>
-<td style="text-align:center">number</td>
+<td align="center">number</td>
 <td>An integer value represents a second. (Optional.)</td>
 </tr>
 <tr>
 <td>msec</td>
-<td style="text-align:center">number</td>
+<td align="center">number</td>
 <td>An integer value represents a millisecond. (Optional.)</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>Each element of date and time is set to the first value (zero, or one) if any leading elements are specified but the element is not specified, or is set to the current value if every leading elements and the element are not specified.</p>
 <h4 id="returns-">Returns:</h4>
 <p>A date object which represents the specified date.</p>
@@ -674,18 +638,16 @@ This function set provides functions supporting following date formats:</p>
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>value</td>
-<td style="text-align:center">string</td>
+<td align="center">string</td>
 <td>The date format string like: <code>&quot;2017-09-30&quot;</code>.</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h5 id="return-">Return:</h5>
 <p>A <code>Date</code> object, or null if failing to convert.</p>
 <p><strong>Type:</strong> Date</p>
@@ -697,18 +659,16 @@ This function set provides functions supporting following date formats:</p>
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>value</td>
-<td style="text-align:center">string</td>
+<td align="center">string</td>
 <td>The date format string like: <code>&quot;2017-9-30 1:22:3.4&quot;</code>.</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h5 id="return-">Return:</h5>
 <p>A <code>Date</code> object, or null if failing to convert.</p>
 <p><strong>Type:</strong> Date</p>
@@ -720,18 +680,16 @@ This function set provides functions supporting following date formats:</p>
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>value</td>
-<td style="text-align:center">string</td>
+<td align="center">string</td>
 <td>The date format string like: <code>&quot;2017/09/30&quot;</code>.</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h5 id="return-">Return:</h5>
 <p>A <code>Date</code> object, or null if failing to convert.</p>
 <p><strong>Type:</strong> Date</p>
@@ -743,18 +701,16 @@ This function set provides functions supporting following date formats:</p>
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>value</td>
-<td style="text-align:center">string</td>
+<td align="center">string</td>
 <td>The date format string like: <code>&quot;2017/9/30 1:22:3.45&quot;</code>.</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h5 id="return-">Return:</h5>
 <p>A <code>Date</code> object, or null if failing to convert.</p>
 <p><strong>Type:</strong> Date</p>
@@ -766,18 +722,16 @@ This function set provides functions supporting following date formats:</p>
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>value</td>
-<td style="text-align:center">string</td>
+<td align="center">string</td>
 <td>The date format string like: <code>&quot;170930&quot;</code>.</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h5 id="return-">Return:</h5>
 <p>A <code>Date</code> object, or null if failing to convert.</p>
 <p>This format can represent a date within the range 100 years centered the current year.
@@ -791,18 +745,16 @@ This function set provides functions supporting following date formats:</p>
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>value</td>
-<td style="text-align:center">string</td>
+<td align="center">string</td>
 <td>The date format string like: <code>&quot;170930010203&quot;</code>.</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h5 id="return-">Return:</h5>
 <p>A <code>Date</code> object, or null if failing to convert.</p>
 <p>This format can represent a date within the range 100 years centered the current year.
@@ -816,18 +768,16 @@ This function set provides functions supporting following date formats:</p>
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>value</td>
-<td style="text-align:center">string</td>
+<td align="center">string</td>
 <td>The date format string like: <code>&quot;20170930&quot;</code>.</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h5 id="return-">Return:</h5>
 <p>A <code>Date</code> object, or null if failing to convert.</p>
 <p><strong>Type:</strong> Date</p>
@@ -839,18 +789,16 @@ This function set provides functions supporting following date formats:</p>
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>value</td>
-<td style="text-align:center">string</td>
+<td align="center">string</td>
 <td>The date format string like: <code>&quot;20170930010203&quot;</code>.</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h5 id="return-">Return:</h5>
 <p>A <code>Date</code> object, or null if failing to convert.</p>
 <p><strong>Type:</strong> Date</p>
@@ -862,18 +810,16 @@ This function set provides functions supporting following date formats:</p>
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>value</td>
-<td style="text-align:center">string</td>
+<td align="center">string</td>
 <td>The date format string like <code>&quot;Sat, 30 Sep 2017 13:30:00 +0900&quot;</code></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h5 id="return-">Return:</h5>
 <p>A <code>Date</code> object, or null if failing to convert.</p>
 <p><strong>Type:</strong> Date</p>
@@ -885,18 +831,16 @@ This function set provides functions supporting following date formats:</p>
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>value</td>
-<td style="text-align:center">string</td>
+<td align="center">string</td>
 <td>The date format string like <code>&quot;2017-09-30T13:30:00+09:00&quot;</code></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h5 id="return-">Return:</h5>
 <p>A <code>Date</code> object, or null if failing to convert.</p>
 <p><strong>Type:</strong> Date</p>
@@ -909,18 +853,16 @@ This function set provides functions supporting following date formats:</p>
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>value</td>
-<td style="text-align:center">string</td>
+<td align="center">string</td>
 <td>The date format string like <code>&quot;2017-09-30T13:30:00+09:00&quot;</code></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h5 id="return-">Return:</h5>
 <p>A <code>Date</code> object, or null if failing to convert.</p>
 <p><strong>Type:</strong> Date</p>
@@ -934,23 +876,21 @@ If <em>value</em> is neither a finite number nor a numeric string, this function
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td><em>value</em></td>
-<td style="text-align:center"><em>any</em></td>
+<td align="center"><em>any</em></td>
 <td>The number or string to be converted.</td>
 </tr>
 <tr>
 <td><em>defaultValue</em></td>
-<td style="text-align:center"><em>any</em></td>
+<td align="center"><em>any</em></td>
 <td>Is returned when failing to convert. (Optional)</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="returns-">Returns:</h4>
 <p>The converted finite number, or NaN (or <em>defaultValue</em> if specified) when failing to convert.</p>
 <p><strong>Type:</strong> number</p>
@@ -965,23 +905,21 @@ If <em>value</em> is neither an integer nor a numeric string, this function retu
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>value</td>
-<td style="text-align:center"><em>any</em></td>
+<td align="center"><em>any</em></td>
 <td>The number or string to be converted.</td>
 </tr>
 <tr>
 <td>defaultValue</td>
-<td style="text-align:center"><em>any</em></td>
+<td align="center"><em>any</em></td>
 <td>Is returned when failing to convert. (Optional)</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="returns-">Returns:</h4>
 <p>The converted integer value, or NaN (or <em>defaultValue</em> if specified) when failing to convert.</p>
 <p><strong>Type:</strong> number</p>
@@ -995,23 +933,21 @@ If <em>value</em> is neither a number nor a numeric string, this function return
 <thead>
 <tr>
 <th>Parameter</th>
-<th style="text-align:center">Type</th>
+<th align="center">Type</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td><em>value</em></td>
-<td style="text-align:center"><em>any</em></td>
+<td align="center"><em>any</em></td>
 <td>The number or string to be converted.</td>
 </tr>
 <tr>
 <td><em>defaultValue</em></td>
-<td style="text-align:center"><em>any</em></td>
+<td align="center"><em>any</em></td>
 <td>Is returned when failing to convert. (Optional)</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="returns-">Returns:</h4>
 <p>The converted number, or NaN (or <em>defaultValue</em> if specified) when failing to convert.</p>
 <p><strong>Type:</strong> number</p>

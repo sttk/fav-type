@@ -2,15 +2,18 @@
 
 ----
 
-### <u>formatDate(format) : function</u>
+### <u>formatDate(format [, opts]) : function</u>
 
 Creates a date format function which convert a date to a string in the specified format.
+
+Conversion of each element field in *format* can be customized with the parameter *opts*, which is a plain object of which keys are field characters and of which values are converting functions.
 
 #### Parameters:
 
 | Parameter |  Type  | Description                            |
 |-----------|:------:|----------------------------------------|
-| format    | string | A date format string, which consists of the following date element fields. |
+| *format*  | string | A date format string, which consists of the following date element fields. |
+| *opts*    | object | A plain object having pairs of a field character and a converting function. |
 
 ##### Date element fields:
 

@@ -1,4 +1,4 @@
-(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}(g.fav || (g.fav = {})).type = f()}})(function(){var define,module,exports;return (function(){function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s}return e})()({1:[function(require,module,exports){
+(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}(g.fav || (g.fav = {})).type = f()}})(function(){var define,module,exports;return (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 'use strict';
 
 var formatDate = require('@fav/type.format-date');
@@ -152,7 +152,7 @@ var secondFormatter = require('./lib/second-formatter');
 var millisecondFormatter = require('./lib/millisecond-formatter');
 var weekFormatter = require('./lib/week-formatter');
 
-function formatDate(format) {
+function formatDate(format, opts) {
   if (!isString(format)) {
     return noop;
   }
@@ -161,61 +161,62 @@ function formatDate(format) {
   var arr = format.split(/(Y+|y+|Mmm|Month|M+|D+|H+|m+|s+|S+|Www|Week)/);
   for (var i = 0; i < arr.length; i++) {
     var elm = arr[i];
+    var customFmt = createFormatter((opts || {})[elm]);
 
     switch (elm[0]) {
       case 'Y': {
-        fmts.push(yearFormatter(elm));
+        fmts.push(customFmt || yearFormatter(elm));
         break;
       }
       case 'y': {
-        fmts.push(yearFormatter.yearsOfCentury(elm));
+        fmts.push(customFmt || yearFormatter.yearsOfCentury(elm));
         break;
       }
       case 'M': {
         switch (elm) {
           case 'Month': {
-            fmts.push(monthFormatter.fullname);
+            fmts.push(customFmt || monthFormatter.fullname);
             break;
           }
           case 'Mmm': {
-            fmts.push(monthFormatter.abbreviation);
+            fmts.push(customFmt || monthFormatter.abbreviation);
             break;
           }
           default: {
-            fmts.push(monthFormatter(elm));
+            fmts.push(customFmt || monthFormatter(elm));
             break;
           }
         }
         break;
       }
       case 'D': {
-        fmts.push(dayFormatter(elm));
+        fmts.push(customFmt || dayFormatter(elm));
         break;
       }
       case 'H': {
-        fmts.push(hourFormatter(elm));
+        fmts.push(customFmt || hourFormatter(elm));
         break;
       }
       case 'm': {
-        fmts.push(minuteFormatter(elm));
+        fmts.push(customFmt || minuteFormatter(elm));
         break;
       }
       case 's': {
-        fmts.push(secondFormatter(elm));
+        fmts.push(customFmt || secondFormatter(elm));
         break;
       }
       case 'S': {
-        fmts.push(millisecondFormatter(elm));
+        fmts.push(customFmt || millisecondFormatter(elm));
         break;
       }
       case 'W': {
         switch (elm) {
           case 'Week': {
-            fmts.push(weekFormatter.fullname);
+            fmts.push(customFmt || weekFormatter.fullname);
             break;
           }
           default: {
-            fmts.push(weekFormatter.abbreviation);
+            fmts.push(customFmt || weekFormatter.abbreviation);
             break;
           }
         }
@@ -248,6 +249,14 @@ function formatDate(format) {
 function noop() {
   return '';
 };
+
+function createFormatter(fn) {
+  if (isFunction(fn)) {
+    return function(date) {
+      return fn(date);
+    };
+  }
+}
 
 module.exports = formatDate;
 
