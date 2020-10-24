@@ -38,16 +38,16 @@
   },
   "homepage": "https://github.com/sttk/fav-type#readme",
   "devDependencies": {
-    "@xslet/platform": "^0.2.1",
-    "browserify": "^16.1.1",
+    "@xslet/platform": "^0.3.2",
+    "browserify": "^17.0.0",
     "chai": "^3.5.0",
-    "coveralls": "^3.0.0",
-    "eslint": "^4.3.0",
-    "marked": "^0.4.0",
-    "mocha": "^3.4.2",
-    "nyc": "^11.1.0",
-    "semver": "^5.4.1",
-    "uglify-js": "^3.0.26"
+    "coveralls": "^3.1.0",
+    "eslint": "^7.12.0",
+    "marked": "^1.2.2",
+    "mocha": "^3.5.3",
+    "nyc": "^15.1.0",
+    "semver": "^7.3.2",
+    "uglify-js": "^3.11.3"
   },
   "dependencies": {
     "@fav/type.format-date": "^1.0.3",
