@@ -80,7 +80,7 @@ This package provides API documents on [Github.io][api-url] or `docs/index.html`
 
 ## License
 
-Copyright (C) 2017-2018 Takayuki Sato
+Copyright (C) 2017-2020 Takayuki Sato
 
 This program is free software under [MIT][mit-url] License.
 See the file LICENSE in this distribution for more details.
