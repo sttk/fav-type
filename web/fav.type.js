@@ -119,19 +119,20 @@ module.exports = padRight;
 'use strict';
 
 function repeat(source, ntimes) {
+  if (source === '') {
+    return '';
+  }
   if (ntimes < 1) {
     return '';
   }
 
-  var unitlen = source.length;
-  var halftime = Math.ceil(ntimes / 2);
+  var len = source.length * ntimes;
 
-  var i;
-  for (i = 1; i < halftime; i += i) {
+  while (source.length < len) {
     source += source;
   }
 
-  return source + source.slice(0, (ntimes - i) * unitlen);;
+  return source.slice(0, len);
 }
 
 module.exports = repeat;
